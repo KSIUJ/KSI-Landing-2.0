@@ -1,0 +1,12 @@
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/app/db.sqlite3:/app/app/db.sqlite3
+    environment:
+      - PYTHONUNBUFFERED=1

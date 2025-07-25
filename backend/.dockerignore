@@ -1,0 +1,35 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# sqlite local db
+*.sqlite3
+*.db
+
+# venv
+.venv/
+venv/
+
+# env variables
+.env
+.env.*
+
+# system / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# node / static files
+node_modules/
+build/
+dist/
+
+Dockerfile
+docker-compose.yml
+.dockerignore
