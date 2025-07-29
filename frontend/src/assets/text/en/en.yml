@@ -1,0 +1,140 @@
+read_more: Read more
+
+frontpage:
+  title: Computer Science Students' Association - KSI UJ
+  lead: Welcome on website of the best Students Association in the world :)
+
+  section_ksi:
+    title:  Computer Science Students' Association
+    text:   KSI (Xi) - fourteenth letter of Greek alphabet (which you will learn at introduction to set theory) on our university gained special meaning. This symbol means Computer Science Students' Association (<strong>K</strong>o&#322;o <strong>S</strong>tudentów <strong>I</strong>nformatyki - KSI=Xi) - organization, which should be known by every computer science student (and not only!). Since 1976 we unite creative and curious people who don't want to limit themselves only to mandatory classes.
+
+  section_events:
+    title:  Events
+    text:   Workshops, lectures, conferences - if you want to keep abreast of news in IT, learn new technologies or meet other IT enthusiasts - this section is for you. You will find here events organized by KSI and other interesting ones which are worth coming.
+
+  section_proj_center:
+    title:  Project center
+    text:   If you are looking for place where, in peace, you can solder, <strike>saw</strike>, screw, unscrew, diagnose your hardware, set up server, build 3D printer or realize your own idea - come to our Project&nbsp;Center&nbsp;(room&nbsp;1166).
+
+  section_didactics:
+    title:  Learn with KSI
+    text:   Studies is also time when you can... learn something ;) KSI helps you in that - not only by giving space when you can learn in group to colloquium but also by organizing workshops and training courses - eg. Ruby on Rails, Git or softskills.  If you have difficulties with learning something for studies - in KSI there is definitely someone who've already passed that subject and is willing to help you!
+
+  section_server_room:
+    title:  Server room
+    text:   KSI also has it's own server room full of computers managed by us (eg. this site is hosted by one of them) and we are sharing space for other Students' Associations and our members servers.
+
+  section_projects:
+    title:  Projects
+    text:   Computer cluster, electronic RFID door lock, our own print server, guide for new students on our Faculty, interactive page for Faculty Day - these are only some of projects realized by our members. Read more to know more about those and check out our GitHub!
+
+  section_news:
+    title:  News
+    text:   Conferences, workshops, lectures, newest ventures and projects - here you will find everything that KSI lives now.
+    more:   You will find all articles in section <em>News</em>.
+
+  section_contact:
+    title:  Contact us!
+    text:   If you want to reach us check our addresses and links below.
+    sayat:  Anonymous opinion
+
+menu:
+  homepage: Homepage
+  news:     News (PL)
+  about:    About KSI
+  history:  History
+  events:   Events
+  projects: Projects
+  contact:  Contact
+  join: Join KSI!
+
+about:
+ title: About KSI
+ intro: Since 1976 the Computer Students' Association connects students interested in developing their skills and knowledge in broadly understood Computer Science on one of Europe's oldest and best universities.
+ what: What do we do?
+ organise_events: We organise events
+ organise_projects: We create projects
+ structure: Structure of the organisation
+ history: History of the Association
+ president: President
+ vps: Vice-presidents
+ vp: Vice-president
+ cfo: Finance director
+ secretary: Secretary
+ board_members: Members of the Board
+ administrators: IT Administrators
+ plenipotentiaries: Plenipotentiaries
+ librarians: Librarians
+ housekeepers: Housekeepers
+ audit_committee: Audit Committee
+ admins: IT Administrators
+ welcoming-blabla: and we strive to make the University a welcoming place for every Computer Science student!
+ structure-about: KSI is a "for students, by students" organisation and is governed as such. The management bodies are
+ the-general-meeting: The general meeting - where every member of the association can vote on the most crucial decisions
+ the-board: The board of directors - the executive branch
+ the-audit-committee: The audit committee - supervises and audits
+ board: Board of directors
+ member-of-the-board: Member of the board
+ board-about: Elected by the Annual General Meeting of Association members represents the Association and supervises its activities.
+ audit-committee: Audit committee
+ audit-committee-about: Supervises and audits the work of the organization.
+ supervisor: Scientific supervisor
+ supervisor-about: Dr hab. Adam Roman, prof. UJ is our scientific supervisor.
+ admins: IT Administrators
+ admins-about: Maintaining our servers and internal network.
+ housekeepers: Housekeepers
+ housekeepers-about: Taking care of the condition of the premises and assets of the Association.
+ statute: Statute
+ statute-about: Legal act regulating the tasks, organizational structure and manner of operation of our Association (available in Polish).
+ honorary: Honorary members
+ honorary-about: Featured members with contributions to the development of the Association
+
+list:
+  next: Newer posts
+  previous: Older posts
+
+events:
+  title: Events
+  sfi_name: SFI Academic IT Festival
+  sfi_text: An international IT conference organized by students, for students. Since 2005, in cooperation with students' associations from 3 other Krakow universities and academies, every year we invite lecturers from all over the world. The list of our former speakers includes Andrew S. Tanenbaum, Thomas Cormen, Larry Wall, Richard Stallman and Kevin Warwick. During the three days of conference dozens of lectures and workshops take place, that attract attention of several thousands of participants every year. Financially speaking, it is absolutely free. The only ticket you will ever need is passion and interest.
+  ksitalk: ksiTalk is our student seminar. The purpose of regular meetings is sharing knowledge, broadening horizons in the field of Computer Science and polishing rhetorical skills necessary in scientific career. On every seminar a lecture is conducted by an invited researcher, as to let students establish closer contact with science and potentially begin scientific collaboration. Afterwards at least two members of KSI present their own science projects, interesting issues or thought-provoking science papers.
+  corp_name: Lectures and workshops in cooperation with IT companies
+  corp_desc: At KSI we understand the importance of cooperation between science and business.
+  ksin: KSI<sup>n</sup> is a yearly scientific conference, during which each participant gives a short talk about a selected topic related to IT. It's a great way to expand your knowledge about IT and, of course, integrate with other Club Members. The conference is organized in May.
+  workshops: We organize workshops on various topics - programming games for VR, embedded devices, graphic design, CV...
+  ksicamp: Specially for first year students we dedicate a series of weekend workshops, introducing them to programming, programmers' toolkit and team project development. Taking part in ksiCamp allows you to swiftly start your Computer Science studies and gives an opportunity to practice your newly acquired knowledge by solving real-world problems.
+  ksilearn: 'KSILearn is a series of weekly meetings for the members of KSI. The purpose is sharing knowledge and broadening horizons in the fields of Computer Science that are not part of the courses the students can take part in during their studies. So far, we have started courses about the following topics: Structure and Interpretation of Computer Programs, Category theory, Cracking the Coding Interview, and Programming in Python for beginners.'
+  science_fests: Science festivals
+  science_fests_desc: Popularization of computer science from an early age.
+  mnn: Lesser Poland Researchers' Night
+  mnn_desc: Game design workshop for children
+  fnis: Science and Arts Festival in Krakow
+  fnis_desc: KSI tent on the Main Market Square in Krakow
+  dw: Faculty Day
+  dw_desc: Raspberry Pi Pico Programming Workshops
+  social_events: Social events
+  social_events_desc: From the spring KSIbbq party to attending the Faculty Ball.
+  co_op: Organize events with KSI UJ
+  co_op_desc: Do you want to run a a workshop or a lecture at the Faculty of Mathematics and Computer Science of the Jagiellonian University? Your company tries to establish contact with students? Or maybe you are a student and you want to conduct your first lecture ever? We can help you! Write us a message or visit our headquarter!
+
+projects:
+  title: Projects
+  about: Created by members of KSI Computer Science Students' Association.
+  wip: Work in progress
+  wip-about: Under active development by our members.
+  stable: Finished
+  stable-about: Deployed to production... and requiring a fix from time to time.
+  deprecated: Old projects
+  deprecated-about: Deprecated/dissembled, but still interesting.
+  mordor-about: Web application supporting our study material repository. Based on Spring Boot and written in Kotlin.
+  erc-about: The Electronic Registration Center managing association memberships and member permissions. Written using Django and Vue.js.
+  informator-about: A newcomers guide to studying on the Faculty of Mathematics and Information Technologies of Jagiellonian University.
+  gutenberg-about: Web printing application based on Django allowing quick and secure printer usage from web browser.
+  ksilock-about: Electronic door lock system for our premises - open doors with your student ID card.
+  cas-about: Central authentication for all KSI UJ web services.
+  arda-about: Our main server and base for other projects.
+  3dprinter: 3D printer
+  3dprinter-about: "Prusa i3 built by KSI. Unfortunately it broke some time ago. UPDATE: in October of 2023 we received a new unit from the Faculty!"
+  cluster: Computational cluster
+  cluster-about: What you can do with a bunch of old machines? Build an experimental computer cluster!
+  ksicianka-about: Legends say that it still can be found somewhere in the association HQ - the official KSI card game - started, but never finished.

@@ -1,0 +1,63 @@
+Frontpage
+=========
+
+Title
+-----
+Koło Studentów Informatyki UJ
+
+---
+
+Lead
+----
+Witaj na stronie najlepszego koła naukowego na świecie!
+
+---
+
+Section Ksi
+-----------
+KSI –  czternasta litera alfabetu greckiego (który z pewnością poznasz na Wstępie do Teorii Mnogości) na naszej uczelni zyskała szczególne znaczenie. Pod tym symbolem kryje się bowiem Koło Studentów Informatyki UJ – organizacja, którą powinien znać każdy student informatyki (i nie tylko!). Od prawie 40 lat zrzeszamy kreatywne i ciekawe świata osoby, które nie chcą ograniczać się wyłącznie do obowiązkowych zajęć na uczelni.
+
+---
+
+Section Events
+--------------
+Warsztaty, wykłady, konferencje - jeżeli chcesz być na bieżąco z najnowszymi nowinkami w branży, poznać nowe technologie czy spotkać się z innymi pasjonatami IT - ta zakładka jest dla ciebie. Znajdziesz tutaj wydarzenia organizowane przez KSI, a także ciekawe eventy innych organizacji, na które z pewnością warto zajrzeć.
+
+---
+
+Section Proj Center
+-------------------
+Jeżeli szukasz miejsca gdzie w spokoju możesz przylutować, spiłować, skręcić, rozkręcić, zdiagnozować swój sprzęt, postawić własny serwer, zbudować drukarkę 3D lub zrealizować swój własny pomysł - zajrzyj koniecznie do naszego Centrum&nbsp;Projektowego&nbsp;(sala&nbsp;1166).
+
+---
+
+Section Didactics
+-----------------
+Studia to także czas kiedy można się czegoś... nauczyć ;) KSI w tym pomaga - nie tylko dając przestrzeń gdzie możecie w grupie pouczyć się do kolosa, ale współorganizując warsztaty i szkolenia - np. z Ruby on Rails, Gita, czy umiejętności miękkich. Jeśli czegoś nie umiesz to w KSI na pewno znajdzie się ktoś kto to już zdał i jest chętny Ci pomóc!
+
+---
+
+Section Server Room
+-------------------
+W KSI mamy też własną serwerownię pełną serwerów w pełni przez nas zarządzanych (stoi tam m.in. ta strona) oraz udostępniamy miejsce dla serwerów Kół Naukowych i naszych Kołowiczów.
+
+---
+
+Section Projects
+----------------
+Klaster obliczeniowy, elektroniczny zamek do drzwi, własny serwer druku, informator dla studentów naszego Wydziału, interaktywna strona Dnia Wydziału - to tylko część z realizowanych przez nas projektów. Czytaj dalej by dowiedzieć się więcej na ich temat. I koniecznie zajrzyj na naszego GitHuba!
+
+---
+
+Section News
+------------
+Konferencje, warsztaty, wykłady, najnowsze przedsięwzięcia - w tej zakładce zawsze znajdziesz to czym obecnie żyje nasze Koło.
+
+---
+
+Section Contact
+---------------
+Koło Studentów Informatyki nie istniałoby gdyby nie osoby takie jak ty - nasi Kołowicze i sympatycy. Jeżeli masz jakiekolwiek pomysły, sugestie czy pytania - zapraszamy do kontaktu!
+
+---
+
