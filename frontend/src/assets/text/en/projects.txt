@@ -1,0 +1,75 @@
+Projects
+========
+
+Title
+-----
+Projects
+
+---
+
+About
+-----
+Created by members of KSI Computer Science Students' Association.
+
+---
+
+Mordor-About
+------------
+Web application supporting our study material repository. Based on Spring Boot and written in Kotlin.
+
+---
+
+Erc-About
+---------
+The Electronic Registration Center managing association memberships and member permissions. Written using Django and Vue.js.
+
+---
+
+Informator-About
+----------------
+A newcomers guide to studying on the Faculty of Mathematics and Information Technologies of Jagiellonian University.
+
+---
+
+Gutenberg-About
+---------------
+Web printing application based on Django allowing quick and secure printer usage from web browser.
+
+---
+
+Ksilock-About
+-------------
+Electronic door lock system for our premises - open doors with your student ID card.
+
+---
+
+Cas-About
+---------
+Central authentication for all KSI UJ web services.
+
+---
+
+Arda-About
+----------
+Our main server and base for other projects.
+
+---
+
+3Dprinter-About
+---------------
+Prusa i3 built by KSI. Unfortunately it broke some time ago. UPDATE: in October of 2023 we received a new unit from the Faculty!
+
+---
+
+Cluster-About
+-------------
+What you can do with a bunch of old machines? Build an experimental computer cluster!
+
+---
+
+Ksicianka-About
+---------------
+Legends say that it still can be found somewhere in the association HQ - the official KSI card game - started, but never finished.
+
+---
+

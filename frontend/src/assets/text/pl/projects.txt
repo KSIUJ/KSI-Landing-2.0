@@ -1,0 +1,71 @@
+Projects
+========
+
+---
+
+About
+-----
+Stworzone przez członków Koła Studentów Informatyki UJ.
+
+---
+
+Mordor-About
+------------
+Aplikacja obsługująca repozytorium materiałów naukowych KSI. Bazuje na Spring Boot, napisana w Kotlinie.
+
+---
+
+Erc-About
+---------
+Elektroniczny Rejestr Członków, zarządzający uprawnieniami i statusem członków Koła. Napisany przy użyciu Django oraz Vue.js.
+
+---
+
+Informator-About
+----------------
+Poradnik pomagający pierwszorocznym studentom zgłębić tajniki studiowania na naszym wydziale.
+
+---
+
+Gutenberg-About
+---------------
+Internetowa aplikacja bazująca na Django pozwalająca szybko i bezpiecznie drukować dokumenty z przeglądarki.
+
+---
+
+Ksilock-About
+-------------
+System zamków elektronicznych do pomieszczeń naszego Koła - otwórz drzwi legitymacją studencką.
+
+---
+
+Cas-About
+---------
+Centralne uwierzytelnienie do wszystkich usług internetowych KSI UJ.
+
+---
+
+Arda-About
+----------
+Nasz główny serwer i baza dla innych projektów.
+
+---
+
+3Dprinter-About
+---------------
+Prusa i3 zbudowana przez KSI. Niestety zepsuła się jakiś czas temu. UPDATE: W październiku 2023 roku dostaliśmy nową od Wydziału! Dziękujemy!
+
+---
+
+Cluster-About
+-------------
+Co można zrobić z kilkoma starymi komputerami? Zbudować eksperymentalny klaster obliczeniowy!
+
+---
+
+Ksicianka-About
+---------------
+Legendy mówią, że nadal można ją znaleźć gdzieś w siedzibie Koła - oficjalna gra karciana KSI - zaczęta, lecz nigdy nie dokończona.
+
+---
+

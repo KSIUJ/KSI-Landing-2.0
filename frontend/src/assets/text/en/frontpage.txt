@@ -1,0 +1,63 @@
+Frontpage
+=========
+
+Title
+-----
+Computer Science Students' Association - KSI UJ
+
+---
+
+Lead
+----
+Welcome on website of the best Students Association in the world :)
+
+---
+
+Section Ksi
+-----------
+KSI (Xi) - fourteenth letter of Greek alphabet (which you will learn at introduction to set theory) on our university gained special meaning. This symbol means Computer Science Students' Association (<strong>K</strong>o&#322;o <strong>S</strong>tudentów <strong>I</strong>nformatyki - KSI=Xi) - organization, which should be known by every computer science student (and not only!). Since 1976 we unite creative and curious people who don't want to limit themselves only to mandatory classes.
+
+---
+
+Section Events
+--------------
+Workshops, lectures, conferences - if you want to keep abreast of news in IT, learn new technologies or meet other IT enthusiasts - this section is for you. You will find here events organized by KSI and other interesting ones which are worth coming.
+
+---
+
+Section Proj Center
+-------------------
+If you are looking for place where, in peace, you can solder, <strike>saw</strike>, screw, unscrew, diagnose your hardware, set up server, build 3D printer or realize your own idea - come to our Project&nbsp;Center&nbsp;(room&nbsp;1166).
+
+---
+
+Section Didactics
+-----------------
+Studies is also time when you can... learn something ;) KSI helps you in that - not only by giving space when you can learn in group to colloquium but also by organizing workshops and training courses - eg. Ruby on Rails, Git or softskills.  If you have difficulties with learning something for studies - in KSI there is definitely someone who've already passed that subject and is willing to help you!
+
+---
+
+Section Server Room
+-------------------
+KSI also has it's own server room full of computers managed by us (eg. this site is hosted by one of them) and we are sharing space for other Students' Associations and our members servers.
+
+---
+
+Section Projects
+----------------
+Computer cluster, electronic RFID door lock, our own print server, guide for new students on our Faculty, interactive page for Faculty Day - these are only some of projects realized by our members. Read more to know more about those and check out our GitHub!
+
+---
+
+Section News
+------------
+Conferences, workshops, lectures, newest ventures and projects - here you will find everything that KSI lives now.
+
+---
+
+Section Contact
+---------------
+If you want to reach us check our addresses and links below.
+
+---
+

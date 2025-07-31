@@ -1,0 +1,107 @@
+Events
+======
+
+---
+
+Sfi Text
+--------
+Międzynarodowa konferencja informatyczna organizowana przez studentów, dla studentów. Od 2005 r. wraz z kołami naukowymi z 3 innych krakowskich uczelni co rok zapraszamy prelegentów z całego świata, na liście których znalazły się nazwiska takie jak Andrew S. Tanenbaum, Thomas Cormen, Larry Wall, Richard Stallman czy Kevin Warwick. Podczas trzech dni konferencji odbywa się kilkadziesiąt wykładów i warsztatów, które przyciąga kilka tysięcy uczestników rocznie. Biletem wstępu są jedynie pasja i odrobina chęci oraz zainteresowania tematem.
+
+---
+
+Ksitalk
+-------
+ksiTalk to seminarium studenckie Koła Studentów Informatyki UJ. Cykliczne spotkania Koła mają na celu dzielenie się wiedzą, poszerzanie horyzontów w dziedzinie informatyki oraz ćwiczenie umiejętności retorycznych. Na każdym spotkaniu odbywa się wykład zaproszonego pracownika naukowego, co pozwala studentom nawiązać bliższy kontakt z nauką i potencjalnie rozpocząć współpracę. Oprócz tego odbywają się co najmniej 2 prelekcje członków Koła, którzy przedstawiają realizowane przez nich projekty naukowe, interesujące ich zagadnienia i prace.
+
+---
+
+Corp Name
+---------
+Wykłady i warsztaty we współpracy z firmami IT
+
+---
+
+Corp Desc
+---------
+W KSI rozumiemy jak ważna jest współpraca nauki z biznesem.
+
+---
+
+Ksin
+----
+KSI<sup>n</sup> to coroczna konferencja naukowa na której każdy uczestnik wygłasza krótki referat na dowolny temat związany z informatyką. Jest to świetny sposób na poszerzenie swojej wiedzy na temat IT oraz, oczywiście, integrację między Członkami Koła. Wyjazd jest organizowany w maju.
+
+---
+
+Workshops
+---------
+Organizujemy warsztaty na różne tematy - programowanie gier VR, elektornika, grafika, CV...
+
+---
+
+Ksicamp
+-------
+Specjalnie dla studentów pierwszego roku KSI organizuje cykl weekendowych warsztatów wprowadzających do programowania, środowiska programisty i pracy w zespole. Udział w ksiCampie zapewnia gładkie wejście w studia informatyczne oraz pozwala przećwiczyć zdobytą na zajęciach wiedzę do rozwiązywania praktycznych problemów.
+
+---
+
+Ksilearn
+--------
+KSILearn to cotygodniowe spotkania członków Koła mające na celu dzielenie się wiedzą, poszerzanie horyzontów w dziedzinie informatyki oraz wzbudzanie zainteresowania tematami pozaprogramowymi. Do tej pory rozpoczęliśmy kursy o następujących tematach: Structure and Interpretation of Computer Programs, Teoria kategorii, Cracking the Coding Interview, oraz Programowanie w języku Python dla początkujących.
+
+---
+
+Science Fests
+-------------
+Festiwale nauki
+
+---
+
+Science Fests Desc
+------------------
+Popularyzacja informatyki od najmłodszych lat.
+
+---
+
+Mnn
+---
+Małopolska Noc Naukowców
+
+---
+
+Mnn Desc
+--------
+Warsztaty z tworzenia gier dla dzieci
+
+---
+
+Fnis
+----
+Festiwal Nauki i Sztuki w Krakowie
+
+---
+
+Fnis Desc
+---------
+Namiot KSI na krakowskim Rynku Głównym
+
+---
+
+Dw Desc
+-------
+Warsztaty z elektroniki/programowania Raspberry Pi Pico
+
+---
+
+Social Events Desc
+------------------
+Od wiosennego KSIgrilla po udział w Balu Wydziału.
+
+---
+
+Co Op Desc
+----------
+Chcesz przeprowadzić wykład lub warsztaty na Wydziale Matematyki i Informatyki Uniwersytetu Jagiellońskiego? Twoja firma próbuje nawiązać kontakt ze studentami? A może jesteś studentem i chciałbyś poprowadzić swój pierwszy w życiu wykład? Pomożemy Ci w tym! Napisz do nas lub odwiedź naszą siedzibę.
+
+---
+

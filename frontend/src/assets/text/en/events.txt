@@ -1,0 +1,131 @@
+Events
+======
+
+---
+
+Sfi Name
+--------
+SFI Academic IT Festival
+
+---
+
+Sfi Text
+--------
+An international IT conference organized by students, for students. Since 2005, in cooperation with students' associations from 3 other Krakow universities and academies, every year we invite lecturers from all over the world. The list of our former speakers includes Andrew S. Tanenbaum, Thomas Cormen, Larry Wall, Richard Stallman and Kevin Warwick. During the three days of conference dozens of lectures and workshops take place, that attract attention of several thousands of participants every year. Financially speaking, it is absolutely free. The only ticket you will ever need is passion and interest.
+
+---
+
+Ksitalk
+-------
+ksiTalk is our student seminar. The purpose of regular meetings is sharing knowledge, broadening horizons in the field of Computer Science and polishing rhetorical skills necessary in scientific career. On every seminar a lecture is conducted by an invited researcher, as to let students establish closer contact with science and potentially begin scientific collaboration. Afterwards at least two members of KSI present their own science projects, interesting issues or thought-provoking science papers.
+
+---
+
+Corp Name
+---------
+Lectures and workshops in cooperation with IT companies
+
+---
+
+Corp Desc
+---------
+At KSI we understand the importance of cooperation between science and business.
+
+---
+
+Ksin
+----
+KSI<sup>n</sup> is a yearly scientific conference, during which each participant gives a short talk about a selected topic related to IT. It's a great way to expand your knowledge about IT and, of course, integrate with other Club Members. The conference is organized in May.
+
+---
+
+Workshops
+---------
+We organize workshops on various topics - programming games for VR, embedded devices, graphic design, CV...
+
+---
+
+Ksicamp
+-------
+Specially for first year students we dedicate a series of weekend workshops, introducing them to programming, programmers' toolkit and team project development. Taking part in ksiCamp allows you to swiftly start your Computer Science studies and gives an opportunity to practice your newly acquired knowledge by solving real-world problems.
+
+---
+
+Ksilearn
+--------
+KSILearn is a series of weekly meetings for the members of KSI. The purpose is sharing knowledge and broadening horizons in the fields of Computer Science that are not part of the courses the students can take part in during their studies. So far, we have started courses about the following topics: Structure and Interpretation of Computer Programs, Category theory, Cracking the Coding Interview, and Programming in Python for beginners.
+
+---
+
+Science Fests
+-------------
+Science festivals
+
+---
+
+Science Fests Desc
+------------------
+Popularization of computer science from an early age.
+
+---
+
+Mnn
+---
+Lesser Poland Researchers' Night
+
+---
+
+Mnn Desc
+--------
+Game design workshop for children
+
+---
+
+Fnis
+----
+Science and Arts Festival in Krakow
+
+---
+
+Fnis Desc
+---------
+KSI tent on the Main Market Square in Krakow
+
+---
+
+Dw
+--
+Faculty Day
+
+---
+
+Dw Desc
+-------
+Raspberry Pi Pico Programming Workshops
+
+---
+
+Social Events
+-------------
+Social events
+
+---
+
+Social Events Desc
+------------------
+From the spring KSIbbq party to attending the Faculty Ball.
+
+---
+
+Co Op
+-----
+Organize events with KSI UJ
+
+---
+
+Co Op Desc
+----------
+Do you want to run a a workshop or a lecture at the Faculty of Mathematics and Computer Science of the Jagiellonian University? Your company tries to establish contact with students? Or maybe you are a student and you want to conduct your first lecture ever? We can help you! Write us a message or visit our headquarter!
+
+---
+
