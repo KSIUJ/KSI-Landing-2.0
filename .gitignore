@@ -1,0 +1,49 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# VS Code settings
+.vscode/
+
+# SQLite database
+*.sqlite3
+*.db
+
+# Python environment files
+.env
+*.env
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Python egg info
+*.egg-info/
+dist/
+build/
+
+# __pycache__ in subfolders
+**/__pycache__/
+
+# pytest cache
+.pytest_cache/
+
+# Migrations (if using Alembic and you don't want to track them yet)
+alembic/versions/
+
+# Editor swap/backup files
+*.swp
+*.swo
+*~
