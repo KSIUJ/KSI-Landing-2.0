@@ -3,12 +3,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from database import SessionLocal
+from app.database import Base, engine
+from app.routers import projects, news, vip, board
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+app.include_router(board.router, prefix="/board")
+app.include_router(vip.router, prefix="/vip")
+app.include_router(projects.router, prefix="/projects")
+app.include_router(news.router, prefix="/news")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # change before prod
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
