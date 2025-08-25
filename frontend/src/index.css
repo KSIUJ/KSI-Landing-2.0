@@ -1,1 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
 @import "tailwindcss";
+/*
+how to use fonts/colors: className="font-inter ...other properties"
+Inter - Headers/h1/h2/..
+Source Sans Pro - textareas/buttons/links 
+*/
+
+@theme {
+    --font-inter: "Inter", "sans-serif";
+    --font-ssp: "Source Sans Pro", "sans-serif";
+    --color-background: #121063;
+    --color-dark-background: #3ab7bf;
+    --color-test1: #738290; 
+    --color-test2: #0B7A75;
+}
+
