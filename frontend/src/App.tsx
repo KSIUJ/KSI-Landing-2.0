@@ -8,7 +8,7 @@ function App() {
       <div className="bg-[#EDF2F4]">
          <Navbar /> 
          <LandingPage/>
-        <AboutPage />
+        {/* <AboutPage /> */}
       </div>
     </>
   );
