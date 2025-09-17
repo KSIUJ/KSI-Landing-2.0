@@ -77,7 +77,8 @@ export const Timeline: React.FC<TimelineProps> = ({
     <div className="w-full">
         {/* DESKTOP: pozioma oś */}
         <div className="hidden lg:block">
-        <div className="relative w-full px-4 py-8 mb-20">
+        <div style={{ "--my-mb": `${labelBaseOffsetPx + verticalStepPx * items.length}px` } as React.CSSProperties}
+             className="relative w-full px-4 py-8 mb-[var(--my-mb)]">
             <div
             className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2 rounded-full"
             style={{
