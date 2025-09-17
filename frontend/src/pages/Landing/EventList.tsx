@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { type Event } from "./TEMP_eventsModel.ts";
 import { EventCard } from "./EventCard";
+import Timeline from "./Timeline.tsx";
 
 export const EventList: React.FC = () => {
   const [events, setEvents] = useState<Event[] | null>(null);
@@ -27,7 +28,7 @@ export const EventList: React.FC = () => {
   return (
     <section aria-labelledby="aktualnosci-heading" className="space-y-4 mx-[clamp(4px,10%,200px)]">
       <h2 id="aktualnosci-heading" className="font-inter text-4xl justify-center font-semibold mt-10">Aktualności</h2>
-      
+      <Timeline events={events} verticalStepPx={30} compact={true} />
       <div className="grid gap-4">
         {events.map(e => <EventCard key={e.id} e={e} />)}
       </div>
