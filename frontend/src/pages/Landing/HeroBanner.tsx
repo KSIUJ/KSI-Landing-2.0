@@ -7,7 +7,7 @@ import Card from "../../components/Card";
 const HeroBanner: React.FC = () => (
   <div>
     {/* Tu chyba powinien byc gorny margines zamiast pt-25 ale wtedy odslania biale tlo niewiadomo skad */}
-    <h1 className="font-inter text-[#2B2D42] text-[clamp(2rem,4vw,6rem)] justify-self-center font-bold pt-20 mb-2">
+    <h1 className="font-inter text-[#2B2D42] text-[clamp(2rem,4vw,6rem)] justify-self-center font-bold px-1 pt-20 mb-2">
       Koło Studentów Informatyki UJ
     </h1>
     <img src={Facade} className="w-full mb-[clamp(1rem,3vw,2rem)]"/>

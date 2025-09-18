@@ -33,10 +33,10 @@ const LandingPage = () => {
 
             </div>
             
-            <div className="flex flex-col mt-35 md:mt-0 max-w-4xl w-full mx-auto mt-5  md:flex-row gap-10">
+            <div className="flex flex-col mt-[clamp(110px,40%,150px)] md:mt-0 max-w-4xl w-full mx-auto mt-5  md:flex-row gap-10">
                 
 
-                <div className="relative w-64 md:w-120 md:px-2 mx-auto content-center">
+                <div className="relative w-[clamp(220px,70%,300px)] md:w-120 md:px-2 mx-auto content-center">
                         <img
                             src={"/src/assets/images/events/53229668_2380325235334565_8317455106463236096_o.jpg"}
                             className="absolute w-7/8 -right-1/5 bottom-3/4 md:w-5/8 md:-right-1/10 md:bottom-9/16 h-auto object-cover rounded-4xl z-10"
