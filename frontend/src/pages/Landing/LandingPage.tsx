@@ -1,5 +1,6 @@
 import HeroBanner from "./HeroBanner";
 import Card from "../../components/Card";
+import Footer from "../../components/common/Footer";
 import {infoKSI} from "./data";
 import { listItems } from "./data";
 import { carouselImages } from "./data";
@@ -55,6 +56,7 @@ const LandingPage = () => {
             
             <AutoCarousel images={carouselImages}/>
             <EventList/>
+            <Footer/>
         </>
     )
 }
