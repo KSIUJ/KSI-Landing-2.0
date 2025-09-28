@@ -83,7 +83,7 @@ export const Timeline: React.FC<TimelineProps> = ({
             className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2 rounded-full"
             style={{
                 height: 10,
-                background: `${color}99`,
+                background: `${color}25`,
             }}
             aria-hidden
             />
