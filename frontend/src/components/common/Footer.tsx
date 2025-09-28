@@ -16,7 +16,6 @@ export const Footer: React.FC<Props> = ({
     <footer className="bg-gradient-to-t font-inter to-[#EDF2F4]/20 via-transparent from-white border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          {/* left: big heading + button */}
           <div className="md:col-span-6">
             <h2 className="font-inter font-semibold text-3xl md:text-4xl lg:text-5xl leading-tight text-slate-900">
               Dołącz do najlepszego Koła Studentów Informatyki
@@ -25,7 +24,7 @@ export const Footer: React.FC<Props> = ({
             <div className="p-6 border-gray-100 text-center">
               <a
                 href={joinUsLink}
-                className="inline-block rounded-full bg-slate-800 px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-slate-700 transition-colors"
+                className="inline-block rounded-xl bg-slate-800 px-6 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-700 transition-colors"
               >
                 Dołącz do nas
               </a>
@@ -34,7 +33,7 @@ export const Footer: React.FC<Props> = ({
 
           {/* contact */}
           <div className="md:col-span-3 flex flex-col gap-4">
-            <h3 className="text-lg font-medium text-slate-900">Kontakt</h3>
+            <h3 className="text-2xl font-medium text-slate-900">Kontakt</h3>
 
             <div className="flex flex-col gap-3 text-sm text-slate-700">
               <div className="flex items-start gap-3">
@@ -56,7 +55,7 @@ export const Footer: React.FC<Props> = ({
 
           {/* follow */}
           <div className="md:col-span-3 md:border-l md:pl-6 border-slate-200">
-            <h3 className="text-lg font-medium text-slate-900">Obserwuj</h3>
+            <h3 className="text-2xl font-medium text-slate-900">Obserwuj</h3>
 
             <nav className="mt-4 flex flex-col gap-3">
               <a className="inline-flex items-center gap-3 text-sm text-slate-800 hover:text-slate-500" href="https://facebook.com/ksi.uj" target="_blank" rel="noreferrer">
