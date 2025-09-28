@@ -24,7 +24,7 @@ export const Footer: React.FC<Props> = ({
             <div className="pt-6 border-gray-100 text-center">
               <a
                 href={joinUsLink}
-                className="inline-block rounded-xl bg-slate-800 px-6 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-700 transition-colors"
+                className="inline-block rounded-full bg-slate-800 px-6 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-700 transition-colors"
               >
                 Dołącz do nas
               </a>

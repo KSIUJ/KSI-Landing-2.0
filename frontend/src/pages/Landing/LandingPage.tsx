@@ -56,7 +56,6 @@ const LandingPage = () => {
             
             <AutoCarousel images={carouselImages}/>
             <EventList/>
-            <Footer/>
         </>
     )
 }

@@ -1,6 +1,8 @@
 import Navbar from "./components/common/Navbar";
 import AboutPage from "./pages/About/AboutPage";
 import LandingPage from "./pages/Landing/LandingPage";
+import Footer from "./components/common/Footer";
+
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
          <Navbar /> 
          <LandingPage/>
         {/* <AboutPage /> */}
+        <Footer/>
       </div>
     </>
   );
