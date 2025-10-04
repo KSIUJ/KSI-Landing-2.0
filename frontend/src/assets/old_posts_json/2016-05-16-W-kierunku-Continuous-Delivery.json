@@ -1,0 +1,7 @@
+{
+  "title": "W kierunku Continuous Delivery",
+  "description": "Czy chcesz dowiedzieć się:\n\n- jak tworzone jest oprogramowanie na wielką skalę?\n- jak pogodzić ze sobą prace dziesiątek lub setek developerów?\n- dlaczego sam Git nie wystarczy?\n\nJeśli tak, to Koło Studentów Informatyki UJ zaprasza na wykład pracownika firmy Nokia ( R&D Kraków Nokia Networks) na temat Continous delivery. Poruszone zostaną takie tematy jak:\n\n1. Co to jest Software Configuration Management (i do czego służy?)\n2. Zarządzanie konfiguracją a systemy kontroli wersji (na przykładach\nClearCase/SVN/GIT)\n3. Procesy budowy oprogramowania\n4. Automatyzacja procesów produkcji oprogramowania\n5. Założenia continuous integration\n6. Continuous delivery - naturalna konsekwencja/następny krok\n\nKoniecznie dołącz też do [wydarzenia na facebooku](https://www.facebook.com/events/1601430153504447/?active_tab=highlights). Do zobaczenia :)",
+  "image_url": "images/events/cd.jpg",
+  "date": "",
+  "location": ""
+}

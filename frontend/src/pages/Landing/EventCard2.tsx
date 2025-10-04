@@ -86,7 +86,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
           {/* button */}
           <div className="flex items-center">
             <button
-              className="bg-[#2B2D42] text-white rounded-full px-6 py-3 whitespace-nowrap shadow-sm hover:shadow-md transition"
+              className="bg-[#2B2D42] text-white rounded-full px-6 py-2 whitespace-nowrap shadow-sm hover:bg-slate-700 transition"
               type="button"
             >
               Szczegóły
