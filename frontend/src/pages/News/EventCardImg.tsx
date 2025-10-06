@@ -32,7 +32,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
             <div className="flex items-start gap-6 ">
                 <div className="flex flex-col items-start gap-5">
                 {/* each row: icon + text */}
-                <div className="flex items-start gap-3">
+                <div className="flex items-center gap-3">
                     <ClockIcon className="w-6 h-6 text-slate-700" />
                     <div className="text-sm text-slate-800">
                         {/* show time range if available (we keep raw string formatting simple) */}
@@ -40,7 +40,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                     </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-center gap-3">
                     <MapPinIcon className="w-6 h-6 text-slate-700" />
                     <div className="text-sm text-slate-800">
                         {event.location ?? ""}

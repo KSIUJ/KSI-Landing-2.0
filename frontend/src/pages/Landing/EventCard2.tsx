@@ -1,6 +1,7 @@
 import React from "react";
 import { type Event } from "./TEMP_eventsModel.ts";
 import { CalendarIcon, ClockIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import arrowRightIcon from "../../assets/images/base/icons/arrow-right.svg";
 
 function formatDateParts(iso?: string) {
   if (!iso) return { year: "", day: "", month: "" };
@@ -43,19 +44,19 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
           </h3>
 
           {event.excerpt && (
-            <p className="text-base text-slate-700 max-w-prose">
+            <p className="hidden md:block text-base text-slate-700 max-w-prose">
               {event.excerpt}
             </p>
           )}
         </div>
 
         {/* RIGHT: vertical info (icons + text) + button */}
-        <div className="lg:flex-row flex-col flex items-start gap-6">
+        <div className="lg:flex-row flex-col flex items-start gap-2 md:gap-6">
           {/* icons column with divider */}
           <div className="flex items-start gap-6 pr-6">
             <div className="flex flex-col items-start gap-5">
               {/* each row: icon + text */}
-              <div className="flex items-start gap-3">
+              <div className="flex items-center gap-3">
                 <ClockIcon className="w-6 h-6 text-slate-700" />
                 <div className="text-sm text-slate-800">
                   {/* show time range if available (we keep raw string formatting simple) */}
@@ -63,14 +64,14 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
+              <div className="flex items-center gap-3">
                 <MapPinIcon className="w-6 h-6 text-slate-700" />
                 <div className="text-sm text-slate-800 max-w-xs">
                   {event.location ?? ""}
                 </div>
               </div>
 
-              <div className="md:hidden flex items-start gap-3">
+              <div className="md:hidden flex items-center gap-3">
                 <CalendarIcon className="w-6 h-6 text-slate-700" />
                 <div className="text-sm text-slate-800">
                   {event.start_at ? new Date(event.start_at).toLocaleString("pl-PL", { day: "2-digit", month: "long", year: "numeric"}) : ""}
@@ -84,7 +85,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
           </div>
 
           {/* button */}
-          <div className="flex items-center">
+          <div className="hidden md:flex items-center">
             <button
               className="bg-[#2B2D42] text-white rounded-full px-6 py-3 whitespace-nowrap shadow-sm hover:shadow-md transition"
               type="button"
@@ -92,10 +93,29 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
               Szczegóły
             </button>
           </div>
+          {event.excerpt && (
+            <p className="md:hidden text-base text-slate-700 max-w-prose mt-2">
+              {event.excerpt}
+            </p>
+          )}
+          <li className="flex md:hidden gap-1 text-slate-700 items-center ">
+            <span
+              className="font-light font-openSans relative cursor-pointer
+              after:content-[''] after:absolute after:left-0 after:bottom-0 
+              after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 
+              hover:after:w-full"
+            >
+              Czytaj dalej
+            </span>
+            <img
+              src={arrowRightIcon}
+              alt="arrow-right icon"
+              className="w-4 h-4"
+            />
+        </li>
         </div>
       </div>
 
-      {/* thin separator line like on the screenshot */}
       <div className="w-full border-t border-slate-200" />
     </article>
   );
