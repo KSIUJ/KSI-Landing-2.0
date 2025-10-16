@@ -156,7 +156,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                         className="text-sm font-medium truncate"
                         style={{ color: "#111827" }}
                         >
-                        {it.shortTitle}
+                        {it.title.replace(/-/g, ' ').trim().split(/\s+/, 2).join(' ')}
                         </div>
                         <div className="text-xs text-slate-500">
                         {compact ? distText : `${distText} • ${new Date(it._date!).toLocaleString("pl-PL", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}`}

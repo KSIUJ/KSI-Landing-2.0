@@ -32,6 +32,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
             <div className="flex items-start gap-6 ">
                 <div className="flex flex-col items-start gap-5">
                 {/* each row: icon + text */}
+              {event.start_at?.toUpperCase().includes("T") && (
                 <div className="flex items-center gap-3">
                     <ClockIcon className="w-6 h-6 text-slate-700" />
                     <div className="text-sm text-slate-800">
@@ -39,13 +40,15 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                         {event.start_at ? new Date(event.start_at).toLocaleString("en-GB", { hour: "2-digit", minute: "2-digit" }) : ""}
                     </div>
                 </div>
-
+              )}
+                {event.location && (
                 <div className="flex items-center gap-3">
                     <MapPinIcon className="w-6 h-6 text-slate-700" />
                     <div className="text-sm text-slate-800">
                         {event.location ?? ""}
                     </div>
                 </div>
+                )}
 
                 <div className="flex flex-nowrap items-center gap-3">
                     <CalendarIcon className="w-6 h-6 text-slate-700" />
