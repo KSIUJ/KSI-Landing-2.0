@@ -6,9 +6,10 @@ function App() {
   return (
     <>
       <div className="bg-[#EDF2F4]">
-        <Navbar />
-        <EventsPage />
+         <Navbar /> 
+         <LandingPage/>
         {/* <AboutPage /> */}
+        <Footer/>
       </div>
     </>
   );
