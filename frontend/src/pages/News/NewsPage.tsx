@@ -47,11 +47,18 @@ const NewsPage = () => {
         <section className="mx-[clamp(4px,10%,200px)] mt-5 lg:mt-0">         
             
             <Timeline events={SAMPLE_EVENTS} verticalStepPx={30} compact={false} />
+
+            <h1 className="text-4xl font-inter font-semibold text-[#2B2D42]">Nadchodzące</h1>
             
             <div className="grid gap-4">
                 {SAMPLE_EVENTS.map(e => e.banner_url ? <EventCardImg key={e.id} event={e}/> : <EventCard key={e.id} event={e} />)}
             </div>
             
+            <h1 className="text-4xl mt-20 font-inter font-semibold text-[#2B2D42]">Przeszłe</h1>
+
+            <div className="grid gap-4">
+                {SAMPLE_EVENTS.map(e => e.banner_url ? <EventCardImg key={e.id} event={e}/> : <EventCard key={e.id} event={e} />)}
+            </div>
         </section>
         </>
     );
