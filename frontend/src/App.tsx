@@ -1,24 +1,20 @@
-import {useState, useEffect} from "react"
-import { fetchDbStatus } from "./api"
+import Navbar from "./components/common/Navbar";
+import AboutPage from "./pages/About/AboutPage";
+import LandingPage from "./pages/Landing/LandingPage";
+import Footer from "./components/common/Footer";
+
 
 function App() {
-  const [status, setStatus] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchDbStatus().then(data => setStatus(data.db_status));
-  }, []);
-
   return (
     <>
-    <div className="bg-amber-500">
-      <p>dziala tailwind</p>
-    </div>
-
-    <div>
-      <p>status bazy danych: {status}</p>
-    </div>
+      <div className="bg-[#EDF2F4]">
+         <Navbar /> 
+         <LandingPage/>
+        {/* <AboutPage /> */}
+        <Footer/>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

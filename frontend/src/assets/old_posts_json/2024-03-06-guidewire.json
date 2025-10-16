@@ -1,0 +1,7 @@
+{
+  "title": "Zapraszamy na serię wykładów z Guidewire!",
+  "description": "Zapraszamy na serię wykładów z Guidewire!\n\nPierwszy wykład odbędzie się 11 marca o godzinie 18:00 w sali 0089.\n\nTemat: (Nie)bezpieczny Kubernetes — cyberbezpieczeństwo w środowisku cloud native\n\nWykład ma zapewnić wprowadzenie do platformy Kubernetes, koncentrując się na kompleksowym omówieniu zagadnień cyberbezpieczeństwa. Podczas sesji live hacking uczestnicy będą mogli zobaczyć realne zagrożenia źle skonfigurowanego środowiska. Na bazie zademonstrowanego przykładu zostaną omówienia kluczowe błędy konfiguracji i luki w zabezpieczeniach. Uczestnicy dowiedzą się, jak zaimplementować skuteczne zabezpieczenia i adoptować najlepsze praktyki cyberbezpieczeństwa w środowisku Kubernetes.\n\n![plakat](/images/guidewire_2024.png){: width=\"1000px\" }\n\n[Link do wydarzenia na FB](https://www.facebook.com/events/1417706882178353/?active_tab=discussion)",
+  "image_url": "images/events/guidewire_2024_header.png",
+  "date": "2024-03-11T18:00:00",
+  "location": "WMII, 0089"
+}
