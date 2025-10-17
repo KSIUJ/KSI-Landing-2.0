@@ -1,9 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import { type Event } from "../Landing/TEMP_eventsModel.ts";
 import { CalendarIcon, ClockIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import arrowRightIcon from "../../assets/images/base/icons/arrow-right.svg";
+import PopupMarkdown from "../News/PopupMarkdown.tsx"
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const hasTime = !!event.start_at && event.start_at.includes("T");
+
   return (
     <article className="w-full text-white font-inter">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6 py-8">
@@ -31,21 +40,19 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
             {/* icons column with divider */}
             <div className="flex items-start gap-6 ">
                 <div className="flex flex-col items-start gap-5">
-                {/* each row: icon + text */}
-              {event.start_at?.toUpperCase().includes("T") && (
-                <div className="flex items-center gap-3">
-                    <ClockIcon className="w-6 h-6 text-slate-700" />
-                    <div className="text-sm text-slate-800">
-                        {/* show time range if available (we keep raw string formatting simple) */}
+                  {hasTime && (
+                    <div className="flex items-center gap-3">
+                      <ClockIcon className="w-6 h-6 text-slate-700" />
+                      <div className="text-sm text-slate-800">
                         {event.start_at ? new Date(event.start_at).toLocaleString("en-GB", { hour: "2-digit", minute: "2-digit" }) : ""}
+                      </div>
                     </div>
-                </div>
-              )}
+                  )}
                 {event.location && (
                 <div className="flex items-center gap-3">
                     <MapPinIcon className="w-6 h-6 text-slate-700" />
                     <div className="text-sm text-slate-800">
-                        {event.location ?? ""}
+                        {event.location}
                     </div>
                 </div>
                 )}
@@ -58,28 +65,25 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                     </div>
                 </div>
                 </div>
-
-                {/* vertical divider
-                <div className="h-full w-px bg-slate-200 ml-2" /> */}
             </div>
-
-            {/* button ----------  CHYBA RACZEJ NIEPOTRZEBNE, LEPSZE read more*/}
-            {/* <div className="flex items-center">
-                <button
-                className="bg-[#2B2D42] text-white rounded-full px-6 py-3 whitespace-nowrap shadow-sm hover:shadow-md transition"
-                type="button"
-                >
-                Szczegóły
-                </button>
-            </div> */}
             </div>
             {event.excerpt && (
             <p className="text-base text-slate-700 max-w-prose mt-4">
-              {event.excerpt}
+              {event.excerpt.length > 150 ? 
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {event.excerpt.slice(0,150).trim().concat("...")}
+              </ReactMarkdown> 
+              : 
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {event.excerpt}
+              </ReactMarkdown>
+              }
             </p>     
           )}
-          <li className="flex gap-1 mt-2 text-slate-700 items-center ">
+          <div className="flex gap-1 mt-2 text-slate-700 items-center ">
           <span
+            onClick={openModal}
+            aria-label={`Czytaj dalej: ${event.title}`}
             className="font-light font-openSans relative cursor-pointer
              after:content-[''] after:absolute after:left-0 after:bottom-0 
              after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 
@@ -92,11 +96,16 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
             alt="arrow-right icon"
             className="w-4 h-4"
           />
-        </li>
+        </div>
         </div>
 
         
       </div>
+      <PopupMarkdown
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        event={event}
+      />
 
       <div className="w-full border-t border-slate-200" />
     </article>
