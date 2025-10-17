@@ -37,7 +37,7 @@ app.include_router(admin_news.router, prefix="/admin/news", tags=["Admin - News"
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+      allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

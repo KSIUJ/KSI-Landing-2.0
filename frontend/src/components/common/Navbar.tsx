@@ -1,5 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+import React, { useState, useEffect } from "react";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from "@heroicons/react/24/solid";
 
 interface NavLink {
   name: string;
@@ -20,69 +25,70 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isExtraMenuOpen, setIsExtraMenuOpen] = useState<boolean>(false);
-  const [isMobileExtraMenuOpen, setIsMobileExtraMenuOpen] = useState<boolean>(false);
+  const [isMobileExtraMenuOpen, setIsMobileExtraMenuOpen] =
+    useState<boolean>(false);
 
   const navLinks: NavLink[] = [
-    { name: 'Wydarzenia', href: 'TBA' },
-    { name: 'Projekty', href: 'TBA' },
-    { name: 'O nas', href: 'TBA' },
-    { name: 'Aktualności', href: 'TBA' },
+    { name: "Wydarzenia", href: "TBA" },
+    { name: "Projekty", href: "/ProjectsPage" },
+    { name: "O nas", href: "/AboutPage" },
+    { name: "Aktualności", href: "TBA" },
   ];
 
   const megaMenuSections: MegaMenuSection[] = [
     {
-      title: 'Działalność Koła',
+      title: "Działalność Koła",
       links: [
-        { name: 'Statut', href: '/TBA' },
-        { name: 'Zarząd', href: '/TBA' },
-        { name: 'TBA', href: '/TBA' },
-        { name: 'TBA', href: '/TBA' }
-      ]
+        { name: "Statut", href: "/TBA" },
+        { name: "Zarząd", href: "/TBA" },
+        { name: "TBA", href: "/TBA" },
+        { name: "TBA", href: "/TBA" },
+      ],
     },
     {
-      title: 'Nasze Media',
+      title: "Nasze Media",
       links: [
-        { name: 'Facebook', href: '#' },
-        { name: 'Instagram', href: '#' },
-        { name: 'Discord', href: '#' },
-      ]
+        { name: "Facebook", href: "#" },
+        { name: "Instagram", href: "#" },
+        { name: "Discord", href: "#" },
+      ],
     },
     {
-      title: 'Projekty Wewnętrzne',
+      title: "Projekty Wewnętrzne",
       links: [
-        { name: 'Gutenberg', href: '/TBA' },
-        { name: 'Mordor', href: '/TBA' },
-      ]
+        { name: "Gutenberg", href: "/TBA" },
+        { name: "Mordor", href: "/TBA" },
+      ],
     },
     {
-      title: 'Kontakt',
+      title: "Kontakt",
       links: [
-        { name: 'Formularz Kontaktowy', href: '/TBA' },
-        { name: 'TBA', href: '/TBA' },
-      ]
+        { name: "Formularz Kontaktowy", href: "/TBA" },
+        { name: "TBA", href: "/TBA" },
+      ],
     },
     {
-      title: 'Dla Studentów',
+      title: "Dla Studentów",
       links: [
-        { name: 'TBA', href: '/TBA' },
-        { name: 'TBA', href: '/TBA' },
-        { name: 'TBA', href: '/TBA' }
-      ]
+        { name: "TBA", href: "/TBA" },
+        { name: "TBA", href: "/TBA" },
+        { name: "TBA", href: "/TBA" },
+      ],
     },
     {
-      title: 'Zasoby',
+      title: "Zasoby",
       links: [
-        { name: 'TBA', href: '/TBA' },
-        { name: 'TBA', href: '/TBA' },
-        { name: 'TBA', href: '/TBA' }
-      ]
-    }
+        { name: "TBA", href: "/TBA" },
+        { name: "TBA", href: "/TBA" },
+        { name: "TBA", href: "/TBA" },
+      ],
+    },
   ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -95,8 +101,8 @@ const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const closeMobileMenu = () => {
@@ -105,12 +111,19 @@ const Navbar: React.FC = () => {
   };
 
   const navStyles = isScrolled
-    ? 'bg-white/95 shadow-lg border-transparent'
-    : 'bg-transparent border border-black/50';
+    ? "bg-white/95 shadow-lg border-transparent"
+    : "bg-transparent border border-black/50";
 
-  const MegaMenuSection: React.FC<MegaMenuSectionProps> = ({ section, isMobile = false }) => (
+  const MegaMenuSection: React.FC<MegaMenuSectionProps> = ({
+    section,
+    isMobile = false,
+  }) => (
     <div className={isMobile ? "text-center" : ""}>
-      <h3 className={`font-medium text-gray-900 font-inter ${isMobile ? 'text-lg mb-4' : 'text-base mb-4'}`}>
+      <h3
+        className={`font-medium text-gray-900 font-inter ${
+          isMobile ? "text-lg mb-4" : "text-base mb-4"
+        }`}
+      >
         {section.title}
       </h3>
       <div className="space-y-3">
@@ -120,7 +133,7 @@ const Navbar: React.FC = () => {
             href={link.href}
             onClick={isMobile ? closeMobileMenu : undefined}
             className={`block text-gray-700 hover:text-gray-900 transition-colors py-1 ${
-              isMobile ? 'text-base' : 'text-sm'
+              isMobile ? "text-base" : "text-sm"
             }`}
           >
             {link.name}
@@ -132,11 +145,17 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 rounded-full p-2 transition-all duration-300 ${navStyles}`}>
+      <nav
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 rounded-full p-2 transition-all duration-300 ${navStyles}`}
+      >
         <div className="flex items-center justify-between px-6">
           <div className="flex-shrink-0">
             <a href="/">
-              <img className="h-10 w-auto" src="/src/assets/images/base/logo-ksi.svg" alt="KSI Logo" />
+              <img
+                className="h-10 w-auto"
+                src="/src/assets/images/base/logo-ksi.svg"
+                alt="KSI Logo"
+              />
             </a>
           </div>
 
@@ -188,9 +207,11 @@ const Navbar: React.FC = () => {
         <div className="fixed top-24 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-40">
           <div className="origin-top rounded-xl bg-white shadow-lg border border-black/50 p-8 animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10">
-              {megaMenuSections.map((section: MegaMenuSection, index: number) => (
-                <MegaMenuSection key={index} section={section} />
-              ))}
+              {megaMenuSections.map(
+                (section: MegaMenuSection, index: number) => (
+                  <MegaMenuSection key={index} section={section} />
+                )
+              )}
             </div>
           </div>
         </div>
@@ -201,7 +222,11 @@ const Navbar: React.FC = () => {
         <div className="fixed inset-0 z-50 bg-white md:hidden overflow-y-auto">
           <div className="sticky top-0 bg-white flex items-center justify-between p-6 border-b border-gray-100 z-10">
             <a href="/" onClick={closeMobileMenu}>
-              <img className="h-10 w-auto" src="/src/assets/images/base/logo-ksi.svg" alt="KSI Logo" />
+              <img
+                className="h-10 w-auto"
+                src="/src/assets/images/base/logo-ksi.svg"
+                alt="KSI Logo"
+              />
             </a>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
@@ -229,7 +254,9 @@ const Navbar: React.FC = () => {
 
                 <div className="space-y-6">
                   <button
-                    onClick={() => setIsMobileExtraMenuOpen(!isMobileExtraMenuOpen)}
+                    onClick={() =>
+                      setIsMobileExtraMenuOpen(!isMobileExtraMenuOpen)
+                    }
                     className="flex items-center justify-center gap-2 text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors py-2 mx-auto"
                   >
                     Więcej
@@ -243,9 +270,15 @@ const Navbar: React.FC = () => {
                   {isMobileExtraMenuOpen && (
                     <div className="mt-6 animate-in fade-in slide-in-from-top-2 duration-200">
                       <div className="grid grid-cols-1 gap-8 text-left max-w-sm mx-auto">
-                        {megaMenuSections.map((section: MegaMenuSection, index: number) => (
-                          <MegaMenuSection key={index} section={section} isMobile={true} />
-                        ))}
+                        {megaMenuSections.map(
+                          (section: MegaMenuSection, index: number) => (
+                            <MegaMenuSection
+                              key={index}
+                              section={section}
+                              isMobile={true}
+                            />
+                          )
+                        )}
                       </div>
                     </div>
                   )}
