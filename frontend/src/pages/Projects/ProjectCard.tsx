@@ -7,6 +7,7 @@ interface ProjectCardProps {
   projectDescription: string;
   objectCrop?: string;
   button?: boolean;
+  githubLink?: string;
 }
 const ProjectCard = ({
   imgSrc,
@@ -15,6 +16,7 @@ const ProjectCard = ({
   projectDescription,
   objectCrop,
   button = true,
+  githubLink,
 }: ProjectCardProps) => {
   return (
     <div className="flex flex-col gap-2 bg-white shadow-md p-4 mb-2 rounded-2xl max-w-xs">
@@ -29,12 +31,14 @@ const ProjectCard = ({
         paragraphText={projectDescription}
       />
       {button && (
-        <ButtonWithArrowDown
-          down={false}
-          onClick={() => {}}
-          text="Zobacz na Github"
-          className="text-md"
-        ></ButtonWithArrowDown>
+        <a href={githubLink} target="_blank" rel="noopener noreferrer">
+          <ButtonWithArrowDown
+            down={false}
+            onClick={() => {}}
+            text="Zobacz na Github"
+            className="text-md"
+          ></ButtonWithArrowDown>
+        </a>
       )}
     </div>
   );

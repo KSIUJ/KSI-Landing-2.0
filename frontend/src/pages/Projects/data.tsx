@@ -17,6 +17,7 @@ interface Project {
   projectDescription: string;
   objectCrop?: string;
   button?: boolean;
+  githubLink?: string;
 }
 export const WORK_IN_PROGRESS: Project[] = [
   {
@@ -26,6 +27,7 @@ export const WORK_IN_PROGRESS: Project[] = [
     alt: "KSI Informator Landing page",
     projectDescription:
       "Poradnik pomagający pierwszorocznym studentom zgłębić tajniki studiowania na naszym wydziale.",
+    githubLink: "https://github.com/KSIUJ/informator",
   },
   {
     imgSrc: MordorImg,
@@ -33,6 +35,7 @@ export const WORK_IN_PROGRESS: Project[] = [
     projectName: "MORDOR",
     projectDescription:
       "Aplikacja obsługująca repozytorium materiałów naukowych KSI. Bazuje na Spring Boot, napisana w Kotlinie.",
+    githubLink: "https://github.com/KSIUJ/mordor",
   },
 ];
 export const ARCHIVE: Project[] = [
@@ -69,6 +72,7 @@ export const FINISHED: Project[] = [
     projectName: "ERC",
     projectDescription:
       "Elektroniczny Rejestr Członków, zarządzający uprawnieniami i statusem członków Koła. Napisany przy użyciu Django oraz Vue.js.",
+    githubLink: "https://github.com/KSIUJ/erc-backend",
   },
   {
     objectCrop: "20%-50%",
@@ -77,6 +81,7 @@ export const FINISHED: Project[] = [
     projectName: "GUTENBERG",
     projectDescription:
       "Internetowa aplikacja bazująca na Django pozwalająca szybko i bezpiecznie drukować dokumenty z przeglądarki. Dostępna do użycia w KSI.",
+    githubLink: "https://github.com/KSIUJ/gutenberg",
   },
   {
     imgSrc: KSILockImg,
@@ -84,6 +89,7 @@ export const FINISHED: Project[] = [
     projectName: "KSI LOCK",
     projectDescription:
       "System zamków elektronicznych do pomieszczeń naszego Koła - otwórz drzwi legitymacją studencką.",
+    githubLink: "https://github.com/KSIUJ/ksilock",
   },
   {
     imgSrc: KSIAuthImg,
