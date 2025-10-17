@@ -16,3 +16,26 @@ Source Sans Pro - textareas/buttons/links
     --color-test2: #0B7A75;
 }
 
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.marquee__track {
+  display: flex;
+  gap: var(--marquee-gap, 15px);
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+.marquee__item {
+  flex: 0 0 auto;
+  display: block;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
