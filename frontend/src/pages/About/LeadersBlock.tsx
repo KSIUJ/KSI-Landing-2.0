@@ -2,8 +2,8 @@ import { boardMembers } from "../../assets/images/about/board25-26";
 import BoardLeaderCard from "../../components/BoardLeaderCard";
 import InfoSection from "../../components/InfoSection";
 
-import ButtonWithArrowDown from "../../components/ButtonWithArrowDown";
-const LeadersBlock = () => {
+import ButtonWithArrowDown from "../../components/ButtonWithArrow";
+const LeadersBlock = (props: { onScrollToHistory: () => void }) => {
   return (
     <div className="flex flex-col max-w-4xl w-full mx-auto   md:flex-row  md:gap-14">
       <div className="relative flex flex-col  md:w-[380px] h-[240px] md:mb-30">
@@ -23,13 +23,18 @@ const LeadersBlock = () => {
       <div className="flex flex-col w-full mb-4 md:mt-8 md:w-[200px]">
         <InfoSection
           headerText="Poznaj Nas!"
-          headerClasses="text-3xl font-inter mb-2 "
+          headerClasses="text-4xl font-inter mb-2 "
           paragraphText="Kołem Studentów Informatyki kierują Tomek i Karolina. Razem
                 tworzą atmosferę współpracy, organizują wydarzenia i zarządzają projektami, ale przede wszystkim wspierają
                 studentów w odkrywaniu nowych możliwości."
-          paragraphClasses="font-light text-lg font-ssp"
+          paragraphClasses="font-light text-xl font-ssp"
         >
-          <ButtonWithArrowDown text="Historia Koła" />
+          <ButtonWithArrowDown
+            down
+            text="Historia Koła"
+            className="font-light text-xl font-ssp"
+            onClick={props.onScrollToHistory}
+          />
         </InfoSection>
       </div>
     </div>

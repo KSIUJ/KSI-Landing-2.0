@@ -1,6 +1,6 @@
 const DotList = (props: { items: string[] }) => {
   return (
-    <ul className="font-ssp list-none pl-5 font-extralight">
+    <ul className="font-ssp list-none pl-5 text-xl font-light">
       {props.items.map((text, idx) => (
         <li key={idx} className="before:content-['◦'] before:mr-2">
           {text}
