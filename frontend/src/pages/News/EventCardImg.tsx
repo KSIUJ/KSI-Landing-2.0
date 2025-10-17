@@ -68,7 +68,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
             </div>
             </div>
             {event.excerpt && (
-            <p className="text-base text-slate-700 max-w-prose mt-4">
+            <div className="text-base text-slate-700 max-w-prose mt-4">
               {event.excerpt.length > 150 ? 
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {event.excerpt.slice(0,150).trim().concat("...")}
@@ -78,7 +78,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                 {event.excerpt}
               </ReactMarkdown>
               }
-            </p>     
+            </div>     
           )}
           <div className="flex gap-1 mt-2 text-slate-700 items-center ">
           <span

@@ -52,7 +52,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
           </h3>
 
           {event.excerpt && (
-            <p className="hidden md:block text-base text-slate-700 max-w-prose">
+            <div className="hidden md:block text-base text-slate-700 max-w-prose">
               {event.excerpt.length > 150 ? 
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {event.excerpt.slice(0,150).trim().concat("...")}
@@ -62,7 +62,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                   {event.excerpt}
                 </ReactMarkdown>
               }
-              </p>
+              </div>
           )}
         </div>
 
@@ -111,7 +111,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
           </div>
 
           {event.excerpt && (
-            <p className="md:hidden text-base text-slate-700 max-w-prose mt-2">
+            <div className="md:hidden text-base text-slate-700 max-w-prose mt-2">
               {event.excerpt.length > 150 ? 
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {event.excerpt.slice(0,150).trim().concat("...")}
@@ -121,7 +121,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                   {event.excerpt}
                 </ReactMarkdown>
               }
-            </p>
+            </div>
           )}
 
           <div className="flex md:hidden gap-1 text-slate-700 items-center">

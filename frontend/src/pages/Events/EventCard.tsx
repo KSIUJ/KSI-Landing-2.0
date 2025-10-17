@@ -19,9 +19,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => (
       <h3 className="text-xl font-semibold text-gray-900 font-inter mb-3">
         {event.title}
       </h3>
-      <p className="text-gray-600 font-source-sans-pro leading-relaxed flex-1">
+      <div className="text-gray-600 font-source-sans-pro leading-relaxed flex-1">
         {event.description}
-      </p>
+      </div>
       {event.externalLink && (
         <a
           href={event.externalLink.href}
