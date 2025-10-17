@@ -1,3 +1,4 @@
+
 // find mordor icon equivalent
 import React, { useState, useEffect, useRef } from 'react';
 import { Transition } from '@headlessui/react';
@@ -79,15 +80,14 @@ const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     setIsMobileExtraMenuOpen(false);
   };
-
   const navStyles = 'bg-white/95 shadow-lg border-transparent';
 
   return (
@@ -96,7 +96,11 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between px-6">
           <div className="flex-shrink-0">
             <a href="/">
-              <img className="h-10 w-auto" src="/src/assets/images/base/logo-ksi.svg" alt="KSI Logo" />
+              <img
+                className="h-10 w-auto"
+                src="/src/assets/images/base/logo-ksi.svg"
+                alt="KSI Logo"
+              />
             </a>
           </div>
 
@@ -160,7 +164,11 @@ const Navbar: React.FC = () => {
         <div className="fixed inset-0 z-50 bg-white md:hidden overflow-y-auto">
           <div className="sticky top-0 bg-white flex items-center justify-between p-6 border-b border-gray-100 z-10">
             <a href="/" onClick={closeMobileMenu}>
-              <img className="h-10 w-auto" src="/src/assets/images/base/logo-ksi.svg" alt="KSI Logo" />
+              <img
+                className="h-10 w-auto"
+                src="/src/assets/images/base/logo-ksi.svg"
+                alt="KSI Logo"
+              />
             </a>
             <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
               <XMarkIcon className="h-6 w-6" />

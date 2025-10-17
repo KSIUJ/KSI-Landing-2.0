@@ -5,13 +5,13 @@ import { infoSections, structureItems } from "./data";
 import LeftSideBorderedCard from "../../components/LeftSideBorderedCard";
 const AboutIntroCard = () => {
   const actions = ["Organizujemy Wydarzenia", "Tworzymy Projekty"];
-  const headerStyles = "font-inter text-lg";
-  const textStyles = "font-openSans text-md font-extralight";
+  const headerStyles = "font-inter text-2xl";
+  const textStyles = "font-ssp text-xl font-light";
   return (
     <LeftSideBorderedCard
       title="O KSI"
-      className="p-2 mt-2 max-w-4xl"
-      titleClasses="text-4xl  font-inter"
+      className="p-2 mt-24 max-w-4xl"
+      titleClasses="text-4xl font-inter"
     >
       <InfoSection
         headerText="Ponad 45 lat działalności"
@@ -24,7 +24,7 @@ const AboutIntroCard = () => {
         headerClasses={headerStyles}
       ></InfoSection>
       <ArrowList items={actions}>
-        <p className="text-base font-light font-ssp">
+        <p className={textStyles}>
           i staramy się o to, aby nasz Uniwersytet był przyjaznym miejscem dla
           każdego studenta informatyki!
         </p>
