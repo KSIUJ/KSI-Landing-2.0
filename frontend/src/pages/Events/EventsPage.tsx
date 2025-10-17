@@ -64,16 +64,19 @@ export default function EventsPage() {
   const otherCols = OTHER_EVENTS.length === 1 ? "max-w-xl mx-auto" : "md:grid-cols-2";
 
   return (
-    <main className="pt-24 pb-16 bg-slate-50/75">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <header className="mb-12 mt-12 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 font-inter">Wydarzenia</h1>
-          <p className="text-gray-700 text-lg md:text-xl mt-3 max-w-3xl mx-auto font-ssp font-light">
-          Przegląd formatów i aktywności KSI — stałe inicjatywy i przegląd współpracy.
-            Zapowiedzi bieżących wydarzeń znajdziesz na stronie głównej (kalendarz) i w zakładce Aktualności.
+    <main className="bg-slate-50/75">
+
+      <header className="bg-slate-800 pt-32 pb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold text-white font-inter">Wydarzenia</h1>
+          <p className="text-slate-200 text-lg md:text-xl mt-3 max-w-3xl mx-auto font-ssp font-light">
+            Przegląd formatów i aktywności KSI — stałe inicjatywy i przegląd współpracy.
+            Zapowiedzi bieżących wydarzeń znajdziesz na stronie głównej i w zakładce Aktualności.
           </p>
-        </header>
+        </div>
+      </header>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
         
         <div className="space-y-8">
           <HeroEvent event={SFI_EVENT} />

@@ -13,7 +13,6 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => (
   <header className={`text-center py-12 md:py-16 ${className}`}>
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Decorative element */}
       <div className="flex items-center justify-center mb-6">
         <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent w-24"></div>
         <div className="mx-4 w-2 h-2 bg-slate-800 rounded-full"></div>
