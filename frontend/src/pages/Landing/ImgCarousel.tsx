@@ -28,7 +28,7 @@ export const AutoCarousel: React.FC<AutoCarouselProps> = ({
   const doubled = [...images, ...images];
 
   return (
-    <div className="marquee" aria-hidden="false">
+    <div className="marquee" aria-hidden="true">
       <div
         className="marquee__track"
         style={{ ["--marquee-duration" as any]: duration } as React.CSSProperties}

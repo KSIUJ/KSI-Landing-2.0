@@ -1,13 +1,10 @@
 import HeroBanner from "./HeroBanner";
-import LeftSideBorderedCard from "../../components/LeftSideBorderedCard";
 import Card from "../../components/Card";
+import Footer from "../../components/common/Footer";
 import {infoKSI} from "./data";
 import { listItems } from "./data";
 import { carouselImages } from "./data";
 import { EventList } from "./EventList";
-import BoardLeaderCard from "../../components/BoardLeaderCard";
-import InfoSection from "../../components/InfoSection";
-import ButtonWithArrowDown from "../../components/ButtonWithArrowDown";
 import { BigListWithParagraphs } from "./BigListWithParagraphs";
 import AutoCarousel from "./ImgCarousel";
 
@@ -17,21 +14,26 @@ const LandingPage = () => {
         <>
             <HeroBanner/>
             
-            <div className="bg-[#2B2D42] justify-items-center px-3 py-3">
-                <div className="flex flex-row max-w-4xl items-center text-white">
-                    <Card
-                        title={infoKSI[1].title}
-                        //className={props.className}
-                        titleClasses="text-4xl text-white font-inter text-[clamp(1rem,4vw,2rem)]"
-                        >
-                        <div className="flex flex-col gap-1 p-3 border-l-2 border-white">
-                            {infoKSI[1].paragraph}
-                        </div>
-                    </Card>
-                    <img className="hidden md:block w-50 h-auto invert" src="/src/assets/images/base/logo-ksi.svg" alt="KSI Logo" />
+            <div className="bg-[#2B2D42] px-3 py-8 flex justify-center">
+            <div className="flex flex-col md:flex-row max-w-4xl w-full items-center justify-center text-white gap-6">
+                <Card
+                title={infoKSI[1].title}
+                titleClasses="text-4xl text-white font-inter text-[clamp(1rem,4vw,2rem)] text-left"
+                >
+                <div className="flex flex-col gap-1 p-3 border-l-2 border-white text-justify">
+                    {infoKSI[1].paragraph}
                 </div>
+                </Card>
 
+                <img
+                className="hidden md:block w-48 h-auto invert"
+                src="/src/assets/images/base/logo-ksi.svg"
+                alt="KSI Logo"
+                />
             </div>
+            </div>
+
+
             
             <div className="flex flex-col mt-[clamp(110px,40%,150px)] md:mt-0 max-w-4xl w-full mx-auto mt-5  md:flex-row gap-10">
                 
@@ -40,10 +42,12 @@ const LandingPage = () => {
                         <img
                             src={"/src/assets/images/events/53229668_2380325235334565_8317455106463236096_o.jpg"}
                             className="absolute w-7/8 -right-1/5 bottom-3/4 md:w-5/8 md:-right-1/10 md:bottom-9/16 h-auto object-cover rounded-4xl z-10"
+                            alt="Zdjęcie grupowe 1"
                         />
                         <img
                             src={"/src/assets/images/events/aboutKsi1.jpg"}
                             className="relative bottom-1/10 -left-1/5 md:left-0 md:-bottom-1/10 w-full h-auto object-cover rounded-4xl"
+                            alt="Zdjęcie grupowe 2"
                         />
                     
                 </div>

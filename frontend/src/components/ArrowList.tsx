@@ -7,7 +7,10 @@ const ArrowList = (props: { items: string[]; children?: ReactNode }) => {
   return (
     <ul className="list-none">
       {props.items.map((text, idx) => (
-        <li key={idx} className="flex gap-1 items-center ">
+        <li
+          key={idx}
+          className="flex gap-1 items-center font-ssp text-xl font-light"
+        >
           <span
             className="font-light font-openSans relative cursor-pointer
              after:content-[''] after:absolute after:left-0 after:bottom-0 

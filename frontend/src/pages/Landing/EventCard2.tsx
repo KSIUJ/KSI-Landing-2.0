@@ -101,7 +101,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
           <div className="hidden md:flex items-center">
             <button
               onClick={openModal}
-              className="bg-[#2B2D42] text-white cursor-pointer rounded-full px-6 py-3 whitespace-nowrap shadow-sm hover:shadow-md transition"
+              className="bg-[#2B2D42] text-white cursor-pointer rounded-full px-6 py-2 whitespace-nowrap shadow-sm hover:bg-slate-700 transition"
               type="button"
               aria-expanded={isModalOpen}
               aria-controls={`event-details-${event.title}`}

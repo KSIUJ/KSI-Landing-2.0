@@ -1,0 +1,7 @@
+{
+  "title": "Od prostej aplikacji do Facebooka - AVSystem",
+  "description": "Jak przejść od prostej aplikacji webowej do architektury, czyli jak tworzy się zarówno proste aplikacje webowe, jak i takie, z których mogliby korzystać giganci tacy jak Facebook, Google lub Netflix?\n\nNa to pytanie odpowiedział nam Piotr Bochenek, Software Engineer w AVSystem w czasie wykładu zorganizowanego 19.03 na naszym Wydziale.\n\nPierwszą połowę wykładu poświęciliśmy działaniu i implementacji aplikacji webowych. Przeszliśmy od front-endu po bazę danych, opisując jakie zadania powinny spełniać poszczególne fragmenty architektury systemu. Omówione zostały też przykłady narzędzi oraz frameworków (głównie związanych z jvm), które pomogą te zadania realizować.\n\nW drugiej części spotkania zajęliśmy się przeskalowaniem naszej prostej aplikacji, tak, by mogły z niej korzystać miliony użytkowników. Rozważyliśmy też jakie problemy to ze sobą niesie i omówiliśmy kilka rozwiązań, z których korzystają “ci najwięksi” \n\n\nWięcej informacji znaleźć możecie na [stronie wydarzenia](https://www.facebook.com/events/1994975164059329/)",
+  "image_url": "images/events/avsystem-web.jpg",
+  "date": "2018-03-19",
+  "location": ""
+}

@@ -60,7 +60,7 @@ SAMPLE_EVENTS = [
         "title": "Cokolwiek innego",
         "shortTitle" : "Cokolwiek innego",
         "slug": "OtherOne",
-        "excerpt": "Dołącz do nas i przedstawicieli firmy Google na wydarzeniu, które odbędzie się już w przyszłym tygodniu!",
+        "excerpt": "Zapraszamy na wykład oraz warsztaty organizowane przez General Electric Healthcare IT Center of Excellence Kraków oraz KSI. Przyłącz się do nas I odkryj czym jest Big Data – jej zakres, metody, technologie, zalety i wyzwania, a wszystko to w praktyce! Niniejsza prezentacja dostarcza przeglądu współczesnych platform Big Data, takich jak Apache Hadoop, Apache Spark, Apache Flink, a także nowatorskiego produktu GE, jakim jest Predix.W czasie wykładu uczestnicy będą mieli okazję zrozumieć paradygmat MapReduce grając w karty. Zabierzemy was w podróż po olbrzymich zbiorach danych, w których będziemy odkrywać ukryte wzorce i niewidoczne na pierwszy rzut oka korelacje – pokażemy piękno i złożoność analizy Big Data\"Sekretem postępu jest podjęcie działania.\" ~Mark Twain!",
         "banner_url": "http://localhost:8001/static/google-2024-800-2fdeda.png",
         "start_at": "2026-01-04T17:00:00",
         "show_time" : True,

@@ -1,0 +1,7 @@
+{
+  "title": "KSI Talk - Computer vision for embodied AI",
+  "description": "Mamy przyjemność ogłosić pierwszego w tym roku KSI Talka!\nPrelegentem będzie Adam Pardyl (@apardyl)\n\nTytuł: Computer vision for embodied AI\n📅 19.10.2023 (ten czwartek)\n🕔 17:00\n📌 1173 (siedziba KSI)\n\nAbstrakt:\nLudzie i zwierzęta intuicyjnie analizują swoje otocznie, używając relatywnie niewielkiej ilości energii w porównaniu do dzisiejszych rozwiązań uczenia maszynowego. Dzisiejsze rozwiązania widzenia komputerowego analizują każdy fragment otoczenia zamiast skupiać się jedynie na istotnych detalach. Computer vision for embodied AI wprowadza problem interakcji z otoczeniem do badań nad widzeniem komputerowym. Zamiast jedynie przetwarzać istniejące obrazy agent może wchodzić w interakcję z otoczeniem, np. decydując w którą stronę skierować sensory robota/drona, z jakim przybliżeniem wykonać zdjęcie lub też otrzymywać informacje z otoczenia jako asynchroniczne zdarzenia. W ramach wykładu zostaną przedstawione wyniki badań prowadzonych w ramach UJ i IDEAS NCBR oraz dalsze kierunki rozwoju problematyki widzenia komputerowego dla maszyn autonomicznych.\n\nZapraszamy!",
+  "image_url": "images/events/ksi-talk-computer-vision.png",
+  "date": "2023-10-19T17:00:00",
+  "location": "WMII, 1173"
+}

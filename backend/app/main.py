@@ -1,19 +1,39 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import Session
+from fastapi.responses import JSONResponse
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
-from database import SessionLocal
-from app.database import Base, engine
-from app.routers import projects, news, vip, board
+from app.database import AsyncSessionLocal, Base, engine
+from contextlib import asynccontextmanager
 
-Base.metadata.create_all(bind=engine)
+from routers.public import board as public_board, news as public_news, projects as public_projects, vip as public_vip
+from routers.admin import board as admin_board, news as admin_news, projects as admin_projects, vip as admin_vip
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+    await engine.dispose()
 
-app.include_router(board.router, prefix="/board")
-app.include_router(vip.router, prefix="/vip")
-app.include_router(projects.router, prefix="/projects")
-app.include_router(news.router, prefix="/news")
+app = FastAPI(lifespan=lifespan, default_response_class=JSONResponse)
+
+@app.middleware("http")
+async def add_utf8_charset(request, call_next):
+    response = await call_next(request)
+    if response.headers.get("content-type") == "application/json":
+        response.headers["content-type"] = "application/json; charset=utf-8"
+    return response
+
+app.include_router(public_board.router, prefix="/board", tags=["Public - Board"])
+app.include_router(public_vip.router, prefix="/vip", tags=["Public - VIP"])
+app.include_router(public_projects.router, prefix="/projects", tags=["Public - Projects"])
+app.include_router(public_news.router, prefix="/news", tags=["Public - News"])
+
+app.include_router(admin_board.router, prefix="/admin/board", tags=["Admin - Board"])
+app.include_router(admin_vip.router, prefix="/admin/vip", tags=["Admin - VIP"])
+app.include_router(admin_projects.router, prefix="/admin/projects", tags=["Admin - Projects"])
+app.include_router(admin_news.router, prefix="/admin/news", tags=["Admin - News"])
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,18 +43,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+async def get_db():
+    async with AsyncSessionLocal() as session:
+        yield session
+
+@app.get("/db-test")
+async def db_test(db: AsyncSession = Depends(get_db)):
+    result = await db.execute(text("SELECT 1"))
+    scalar_result = result.scalar()
+    return {"db_status": "ok" if scalar_result == 1 else "error"}
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
-
-@app.get("/db-test")
-def db_test(db: Session = Depends(get_db)):
-    result = db.execute(text("SELECT 1")).scalar()
-    return {"db_status": "ok" if result == 1 else "error"}
