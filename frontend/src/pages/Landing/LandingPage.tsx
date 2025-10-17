@@ -14,21 +14,26 @@ const LandingPage = () => {
         <>
             <HeroBanner/>
             
-            <div className="bg-[#2B2D42] justify-items-center px-3 py-3">
-                <div className="flex flex-row max-w-4xl items-center text-white">
-                    <Card
-                        title={infoKSI[1].title}
-                        //className={props.className}
-                        titleClasses="text-4xl text-white font-inter text-[clamp(1rem,4vw,2rem)]"
-                        >
-                        <div className="flex flex-col gap-1 p-3 border-l-2 border-white">
-                            {infoKSI[1].paragraph}
-                        </div>
-                    </Card>
-                    <img className="hidden md:block w-50 h-auto invert" src="/src/assets/images/base/logo-ksi.svg" alt="KSI Logo" />
+            <div className="bg-[#2B2D42] px-3 py-8 flex justify-center">
+            <div className="flex flex-col md:flex-row max-w-4xl w-full items-center justify-center text-white gap-6">
+                <Card
+                title={infoKSI[1].title}
+                titleClasses="text-4xl text-white font-inter text-[clamp(1rem,4vw,2rem)] text-left"
+                >
+                <div className="flex flex-col gap-1 p-3 border-l-2 border-white text-justify">
+                    {infoKSI[1].paragraph}
                 </div>
+                </Card>
 
+                <img
+                className="hidden md:block w-48 h-auto invert"
+                src="/src/assets/images/base/logo-ksi.svg"
+                alt="KSI Logo"
+                />
             </div>
+            </div>
+
+
             
             <div className="flex flex-col mt-[clamp(110px,40%,150px)] md:mt-0 max-w-4xl w-full mx-auto mt-5  md:flex-row gap-10">
                 

@@ -6,12 +6,16 @@ const ProjectsPage = () => {
   const projectsCardWrapper =
     "flex md:flex-row flex-col gap-4 md:gap-12 flex-wrap justify-center";
   return (
+    <main className="bg-slate-50/75">
+      <header className="bg-slate-800 pt-32 pb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold text-white font-inter">Projekty</h1>
+          <p className="text-slate-200 text-lg md:text-xl mt-3 max-w-3xl mx-auto font-ssp font-light">
+            Poznaj nasze projekty, tworzone z pasją przez studentów
+          </p>
+        </div>
+      </header>
     <div className="pt-24  flex flex-col gap-4 items-center justify-center">
-      <InfoSection
-        className="text-center"
-        headerText="Poznaj nasze projekty, tworzone z pasją przez studentów"
-        headerClasses="text-4xl"
-      />
       <InfoSection
         headerText="WORK IN PROGRESS"
         headerClasses="font-light text-3xl"
@@ -53,6 +57,7 @@ const ProjectsPage = () => {
         ) : null
       )}
     </div>
+    </main>
   );
 };
 export default ProjectsPage;

@@ -5,8 +5,6 @@ import BoardCarousel from "./BoardCarousel";
 import LeadersBlock from "./LeadersBlock";
 import { useRef } from "react";
 import { infoAboutKsiPeople } from "./data";
-import Footer from "../../components/common/Footer";
-import Navbar from "../../components/common/Navbar";
 import InfoSection from "../../components/InfoSection";
 import LeftSideBorderedCard from "../../components/LeftSideBorderedCard";
 const AboutPage = () => {
@@ -21,7 +19,6 @@ const AboutPage = () => {
 
   return (
     <div>
-      <Navbar />
       <div className={flexContainerCenter}>
         <AboutIntroCard />
         <LeadersBlock onScrollToHistory={scrollToHistory} />
@@ -50,7 +47,6 @@ const AboutPage = () => {
         </LeftSideBorderedCard>
         <History scrollTargetRef={historyRef} />
       </div>
-      <Footer />
     </div>
   );
 };
