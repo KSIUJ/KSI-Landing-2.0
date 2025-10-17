@@ -35,3 +35,4 @@ export const EventList: React.FC = () => {
     </section>
   );
 };
+export default EventList;

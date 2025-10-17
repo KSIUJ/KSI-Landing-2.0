@@ -23,12 +23,12 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 class Event(BaseModel):
     id: int
     title: str
-    shortTitle: str
-    slug: str
+    # shortTitle: str
+    # slug: str
     excerpt: Optional[str] = None
     banner_url: Optional[str] = None
-    start_at: Optional[datetime] = None
-    show_time: Optional[bool] = True
+    start_at: Optional[str] = None
+    # show_time: Optional[bool] = True
     location: Optional[str] = None
 
 
