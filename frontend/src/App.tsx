@@ -1,8 +1,6 @@
 import Navbar from "./components/common/Navbar";
 import AboutPage from "./pages/About/AboutPage";
-import LandingPage from "./pages/Landing/LandingPage";
-import Footer from "./components/common/Footer";
-
+import EventsPage from "./pages/Events/EventsPage";
 
 function App() {
   return (
