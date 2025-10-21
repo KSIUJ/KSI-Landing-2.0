@@ -24,64 +24,6 @@ export const infoSections = [
   },
 ];
 
-export const auditCommittee = [
-  "Franciszek Stachura",
-  "Tomasz Miśkowicz",
-  "Krzysztof Gębka",
-];
-export const admins = [
-  "Franciszek Stachura",
-  "Tomasz Kulis",
-  "Łukasz Drukała",
-  "Michał Latra",
-  "Ignacy Alwasiak",
-  "Mikołaj Janusz",
-  "Piotr Zieliński",
-];
-
-export const houseKeepers = ["Filip Jasionowicz", "Krzysztof Gębka"];
-
-export const honoraryMembers = [
-  "Piotr Zieliński",
-  "Franciszek Stachura",
-  "Filip Szymeczko",
-  "Paweł Ryś",
-  "Mateusz Maćkowski",
-  "Adam Pardyl",
-  "Kamil Drobniak",
-  "Michał Herda",
-  "Piotr Maliszewski",
-  "Adam Piekarczyk",
-  "Wojciech Sabała",
-  "Dorota Sadza",
-  "Dominik Wołek",
-  "Dominika Zając",
-  "Adam Zydroń",
-  "prof. dr hab. inż. Marek Skomorowski",
-];
-
-export const infoAboutKsiPeople = [
-  {
-    header: "Opiekun Naukowy Koła",
-    text: "Dr hab. Adam Roman, prof. UJ jest opiekunem naukowym naszego Koła.",
-  },
-  {
-    header: "Administratorzy",
-    text: admins.join(", "),
-  },
-  {
-    header: "Gospodarze",
-    text: houseKeepers.join(", "),
-  },
-  {
-    header: "Komisja Rewizyjna",
-    text: auditCommittee.join(", "),
-  },
-  {
-    header: "Członkowie Honorowi",
-    text: honoraryMembers.join(", "),
-  },
-];
 type management = {
   president?: string;
   vicePresidents?: string;

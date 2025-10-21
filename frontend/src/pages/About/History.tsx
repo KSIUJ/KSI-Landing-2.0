@@ -1,4 +1,4 @@
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { RefObject } from "react";
 import { historyContent } from "./data";
 import type { Decade } from "./data";
@@ -88,7 +88,7 @@ const History = (props: {
               className="cursor-pointer mt-1"
             >
               <span className="relative after:left-0 after:-bottom-1 after:content-[''] after:absolute after:w-0 after:h-[2px] after:transition-all after:duration-300 hover:after:w-full after:bg-black font-medium">
-                {isOpen ? "Ukryj zarząd" : "Pokaz zarząd"}
+                {isOpen ? "Ukryj zarząd" : "Pokaż zarząd"}
               </span>
             </button>
 
