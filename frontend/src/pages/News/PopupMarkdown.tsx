@@ -1,11 +1,14 @@
-import React from 'react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { type Event } from "../Landing/TEMP_eventsModel";
+import React from "react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { type News } from "../http";
 
-
-export const PopupMarkdown: React.FC<{ isOpen: boolean; onClose: () => void; event: Event | null }> = ({ isOpen, onClose, event }) => {
+export const PopupMarkdown: React.FC<{
+  isOpen: boolean;
+  onClose: () => void;
+  event: News | null;
+}> = ({ isOpen, onClose, event }) => {
   if (!isOpen || !event) {
     return null;
   }
@@ -51,12 +54,11 @@ export const PopupMarkdown: React.FC<{ isOpen: boolean; onClose: () => void; eve
           </button>
         </header>
 
-       
         <div className="px-6 pb-6 overflow-y-auto">
           {/*Niestety linki nie podswietlaja sie bo trzeba ogarnac tailwindcss/typography*/}
           <div className="prose prose-slate prose-a:text-emerald-600 max-w-none text-test1">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {event.excerpt ?? 'Nothing to show'}
+              {event.description ?? "Nothing to show"}
             </ReactMarkdown>
           </div>
         </div>

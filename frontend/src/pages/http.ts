@@ -28,6 +28,13 @@ export async function fetchProjects(apiBaseUrl = API_BASE_URL) {
   return res.json();
 }
 
+export async function fetchNews(apiBaseUrl = API_BASE_URL) {
+  const url = new URL(`${apiBaseUrl.replace(/\/$/, "")}/news`);
+  const res = await fetch(url.toString());
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
 export type RoleTitle = "president" | "vicepresident" | "treasurer" | "member";
 export type VipTitle =
   | "admin"
@@ -68,3 +75,13 @@ export const mapVIPRoles = {
   honorary: "Członkowie Honorowi",
   housekeeper: "Gospodarze",
 } as const;
+
+export interface News {
+  id: number;
+  title: string;
+  description: string;
+  image_url: string;
+  date?: string | null;
+  start_time?: string | null;
+  location?: string | null;
+}

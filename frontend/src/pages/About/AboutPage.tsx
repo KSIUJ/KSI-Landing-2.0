@@ -6,7 +6,6 @@ import LeadersBlock from "./LeadersBlock";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { fetchVIPMembers, mapVIPRoles } from "../http";
 import type { VIPMember } from "../http";
-
 import InfoSection from "../../components/InfoSection";
 import LeftSideBorderedCard from "../../components/LeftSideBorderedCard";
 const AboutPage = () => {
