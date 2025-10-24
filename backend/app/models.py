@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Enum, Date
+from sqlalchemy import Column, Integer, String, Text, Enum, Date, Time
 from app.database import Base
 
 class Board(Base):
@@ -30,3 +30,5 @@ class News(Base):
     description = Column(Text)
     image_url = Column(String(255))
     date = Column(Date)
+    start_time = Column(Time, nullable=True)
+    location = Column(String(255), nullable=True)
