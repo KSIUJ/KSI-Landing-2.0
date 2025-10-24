@@ -1,12 +1,10 @@
 import arrowRightIcon from "../assets/images/base/icons/arrow-right.svg";
-import type { ReactNode } from "react";
+import type { ReactNode, ReactElement } from "react";
 
-// TO DO:
-// 1)CHANGE LIST ELEMENT TO LINKS
-const ArrowList = (props: { items: string[]; children?: ReactNode }) => {
+const ArrowList = (props: { items: ReactElement[]; children?: ReactNode }) => {
   return (
     <ul className="list-none">
-      {props.items.map((text, idx) => (
+      {props.items.map((element, idx) => (
         <li
           key={idx}
           className="flex gap-1 items-center font-ssp text-xl font-light"
@@ -17,7 +15,7 @@ const ArrowList = (props: { items: string[]; children?: ReactNode }) => {
              after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 
              hover:after:w-full"
           >
-            {text}
+            {element}
           </span>
           <img
             src={arrowRightIcon}
