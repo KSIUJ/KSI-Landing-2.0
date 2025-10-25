@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from datetime import date
+from datetime import date, time
 from typing import Optional, Literal
 
 class SchemaBase(BaseModel):
@@ -66,6 +66,8 @@ class NewsBase(BaseModel):
     description: Optional[str] = None
     image_url: Optional[str] = None
     event_date: Optional[date] = None
+    event_start_time: Optional[time] = None
+    location: Optional[str] = None
 
 class NewsCreate(NewsBase):
     pass
@@ -74,7 +76,9 @@ class NewsUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     image_url: Optional[str] = None
-    event_date: Optional[date] = None
+    date: Optional[date] = None
+    start_time: Optional[time] = None
+    location: Optional[str] = None
 
 class News(NewsBase, SchemaBase):
     id: int

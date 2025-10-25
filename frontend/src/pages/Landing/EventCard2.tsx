@@ -1,44 +1,65 @@
 import React, { useState } from "react";
-import { type Event } from "./TEMP_eventsModel";
-import { CalendarIcon, ClockIcon, MapPinIcon } from "@heroicons/react/24/outline";
+
+import {
+  CalendarIcon,
+  ClockIcon,
+  MapPinIcon,
+} from "@heroicons/react/24/outline";
 import arrowRightIcon from "../../assets/images/base/icons/arrow-right.svg";
 import PopupMarkdown from "../News/PopupMarkdown";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import type { News } from "../http";
 
-function formatDateParts(iso?: string) {
-  if (!iso) return { year: "", day: "", month: "" };
+function formatDateParts(date?: string | null, time?: string | null) {
+  if (!date) return { year: "", day: "", month: "" };
+  const iso = `${date}T${time ?? "00:00:00"}`;
   const d = new Date(iso);
-  const optsDay = { day: "2-digit" } as const;
-  const optsMonth = { month: "short" } as const;
+  if (isNaN(d.getTime())) return { year: "", day: "", month: "" };
+
   const year = d.getFullYear().toString();
-  const day = d.toLocaleDateString("pl-PL", optsDay);
-  const month = d.toLocaleDateString("pl-PL", optsMonth);
+  const day = d.toLocaleDateString("pl-PL", { day: "2-digit" });
+  const month = d.toLocaleDateString("pl-PL", { month: "short" });
   return { year, day, month };
 }
 
-export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
-  const { year, day, month } = formatDateParts(event.start_at);
+export const EventCard: React.FC<{ event: News }> = ({ event }) => {
+  const { year, day, month } = formatDateParts(event.date, event.start_time);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const hasTime = !!event.start_at && event.start_at.includes("T");
+  const hasTime = !!event.start_time;
 
   return (
     <article className="w-full text-white font-inter">
       <div className="flex flex-col md:flex-row items-start gap-6 py-8">
         {/* LEFT: date box */}
-        <div className="hidden md:block flex-shrink-0" 
-          aria-label={event.start_at ? 'Data-' + new Date(event.start_at).toLocaleString("pl-PL", { day: "2-digit", month: "long", year: "numeric" }) : ""}>
+        <div
+          className="hidden md:block flex-shrink-0"
+          aria-label={
+            event.date
+              ? new Date(
+                  `${event.date}T${event.start_time ?? "00:00:00"}`
+                ).toLocaleDateString("pl-PL", {
+                  weekday: "long",
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                })
+              : ""
+          }
+        >
           <div className="bg-white rounded-2xl shadow-[0_8px_24px_rgba(16,24,40,0.06)] p-4 w-20 h-24 flex flex-col items-center justify-center text-center">
             <div className="text-xs text-slate-500">{year}</div>
-            <div className="text-4xl font-serif leading-none text-slate-900 mt-1">{day}</div>
+            <div className="text-4xl font-serif leading-none text-slate-900 mt-1">
+              {day}
+            </div>
             <div className="text-sm text-slate-500 mt-1">{month}</div>
           </div>
         </div>
 
-        {/* CENTER: title + excerpt */}
+        {/* CENTER: title + description */}
         <div className="flex-1 min-w-0">
           <h3 className="text-2xl md:text-3xl font-semibold leading-tight mb-3">
             <span className="inline-block relative">
@@ -51,18 +72,18 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
             </span>
           </h3>
 
-          {event.excerpt && (
+          {event.description && (
             <div className="hidden md:block text-base text-slate-700 max-w-prose">
-              {event.excerpt.length > 150 ? 
+              {event.description.length > 150 ? (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {event.excerpt.slice(0,150).trim().concat("...")}
-                </ReactMarkdown> 
-                : 
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {event.excerpt}
+                  {event.description.slice(0, 150).trim().concat("...")}
                 </ReactMarkdown>
-              }
-              </div>
+              ) : (
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {event.description}
+                </ReactMarkdown>
+              )}
+            </div>
           )}
         </div>
 
@@ -74,7 +95,14 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                 <div className="flex items-center gap-3">
                   <ClockIcon className="w-6 h-6 text-slate-700" />
                   <div className="text-sm text-slate-800">
-                    {event.start_at ? new Date(event.start_at).toLocaleString("en-GB", { hour: "2-digit", minute: "2-digit" }) : ""}
+                    {event.start_time
+                      ? new Date(
+                          `${event.date}T${event.start_time}`
+                        ).toLocaleTimeString("en-GB", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })
+                      : ""}
                   </div>
                 </div>
               )}
@@ -91,7 +119,14 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
               <div className="md:hidden flex items-center gap-3">
                 <CalendarIcon className="w-6 h-6 text-slate-700" />
                 <div className="text-sm text-slate-800">
-                  {event.start_at ? new Date(event.start_at).toLocaleString("pl-PL", { day: "2-digit", month: "long", year: "numeric" }) : ""}
+                  {event.date
+                    ? new Date(
+                        `${event.date}T${event.start_time ?? "00:00:00"}`
+                      ).toLocaleDateString("pl-PL", {
+                        month: "long",
+                        year: "numeric",
+                      })
+                    : ""}
                 </div>
               </div>
             </div>
@@ -110,17 +145,17 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
             </button>
           </div>
 
-          {event.excerpt && (
+          {event.description && (
             <div className="md:hidden text-base text-slate-700 max-w-prose mt-2">
-              {event.excerpt.length > 150 ? 
+              {event.description.length > 150 ? (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {event.excerpt.slice(0,150).trim().concat("...")}
-                </ReactMarkdown> 
-                : 
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {event.excerpt}
+                  {event.description.slice(0, 150).trim().concat("...")}
                 </ReactMarkdown>
-              }
+              ) : (
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {event.description}
+                </ReactMarkdown>
+              )}
             </div>
           )}
 
@@ -149,11 +184,7 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
         </div>
       </div>
 
-      <PopupMarkdown
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        event={event}
-      />
+      <PopupMarkdown isOpen={isModalOpen} onClose={closeModal} event={event} />
 
       <div className="w-full border-t border-slate-200" />
     </article>
@@ -161,4 +192,3 @@ export const EventCard: React.FC<{ event: Event }> = ({ event }) => {
 };
 
 export default EventCard;
-
