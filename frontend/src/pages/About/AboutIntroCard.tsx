@@ -3,10 +3,15 @@ import DotList from "../../components/DotList";
 import ArrowList from "../../components/ArrowList";
 import { infoSections, structureItems } from "./data";
 import LeftSideBorderedCard from "../../components/LeftSideBorderedCard";
+import { Link } from "react-router-dom";
+
 const AboutIntroCard = () => {
-  const actions = ["Organizujemy Wydarzenia", "Tworzymy Projekty"];
   const headerStyles = "font-inter text-2xl";
   const textStyles = "font-ssp text-xl font-light";
+    const actions = [
+      <Link to="/events" className={textStyles}>Organizujemy Wydarzenia</Link>,
+      <Link to="/projects" className={textStyles}>Tworzymy Projekty</Link>
+    ];
   return (
     <LeftSideBorderedCard
       title="O KSI"

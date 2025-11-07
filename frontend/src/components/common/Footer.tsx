@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const Footer: React.FC<Props> = ({
-    joinUsLink = "/join",
+    joinUsLink = "https://discord.gg/UZks6SHafQ",
     phone = "12 664-76-49",
     email = "ksi@uj.edu.pl"
 }) => {

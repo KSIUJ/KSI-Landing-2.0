@@ -1,6 +1,6 @@
 import InfoSection from "../../components/InfoSection";
 import ButtonWithArrowDown from "../../components/ButtonWithArrow";
-interface ProjectCardProps {
+export interface ProjectCardProps {
   imgSrc: string;
   alt: string;
   projectName: string;

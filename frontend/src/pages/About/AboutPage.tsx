@@ -3,8 +3,9 @@ import History from "./History";
 import AboutIntroCard from "./AboutIntroCard";
 import BoardCarousel from "./BoardCarousel";
 import LeadersBlock from "./LeadersBlock";
-import { useRef } from "react";
-import { infoAboutKsiPeople } from "./data";
+import { useEffect, useRef, useState, useMemo } from "react";
+import { fetchVIPMembers, mapVIPRoles } from "../http";
+import type { VIPMember } from "../http";
 import InfoSection from "../../components/InfoSection";
 import LeftSideBorderedCard from "../../components/LeftSideBorderedCard";
 const AboutPage = () => {
@@ -16,6 +17,35 @@ const AboutPage = () => {
   const scrollToHistory = () => {
     historyRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+  const [VIPMembers, setVIPMembers] = useState<VIPMember[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadVIPs = async () => {
+      try {
+        setLoading(true);
+        const vipMembers = await fetchVIPMembers();
+        setVIPMembers([...vipMembers]);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadVIPs();
+  }, []);
+
+  const groupByRole = useMemo(() => {
+    return VIPMembers.reduce(
+      (acc: Record<string, string[]>, member: VIPMember) => {
+        const role = member.role_type;
+        if (!acc[role]) acc[role] = [];
+        acc[role].push(member.name);
+        return acc;
+      },
+      {}
+    );
+  }, [VIPMembers]);
 
   return (
     <div>
@@ -34,16 +64,20 @@ const AboutPage = () => {
           title="Ci, którzy działają dla KSI"
           titleClasses="text-4xl font-inter"
         >
-          {infoAboutKsiPeople.map(({ header, text }) => (
-            <InfoSection
-              key={header}
-              className="max-w-4xl"
-              headerText={header}
-              headerClasses="text-2xl   font-inter"
-              paragraphText={text}
-              paragraphClasses="font-extralight text-xl font-ssp"
-            />
-          ))}
+          {Object.entries(groupByRole).map(([role, names]) => {
+            //@ts-ignore
+            const roleName = mapVIPRoles[role];
+            return (
+              <InfoSection
+                className="max-w-4xl"
+                key={role}
+                headerText={roleName}
+                headerClasses={headerStyles}
+                paragraphText={names.join(", ")}
+                paragraphClasses={textStyles}
+              />
+            );
+          })}
         </LeftSideBorderedCard>
         <History scrollTargetRef={historyRef} />
       </div>

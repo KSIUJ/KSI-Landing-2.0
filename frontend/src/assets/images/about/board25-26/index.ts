@@ -28,7 +28,7 @@ export const boardMembers: ReadonlyArray<BoardMember> = [
   },
   {
     image: zmuda,
-    memberName: "Kinga Zmuda",
+    memberName: "Kinga Żmuda",
     role: "Członek zarządu",
   },
   {
