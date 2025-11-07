@@ -126,7 +126,7 @@ async def get_news_by_id(db: AsyncSession, news_id: int):
     return await db.get(models.News, news_id)
 
 async def get_all_news(db: AsyncSession, skip: int = 0, limit: int = 100):
-    stmt = select(models.News).order_by(desc(models.News.date)).offset(skip).limit(limit)
+    stmt = select(models.News).order_by(desc(models.News.event_date)).offset(skip).limit(limit)
     result = await db.execute(stmt)
     return result.scalars().all()
 

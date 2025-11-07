@@ -11,7 +11,7 @@ class SchemaBase(BaseModel):
 class BoardBase(BaseModel):
     name: str
     role_title: Literal['president', 'vicepresident', 'treasurer', 'member']
-    photo_url: str
+    image_url: str
 
 class BoardCreate(BoardBase):
     pass
@@ -19,7 +19,7 @@ class BoardCreate(BoardBase):
 class BoardUpdate(BaseModel):
     name: Optional[str] = None
     role_title: Optional[Literal['president', 'vicepresident', 'treasurer', 'member']] = None
-    photo_url: Optional[str] = None
+    image_url: Optional[str] = None
 
 class Board(BoardBase, SchemaBase):
     id: int
@@ -27,14 +27,14 @@ class Board(BoardBase, SchemaBase):
 # --- VIP ---
 class VIPBase(BaseModel):
     name: str
-    role_type: Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary']
+    role_title: Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary']
 
 class VIPCreate(VIPBase):
     pass
 
 class VIPUpdate(BaseModel):
     name: Optional[str] = None
-    role_type: Optional[Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary']] = None
+    role_title: Optional[Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary']] = None
 
 class VIP(VIPBase, SchemaBase):
     id: int
@@ -76,8 +76,8 @@ class NewsUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     image_url: Optional[str] = None
-    date: Optional[date] = None
-    start_time: Optional[time] = None
+    event_date: Optional[date] = None
+    event_start_time: Optional[time] = None
     location: Optional[str] = None
 
 class News(NewsBase, SchemaBase):

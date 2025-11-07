@@ -24,12 +24,16 @@ function formatDateParts(date?: string | null, time?: string | null) {
 }
 
 export const EventCard: React.FC<{ event: News }> = ({ event }) => {
-  const { year, day, month } = formatDateParts(event.date, event.start_time);
+  console.log(JSON.stringify(event, null, 2));
+  const { year, day, month } = formatDateParts(
+    event.event_date,
+    event.event_start_time
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const hasTime = !!event.start_time;
+  const hasTime = !!event.event_start_time;
 
   return (
     <article className="w-full text-white font-inter">
@@ -38,9 +42,9 @@ export const EventCard: React.FC<{ event: News }> = ({ event }) => {
         <div
           className="hidden md:block flex-shrink-0"
           aria-label={
-            event.date
+            event.event_date
               ? new Date(
-                  `${event.date}T${event.start_time ?? "00:00:00"}`
+                  `${event.event_date}T${event.event_start_time ?? "00:00:00"}`
                 ).toLocaleDateString("pl-PL", {
                   weekday: "long",
                   day: "2-digit",
@@ -95,9 +99,9 @@ export const EventCard: React.FC<{ event: News }> = ({ event }) => {
                 <div className="flex items-center gap-3">
                   <ClockIcon className="w-6 h-6 text-slate-700" />
                   <div className="text-sm text-slate-800">
-                    {event.start_time
+                    {event.event_start_time
                       ? new Date(
-                          `${event.date}T${event.start_time}`
+                          `${event.event_date}T${event.event_start_time}`
                         ).toLocaleTimeString("en-GB", {
                           hour: "2-digit",
                           minute: "2-digit",
@@ -119,9 +123,11 @@ export const EventCard: React.FC<{ event: News }> = ({ event }) => {
               <div className="md:hidden flex items-center gap-3">
                 <CalendarIcon className="w-6 h-6 text-slate-700" />
                 <div className="text-sm text-slate-800">
-                  {event.date
+                  {event.event_date
                     ? new Date(
-                        `${event.date}T${event.start_time ?? "00:00:00"}`
+                        `${event.event_date}T${
+                          event.event_start_time ?? "00:00:00"
+                        }`
                       ).toLocaleDateString("pl-PL", {
                         month: "long",
                         year: "numeric",
