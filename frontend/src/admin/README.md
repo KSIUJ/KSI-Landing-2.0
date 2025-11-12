@@ -48,3 +48,4 @@ W zależności od operacji:
 
 - Przy edycji **About Board** zawsze dodawaj **president** oraz **vicepresident**.  
   Jeśli dodasz tylko jedno z tych pól, strona nie wyświetli się poprawnie i spowoduje błąd.
+- W polu "photo URL" trzeba dać ścieżkę zaczynającą się od "/" do pliku znajdującego się w folderze fronted/public/...
