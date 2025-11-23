@@ -29,6 +29,6 @@ class News(Base):
     title = Column(String(255), nullable=False)
     description = Column(Text)
     image_url = Column(String(255))
-    date = Column(Date)
-    start_time = Column(Time, nullable=True)
+    event_date = Column(Date)
+    event_start_time = Column(Time, nullable=True)
     location = Column(String(255), nullable=True)

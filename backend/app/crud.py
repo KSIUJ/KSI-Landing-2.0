@@ -1,4 +1,4 @@
-from sqlalchemy import select, desc
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from app import models, schemas
 from typing import Optional, Literal
@@ -21,6 +21,17 @@ async def create_board_member(db: AsyncSession, board: schemas.BoardCreate):
     await db.commit()
     await db.refresh(db_obj)
     return db_obj
+
+async def create_board_members_bulk(db: AsyncSession, boards: list[schemas.BoardCreate]):
+    objects = [models.Board(**board.model_dump()) for board in boards]
+
+    db.add_all(objects)
+    await db.commit()
+
+    for obj in objects:
+        await db.refresh(obj)
+
+    return objects
 
 async def update_board_member(db: AsyncSession, board_id: int, board_update: schemas.BoardUpdate):
     db_obj = await get_board_by_id(db, board_id)
@@ -54,12 +65,20 @@ async def get_vips(db: AsyncSession, role_type: Optional[Literal['supervisor', '
     result = await db.execute(stmt)
     return result.scalars().all()
 
-async def create_vip(db: AsyncSession, member: schemas.VIPCreate):
-    db_obj = models.VIP(**member.model_dump())
+async def create_vip(db: AsyncSession, vip: schemas.VIPCreate):
+    db_obj = models.VIP(**vip.model_dump())
     db.add(db_obj)
     await db.commit()
     await db.refresh(db_obj)
     return db_obj
+
+async def create_vip_bulk(db: AsyncSession, items: list[schemas.VIPCreate]):
+    objects = [models.VIP(**item.model_dump()) for item in items]
+    db.add_all(objects)
+    await db.commit()
+    for obj in objects:
+        await db.refresh(obj)
+    return objects
 
 async def update_vip(db: AsyncSession, vip_id: int, vip_update: schemas.VIPUpdate):
     db_obj = await get_vip(db, vip_id)
@@ -100,6 +119,14 @@ async def create_project(db: AsyncSession, project: schemas.ProjectCreate):
     await db.refresh(db_obj)
     return db_obj
 
+async def create_project_bulk(db: AsyncSession, items: list[schemas.ProjectCreate]):
+    objects = [models.Project(**item.model_dump()) for item in items]
+    db.add_all(objects)
+    await db.commit()
+    for obj in objects:
+        await db.refresh(obj)
+    return objects
+
 async def update_project(db: AsyncSession, project_id: int, project_update: schemas.ProjectUpdate):
     db_obj = await get_project(db, project_id)
     if not db_obj:
@@ -125,8 +152,8 @@ async def delete_project(db: AsyncSession, project_id: int):
 async def get_news_by_id(db: AsyncSession, news_id: int):
     return await db.get(models.News, news_id)
 
-async def get_all_news(db: AsyncSession, skip: int = 0, limit: int = 100):
-    stmt = select(models.News).order_by(desc(models.News.date)).offset(skip).limit(limit)
+async def get_all_news_sorted(db: AsyncSession, skip: int = 0, limit: int = 100):
+    stmt = select(models.News).order_by(models.News.event_date.desc().nullslast()).offset(skip).limit(limit)
     result = await db.execute(stmt)
     return result.scalars().all()
 
@@ -136,6 +163,14 @@ async def create_news(db: AsyncSession, news: schemas.NewsCreate):
     await db.commit()
     await db.refresh(db_obj)
     return db_obj
+
+async def create_news_bulk(db: AsyncSession, items: list[schemas.NewsCreate]):
+    objects = [models.News(**item.model_dump()) for item in items]
+    db.add_all(objects)
+    await db.commit()
+    for obj in objects:
+        await db.refresh(obj)
+    return objects
 
 async def update_news_item(db: AsyncSession, news_id: int, news_update: schemas.NewsUpdate):
     db_obj = await get_news_by_id(db, news_id)

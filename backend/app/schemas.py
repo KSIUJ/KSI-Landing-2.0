@@ -76,8 +76,8 @@ class NewsUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     image_url: Optional[str] = None
-    date: Optional[date] = None
-    start_time: Optional[time] = None
+    event_date: Optional[date] = None
+    event_start_time: Optional[time] = None
     location: Optional[str] = None
 
 class News(NewsBase, SchemaBase):

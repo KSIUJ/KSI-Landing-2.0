@@ -1,35 +1,38 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
-
+from typing import Literal
 from app import crud, schemas, security
 from app.database import get_db
 
-router = APIRouter(
-    dependencies=[Depends(security.get_api_key)]
-)
+router = APIRouter(dependencies=[Depends(security.get_api_key)])
 
 @router.post("", response_model=schemas.VIP, status_code=status.HTTP_201_CREATED)
 async def create_vip(
-    vip: schemas.VIPCreate, 
+    vip: schemas.VIPCreate,
     db: AsyncSession = Depends(get_db)
 ):
-    return await crud.create_vip(db=db, member=vip)
+    return await crud.create_vip(db=db, vip=vip)
+
+@router.post("/bulk", response_model=List[schemas.VIP])
+async def create_vip_bulk(
+    vips: List[schemas.VIPCreate],
+    db: AsyncSession = Depends(get_db),
+):
+    return await crud.create_vip_bulk(db, vips)
 
 @router.get("", response_model=List[schemas.VIP])
 async def read_all_vips(
-    skip: int = 0, 
-    limit: int = 100, 
+    skip: int = 0,
+    limit: int = 100,
+    role_type: Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary'] | None = None,
     db: AsyncSession = Depends(get_db)
 ):
-    vips = await crud.get_vips(db=db, skip=skip, limit=limit)
+    vips = await crud.get_vips(db=db, skip=skip, limit=limit, role_type=role_type)
     return vips
 
 @router.get("/{vip_id}", response_model=schemas.VIP)
-async def read_vip_by_id(
-    vip_id: int, 
-    db: AsyncSession = Depends(get_db)
-):
+async def read_vip_by_id(vip_id: int, db: AsyncSession = Depends(get_db)):
     db_vip = await crud.get_vip(db=db, vip_id=vip_id)
     if db_vip is None:
         raise HTTPException(status_code=404, detail="VIP not found")
@@ -37,8 +40,8 @@ async def read_vip_by_id(
 
 @router.put("/{vip_id}", response_model=schemas.VIP)
 async def update_vip(
-    vip_id: int, 
-    vip: schemas.VIPUpdate, 
+    vip_id: int,
+    vip: schemas.VIPUpdate,
     db: AsyncSession = Depends(get_db)
 ):
     db_vip = await crud.update_vip(db=db, vip_id=vip_id, vip_update=vip)
@@ -47,10 +50,7 @@ async def update_vip(
     return db_vip
 
 @router.delete("/{vip_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_vip(
-    vip_id: int, 
-    db: AsyncSession = Depends(get_db)
-):
+async def delete_vip(vip_id: int, db: AsyncSession = Depends(get_db)):
     success = await crud.delete_vip(db=db, vip_id=vip_id)
     if not success:
         raise HTTPException(status_code=404, detail="VIP not found")

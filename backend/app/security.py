@@ -3,28 +3,21 @@ from fastapi import Security, HTTPException, status
 from fastapi.security import APIKeyHeader
 
 API_KEY_NAME = "X-API-Key"
-        
 api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
 
-ADMIN_API_KEY = os.getenv("ADMIN_API_KEY")
-
-async def get_api_key(api_key: str = Security(api_key_header)):
-    if not ADMIN_API_KEY:
+async def get_api_key(api_key_header_value: str = Security(api_key_header)):
+    admin_key = os.getenv("ADMIN_API_KEY")
+    if not admin_key:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="The API key is not configured on the server."
+            detail="Server misconfiguration: ADMIN_API_KEY not set"
         )
-
-    if not api_key:
+    if not api_key_header_value:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="API key is missing."
+            detail="Missing API Key",
+            headers={"WWW-Authenticate": "API key"},
         )
-
-    if api_key != ADMIN_API_KEY:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid API key."
-        )
-
-    return api_key
+    if api_key_header_value != admin_key:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Invalid API Key")
+    return api_key_header_value

@@ -5,9 +5,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from app.database import AsyncSessionLocal, Base, engine
 from contextlib import asynccontextmanager
-
-from routers.public import board as public_board, news as public_news, projects as public_projects, vip as public_vip
-from routers.admin import board as admin_board, news as admin_news, projects as admin_projects, vip as admin_vip
+from app.routers.public import board as public_board, news as public_news, projects as public_projects, vip as public_vip
+from app.routers.admin import board as admin_board, news as admin_news, projects as admin_projects, vip as admin_vip
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

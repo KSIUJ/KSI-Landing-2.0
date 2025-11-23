@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
-
 from app import crud, schemas, security
 from app.database import get_db
 
@@ -16,13 +15,20 @@ async def create_news(
 ):
     return await crud.create_news(db=db, news=news)
 
+@router.post("/bulk", response_model=List[schemas.News])
+async def create_news_bulk(
+    items: List[schemas.NewsCreate],
+    db: AsyncSession = Depends(get_db),
+):
+    return await crud.create_news_bulk(db, items)
+
 @router.get("", response_model=List[schemas.News])
 async def read_all_news(
     skip: int = 0, 
     limit: int = 100, 
     db: AsyncSession = Depends(get_db)
 ):
-    news = await crud.get_all_news(db=db, skip=skip, limit=limit)
+    news = await crud.get_all_news_sorted(db=db, skip=skip, limit=limit)
     return news
 
 @router.get("/{news_id}", response_model=schemas.News)
