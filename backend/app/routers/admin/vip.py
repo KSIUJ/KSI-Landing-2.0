@@ -25,10 +25,10 @@ async def create_vip_bulk(
 async def read_all_vips(
     skip: int = 0,
     limit: int = 100,
-    role_type: Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary'] | None = None,
+    role_title: Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary'] | None = None,
     db: AsyncSession = Depends(get_db)
 ):
-    vips = await crud.get_vips(db=db, skip=skip, limit=limit, role_type=role_type)
+    vips = await crud.get_vips(db=db, skip=skip, limit=limit, role_title=role_title)
     return vips
 
 @router.get("/{vip_id}", response_model=schemas.VIP)

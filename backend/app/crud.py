@@ -58,10 +58,10 @@ async def delete_board_member(db: AsyncSession, board_id: int):
 async def get_vip(db: AsyncSession, vip_id: int):
     return await db.get(models.VIP, vip_id)
 
-async def get_vips(db: AsyncSession, role_type: Optional[Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary']] = None, skip: int = 0, limit: int = 100):
+async def get_vips(db: AsyncSession, role_title: Optional[Literal['supervisor', 'audit', 'admin', 'housekeeper', 'honorary']] = None, skip: int = 0, limit: int = 100):
     stmt = select(models.VIP).offset(skip).limit(limit)
-    if role_type:
-        stmt = stmt.where(models.VIP.role_type == role_type)
+    if role_title:
+        stmt = stmt.where(models.VIP.role_title == role_title)
     result = await db.execute(stmt)
     return result.scalars().all()
 

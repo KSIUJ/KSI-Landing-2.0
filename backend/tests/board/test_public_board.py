@@ -12,7 +12,7 @@ async def test_public_get_all_board(client):
 async def test_public_get_board_member_by_id(client):
     create_res = await client.post(
         "/admin/board",
-        json={"name": "Alice", "role_title": "member", "photo_url": "y"},
+        json={"name": "Alice", "role_title": "member", "image_url": "y"},
         headers={"X-API-Key": "TEST_KEY"},
     )
     board_id = create_res.json()["id"]
