@@ -9,7 +9,7 @@ async def test_admin_create_board_member(client):
     payload = {
         "name": "John Doe",
         "role_title": "president",
-        "photo_url": "img.jpg"
+        "image_url": "img.jpg"
     }
     res = await client.post(BASE_URL, json=payload, headers=HEADERS)
     assert res.status_code == 201
@@ -27,7 +27,7 @@ async def test_admin_get_all_board_members(client):
 async def test_admin_get_board_member_by_id(client):
     res = await client.post(
         BASE_URL,
-        json={"name": "Jane", "role_title": "member", "photo_url": "x"},
+        json={"name": "Jane", "role_title": "member", "image_url": "x"},
         headers=HEADERS
     )
     board_id = res.json()["id"]
@@ -41,7 +41,7 @@ async def test_admin_get_board_member_by_id(client):
 async def test_admin_update_board_member(client):
     res = await client.post(
         BASE_URL,
-        json={"name": "AAA", "role_title": "member", "photo_url": "x"},
+        json={"name": "AAA", "role_title": "member", "image_url": "x"},
         headers=HEADERS
     )
     board_id = res.json()["id"]
@@ -58,7 +58,7 @@ async def test_admin_update_board_member(client):
 @pytest.mark.asyncio
 async def test_admin_delete_board_member(client):
     res = await client.post(
-        BASE_URL, json={"name": "DELETE ME", "role_title": "member", "photo_url": "x"},
+        BASE_URL, json={"name": "DELETE ME", "role_title": "member", "image_url": "x"},
         headers=HEADERS
     )
     board_id = res.json()["id"]
@@ -70,7 +70,7 @@ async def test_admin_delete_board_member(client):
 async def test_admin_update_board_member_role(client):
     res = await client.post(
         BASE_URL,
-        json={"name": "Role VIP", "role_title": "member", "photo_url": "x"},
+        json={"name": "Role VIP", "role_title": "member", "image_url": "x"},
         headers=HEADERS,
     )
     board_id = res.json()["id"]
@@ -106,7 +106,7 @@ async def test_admin_create_board_member_invalid_role(client):
     payload = {
         "name": "Invalid Role Member",
         "role_title": "invalid_role",
-        "photo_url": "img.jpg"
+        "image_url": "img.jpg"
     }
     res = await client.post(BASE_URL, json=payload, headers=HEADERS)
     assert res.status_code == 422

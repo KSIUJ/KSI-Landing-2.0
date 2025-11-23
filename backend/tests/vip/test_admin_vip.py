@@ -8,7 +8,7 @@ HEADERS = {"X-API-Key": "TEST_KEY"}
 async def test_admin_create_vip(client):
     res = await client.post(
         BASE_URL,
-        json={"name": "VIP 1", "role_type": "admin"},
+        json={"name": "VIP 1", "role_title": "admin"},
         headers=HEADERS,
     )
     assert res.status_code == 201
@@ -26,7 +26,7 @@ async def test_admin_get_all_vips(client):
 async def test_admin_get_vip_by_id(client):
     res = await client.post(
         BASE_URL,
-        json={"name": "VIP 2", "role_type": "honorary"},
+        json={"name": "VIP 2", "role_title": "honorary"},
         headers=HEADERS,
     )
     vip_id = res.json()["id"]
@@ -40,7 +40,7 @@ async def test_admin_get_vip_by_id(client):
 async def test_admin_update_vip(client):
     res = await client.post(
         BASE_URL,
-        json={"name": "VIP 3", "role_type": "audit"},
+        json={"name": "VIP 3", "role_title": "audit"},
         headers=HEADERS,
     )
     vip_id = res.json()["id"]
@@ -57,7 +57,7 @@ async def test_admin_update_vip(client):
 @pytest.mark.asyncio
 async def test_admin_delete_vip(client):
     res = await client.post(
-        BASE_URL, json={"name": "DEL VIP", "role_type": "audit"}, headers=HEADERS
+        BASE_URL, json={"name": "DEL VIP", "role_title": "audit"}, headers=HEADERS
     )
     vip_id = res.json()["id"]
 
@@ -66,39 +66,39 @@ async def test_admin_delete_vip(client):
 
 
 @pytest.mark.asyncio
-async def test_admin_update_vip_role_type(client):
+async def test_admin_update_vip_role_title(client):
     res = await client.post(
         BASE_URL,
-        json={"name": "Role VIP", "role_type": "audit"},
+        json={"name": "Role VIP", "role_title": "audit"},
         headers=HEADERS,
     )
     vip_id = res.json()["id"]
 
     res = await client.put(
         f"{BASE_URL}/{vip_id}",
-        json={"role_type": "admin"},
+        json={"role_title": "admin"},
         headers=HEADERS,
     )
     assert res.status_code == 200
-    assert res.json()["role_type"] == "admin"
+    assert res.json()["role_title"] == "admin"
 
 @pytest.mark.asyncio
-async def test_admin_get_vips_by_role_type(client):
+async def test_admin_get_vips_by_role_title(client):
     await client.post(
         BASE_URL,
-        json={"name": "Admin VIP", "role_type": "admin"},
+        json={"name": "Admin VIP", "role_title": "admin"},
         headers=HEADERS,
     )
     await client.post(
         BASE_URL,
-        json={"name": "Honorary VIP", "role_type": "honorary"},
+        json={"name": "Honorary VIP", "role_title": "honorary"},
         headers=HEADERS,
     )
 
-    res = await client.get(f"{BASE_URL}?role_type=admin", headers=HEADERS)
+    res = await client.get(f"{BASE_URL}?role_title=admin", headers=HEADERS)
     assert res.status_code == 200
     vips = res.json()
-    assert all(vip["role_type"] == "admin" for vip in vips)
+    assert all(vip["role_title"] == "admin" for vip in vips)
 
 
 @pytest.mark.asyncio
@@ -139,17 +139,17 @@ async def test_admin_delete_vip_invalid_id(client):
 async def test_admin_create_vip_missing_name(client):
     res = await client.post(
         BASE_URL,
-        json={"role_type": "admin"},
+        json={"role_title": "admin"},
         headers=HEADERS,
     )
     assert res.status_code == 422
     assert "detail" in res.json()
 
 @pytest.mark.asyncio
-async def test_admin_create_vip_invalid_role_type(client):
+async def test_admin_create_vip_invalid_role_title(client):
     res = await client.post(
         BASE_URL,
-        json={"name": "Invalid Role VIP", "role_type": "invalid_role"},
+        json={"name": "Invalid Role VIP", "role_title": "invalid_role"},
         headers=HEADERS,
     )
     assert res.status_code == 422

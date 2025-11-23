@@ -11,7 +11,7 @@ async def test_public_get_all_vips(client):
 async def test_public_get_vip_by_id(client):
     create_res = await client.post(
         "/admin/vip",
-        json={"name": "VIP Test", "role_type": "honorary"},
+        json={"name": "VIP Test", "role_title": "honorary"},
         headers={"X-API-Key": "TEST_KEY"},
     )
     vip_id = create_res.json()["id"]
