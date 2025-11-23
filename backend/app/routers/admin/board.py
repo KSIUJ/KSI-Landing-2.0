@@ -5,9 +5,7 @@ from typing import List
 from app import crud, schemas, security
 from app.database import get_db
 
-router = APIRouter(
-    dependencies=[Depends(security.get_api_key)]
-)
+router = APIRouter(dependencies=[Depends(security.get_api_key)])
 
 @router.post("", response_model=schemas.Board, status_code=status.HTTP_201_CREATED)
 async def create_board_member(
@@ -15,6 +13,13 @@ async def create_board_member(
     db: AsyncSession = Depends(get_db)
 ):
     return await crud.create_board_member(db=db, board=board_member)
+
+@router.post("/bulk", response_model=List[schemas.Board])
+async def create_board_bulk(
+    boards: List[schemas.BoardCreate],
+    db: AsyncSession = Depends(get_db),
+):
+    return await crud.create_board_members_bulk(db, boards)
 
 @router.get("", response_model=List[schemas.Board])
 async def read_all_board_members(

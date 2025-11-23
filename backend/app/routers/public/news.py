@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.get("", response_model=list[schemas.News])
 async def read_news(db: AsyncSession = Depends(get_db)):
-    return await crud.get_all_news(db)
+    return await crud.get_all_news_sorted(db)
 
 @router.get("/{news_id}", response_model=schemas.News)
 async def read_news_by_id(news_id: int, db: AsyncSession = Depends(get_db)):
