@@ -6,13 +6,13 @@ class Board(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False)
     role_title = Column(Enum('president', 'vicepresident', 'treasurer', 'member', name='board_role_title'), nullable=False)
-    photo_url = Column(String(255), nullable=False)
+    image_url = Column(String(255), nullable=False)
 
 class VIP(Base):
     __tablename__ = 'vip'
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False)
-    role_type = Column(Enum('supervisor', 'audit', 'admin', 'housekeeper', 'honorary', name='member_role_type'), nullable=False)
+    role_title = Column(Enum('supervisor', 'audit', 'admin', 'housekeeper', 'honorary', name='member_role_type'), nullable=False)
 
 class Project(Base):
     __tablename__ = 'projects'

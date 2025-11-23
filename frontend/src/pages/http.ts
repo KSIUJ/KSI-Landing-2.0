@@ -54,13 +54,13 @@ export interface BoardMember {
   id: number;
   name: string;
   role_title: RoleTitle;
-  photo_url: string;
+  image_url: string;
 }
 
 export interface VIPMember {
   id: number;
   name: string;
-  role_type: VipTitle;
+  role_title: VipTitle;
 }
 export const mapBoardRoles = {
   president: "Prezes",
@@ -81,7 +81,7 @@ export interface News {
   title: string;
   description: string;
   image_url: string;
-  date?: string | null;
-  start_time?: string | null;
+  event_date?: string | null;
+  event_start_time?: string | null;
   location?: string | null;
 }

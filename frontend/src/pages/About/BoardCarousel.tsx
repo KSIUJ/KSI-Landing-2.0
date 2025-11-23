@@ -3,7 +3,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { mapBoardRoles } from "../http";
 import "swiper/css/bundle";
-import BoardMemberCard from "../../components/BoardMemberCard";
+import BoardMemberCard from "./BoardMemberCard";
 import { fetchBoardMembers } from "../http";
 import type { BoardMember } from "../http";
 const BoardCarousel = () => {
@@ -47,13 +47,13 @@ const BoardCarousel = () => {
           "--swiper-pagination-bullet-inactive-color": "#CBD5E1",
         }}
       >
-        {members.map(({ photo_url, name, role_title }) => {
+        {members.map(({ image_url, name, role_title }) => {
           const roleName = mapBoardRoles[role_title];
 
           return (
             <SwiperSlide key={name} className="!h-auto !px-2">
               <BoardMemberCard
-                imageSrc={photo_url}
+                imageSrc={image_url}
                 name={name}
                 role={roleName}
                 className="p-3"

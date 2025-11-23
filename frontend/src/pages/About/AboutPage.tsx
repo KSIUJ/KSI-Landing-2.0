@@ -38,7 +38,7 @@ const AboutPage = () => {
   const groupByRole = useMemo(() => {
     return VIPMembers.reduce(
       (acc: Record<string, string[]>, member: VIPMember) => {
-        const role = member.role_type;
+        const role = member.role_title;
         if (!acc[role]) acc[role] = [];
         acc[role].push(member.name);
         return acc;

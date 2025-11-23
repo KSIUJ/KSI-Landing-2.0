@@ -49,7 +49,9 @@ export const Timeline: React.FC<TimelineProps> = ({
   const items = useMemo(() => {
     return events
       .map((e) => {
-        const iso = e.date ? `${e.date}T${e.start_time ?? "00:00"}` : null;
+        const iso = e.event_date
+          ? `${e.event_date}T${e.event_start_time ?? "00:00"}`
+          : null;
 
         return { ...e, _date: parseDate(iso) };
       })

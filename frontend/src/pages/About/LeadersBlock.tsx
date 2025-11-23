@@ -1,11 +1,9 @@
-import BoardLeaderCard from "../../components/BoardLeaderCard";
+import BoardLeaderCard from "./BoardLeaderCard";
 import InfoSection from "../../components/InfoSection";
 
 import ButtonWithArrowDown from "../../components/ButtonWithArrow";
 import { useEffect, useState } from "react";
-import { fetchBoardMembers } from "../http";
-import type { BoardMember } from "../http";
-import { mapBoardRoles } from "../http";
+import { fetchBoardMembers, type BoardMember, mapBoardRoles } from "../http";
 
 const LeadersBlock = (props: { onScrollToHistory: () => void }) => {
   const [leaders, setLeaders] = useState<BoardMember[]>([]);
@@ -45,13 +43,13 @@ const LeadersBlock = (props: { onScrollToHistory: () => void }) => {
     <div className="flex flex-col max-w-4xl w-full mx-auto   md:flex-row  md:gap-14">
       <div className="relative flex flex-col  md:w-[380px] h-[240px] md:mb-30">
         <BoardLeaderCard
-          image={president.photo_url ?? ""}
+          image={president.image_url ?? ""}
           name={president.name}
           role={mapBoardRoles[president.role_title]}
           className="md:w-full w-[300px] h-[200px] md:h-[240px]"
         />
         <BoardLeaderCard
-          image={vice.photo_url ?? ""}
+          image={vice.image_url ?? ""}
           name={vice.name}
           role={mapBoardRoles[vice.role_title]}
           className="absolute -top-20 left-42 w-[180px] h-[120px]  md:left-36 md:w-[280px] md:h-[180px] z-10"
