@@ -7,7 +7,6 @@ import {
 import type { News } from "../http.ts";
 
 export const EventCard: React.FC<{ e: News }> = ({ e }) => {
-  console.log(`${e.event_date}T${e.event_start_time}`);
   return (
     <article className="flex flex-col md:flex-row gap-4 p-4 mx-15">
       <div className="flex-shrink-0 w-full md:w-70 md:h-70 h-70 overflow-hidden rounded-lg">
