@@ -88,7 +88,7 @@ export const EventCard: React.FC<{ event: News }> = ({ event }) => {
             </div>
           </div>
           {event.description && (
-            <div className="text-base text-slate-700 max-w-prose mt-4">
+            <div className="text-base text-slate-700 break-words max-w-prose mt-4">
               {event.description.length > 150 ? (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {event.description.slice(0, 150).trim().concat("...")}
