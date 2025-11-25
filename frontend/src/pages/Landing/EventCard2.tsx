@@ -24,7 +24,6 @@ function formatDateParts(date?: string | null, time?: string | null) {
 }
 
 export const EventCard2: React.FC<{ event: News }> = ({ event }) => {
-  console.log(JSON.stringify(event, null, 2));
   const { year, day, month } = formatDateParts(
     event.event_date,
     event.event_start_time

@@ -19,10 +19,7 @@ export const EventList: React.FC = () => {
     (async () => {
       try {
         const res = await fetchNews();
-        console.log(res);
-        console.log("AVCD");
         let data: News[] = res;
-        console.log(data);
         data = data.slice(0, Math.min(3, data.length));
         setEvents(data);
       } catch (err) {
