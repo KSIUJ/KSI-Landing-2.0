@@ -56,7 +56,7 @@ export const PopupMarkdown: React.FC<{
 
         <div className="px-6 pb-6 overflow-y-auto">
           {/*Niestety linki nie podswietlaja sie bo trzeba ogarnac tailwindcss/typography*/}
-          <div className="prose prose-slate prose-a:text-emerald-600 max-w-none text-test1">
+          <div className="prose prose-slate prose-a:text-emerald-600 break-words max-w-none text-test1">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {event.description ?? "Nothing to show"}
             </ReactMarkdown>

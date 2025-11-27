@@ -23,8 +23,7 @@ function formatDateParts(date?: string | null, time?: string | null) {
   return { year, day, month };
 }
 
-export const EventCard: React.FC<{ event: News }> = ({ event }) => {
-  console.log(JSON.stringify(event, null, 2));
+export const EventCard2: React.FC<{ event: News }> = ({ event }) => {
   const { year, day, month } = formatDateParts(
     event.event_date,
     event.event_start_time
@@ -65,7 +64,7 @@ export const EventCard: React.FC<{ event: News }> = ({ event }) => {
 
         {/* CENTER: title + description */}
         <div className="flex-1 min-w-0">
-          <h3 className="text-2xl md:text-3xl font-semibold leading-tight mb-3">
+          <h3 className="text-2xl md:text-3xl font-semibold  leading-tight mb-3">
             <span className="inline-block relative">
               <span
                 aria-hidden="true"
@@ -77,7 +76,7 @@ export const EventCard: React.FC<{ event: News }> = ({ event }) => {
           </h3>
 
           {event.description && (
-            <div className="hidden md:block text-base text-slate-700 max-w-prose">
+            <div className="hidden md:block text-base break-words text-slate-700 break-wo max-w-prose">
               {event.description.length > 150 ? (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {event.description.slice(0, 150).trim().concat("...")}
@@ -197,4 +196,4 @@ export const EventCard: React.FC<{ event: News }> = ({ event }) => {
   );
 };
 
-export default EventCard;
+export default EventCard2;

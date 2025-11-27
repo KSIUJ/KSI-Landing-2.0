@@ -1,5 +1,4 @@
 import React from "react";
-import { type Event } from "./TEMP_eventsModel.ts";
 import {
   CalendarIcon,
   ClockIcon,
@@ -8,7 +7,6 @@ import {
 import type { News } from "../http.ts";
 
 export const EventCard: React.FC<{ e: News }> = ({ e }) => {
-  console.log(`${e.date}T${e.start_time}`);
   return (
     <article className="flex flex-col md:flex-row gap-4 p-4 mx-15">
       <div className="flex-shrink-0 w-full md:w-70 md:h-70 h-70 overflow-hidden rounded-lg">
@@ -26,19 +24,19 @@ export const EventCard: React.FC<{ e: News }> = ({ e }) => {
         )}
       </div>
 
-      <div className="flex-1 min-w-0 content-start">
+      <div className="min-w-0 content-start">
         <h3 className="text-3xl font-semibold leading-snug content-start font-inter">
           {e.title}
         </h3>
-        <p className="text-sm text-gray-600 truncate text-wrap">
+        <p className="text-sm text-gray-600 text-wrap max-w-3xl">
           {e.description}
         </p>
         <div className="flex flex-col mt-2 text-xs text-gray-500">
-          {e.date ? (
+          {e.event_date ? (
             <div className="flex flex-row items-center my-2">
               <CalendarIcon className="w-5 h-5 mx-2 shrink-0" />
               {new Date(
-                `${e.date}T${e.start_time ?? "00:00"}`
+                `${e.event_date}T${e.event_start_time ?? "00:00"}`
               ).toLocaleDateString("pl-PL", {
                 weekday: "long",
                 day: "2-digit",
@@ -50,16 +48,15 @@ export const EventCard: React.FC<{ e: News }> = ({ e }) => {
             ""
           )}
 
-          {e.start_time ? (
+          {e.event_start_time ? (
             <div className="flex flex-row items-center my-2">
               <ClockIcon className="w-5 h-5 mx-2 shrink-0" />
-              {new Date(`${e.date}T${e.start_time}`).toLocaleTimeString(
-                "pl-PL",
-                {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                }
-              )}
+              {new Date(
+                `${e.event_date}T${e.event_start_time}`
+              ).toLocaleTimeString("pl-PL", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
             </div>
           ) : null}
 

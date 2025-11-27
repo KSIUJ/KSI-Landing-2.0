@@ -180,11 +180,11 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
     } else {
       if (Array.isArray(fetchedData)) {
         renderedFields = fetchedData.map((item: any, i: number) => (
-          <div className="border p-2 m-2 rounded-md" key={i}>
+          <div className="border p-2 m-2 rounded-md max-w-xl " key={i}>
             {Object.entries(item).map(([key, value]) => (
-              <p key={key}>
+              <p className="flex gap-1 " key={key}>
                 <span className="font-semibold font-ssp">{key}: </span>
-                {String(value)}
+                <span className="break-all">{String(value)}</span>
               </p>
             ))}
           </div>
@@ -193,11 +193,11 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
     }
   } else if (step === "detail" && fetchedData) {
     renderedFields = (
-      <div className="border-2 p-2 m-2 rounded-md">
+      <div className="border-2 p-2 m-2 rounded-md max-w-xl">
         {Object.keys(fetchedData).map((key) => (
           <p key={key}>
-            <span className="font-semibold font-ssp">{key}:</span>{" "}
-            {String(fetchedData[key])}
+            <span className="font-semibold font-ssp">{key}:</span>
+            <span className="break-all"> {String(fetchedData[key])}</span>
           </p>
         ))}
       </div>
