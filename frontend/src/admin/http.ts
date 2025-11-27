@@ -1,4 +1,7 @@
-const API_BASE_URL = "http://localhost:8000/admin";
+import {VITE_API_URL} from "../api.ts";
+
+const API_BASE_URL = `${VITE_API_URL}/admin`;
+//I do that way because I do not want to correct all fetches here
 
 export async function verifyKey(apiKey: string | null) {
   const res = await fetch(`${API_BASE_URL}/board?limit=1`, {
