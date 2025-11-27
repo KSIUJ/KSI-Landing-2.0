@@ -23,7 +23,7 @@ const LandingPage = () => {
 
           <img
             className="hidden md:block w-48 h-auto invert"
-            src="/src/assets/images/base/logo-ksi.svg"
+            src="/images/base/logo-ksi.svg"
             alt="KSI Logo"
           />
         </div>
@@ -33,13 +33,13 @@ const LandingPage = () => {
         <div className="relative w-[clamp(220px,70%,300px)] md:w-120 md:px-2 mx-auto content-center">
           <img
             src={
-              "/src/assets/images/events/53229668_2380325235334565_8317455106463236096_o.jpg"
+              "/images/events/53229668_2380325235334565_8317455106463236096_o.jpg"
             }
             className="absolute w-7/8 -right-1/5 bottom-3/4 md:w-5/8 md:-right-1/10 md:bottom-9/16 h-auto object-cover rounded-4xl z-10"
             alt="Zdjęcie grupowe 1"
           />
           <img
-            src={"/src/assets/images/events/aboutKsi1.jpg"}
+            src={"/images/events/aboutKsi1.jpg"}
             className="relative bottom-1/10 -left-1/5 md:left-0 md:-bottom-1/10 w-full h-auto object-cover rounded-4xl"
             alt="Zdjęcie grupowe 2"
           />

@@ -20,13 +20,13 @@ export const listItems = [
 ]
 
 export const carouselImages = [
-    {src: "../../src/assets/images/events/aboutKsi1.jpg"},
-    {src: "../../src/assets/images/events/aboutKsi2.jpg"},
-    {src: "/src/assets/images/events/aboutKsi3.jpg"},
-    {src: "/src/assets/images/events/bal.jpg"},
-    {src: "/src/assets/images/events/powalne2016.jpg"},
-    {src: "/src/assets/images/events/ksitalk.jpg"},
-    {src: "/src/assets/images/events/ksilearn.png"},
+    {src: "images/events/aboutKsi1.jpg"},
+    {src: "images/events/aboutKsi2.jpg"},
+    {src: "images/events/aboutKsi3.jpg"},
+    {src: "images/events/bal.jpg"},
+    {src: "images/events/powalne2016.jpg"},
+    {src: "images/events/ksitalk.jpg"},
+    {src: "images/events/ksilearn.png"},
     
 
 
