@@ -1,3 +1,11 @@
+import aboutKsi1 from "../../../src/assets/images/events/aboutKsi1.jpg"
+import aboutKsi2 from "../../../src/assets/images/events/aboutKSI2.jpg"
+import aboutKsi3 from "../../../src/assets/images/events/aboutKSI3.jpg"
+import bal from "../../../src/assets/images/events/bal.jpg"
+import powalne2016 from "../../../src/assets/images/events/powalne2016.jpg"
+import ksitalk from "../../../src/assets/images/events/ksitalk.jpg"
+import ksilearn from "../../../src/assets/images/events/ksilearn.png"
+
 export const infoKSI = [
     {
         title: "KSI",
@@ -20,13 +28,13 @@ export const listItems = [
 ]
 
 export const carouselImages = [
-    {src: "images/events/aboutKsi1.jpg"},
-    {src: "images/events/aboutKsi2.jpg"},
-    {src: "images/events/aboutKsi3.jpg"},
-    {src: "images/events/bal.jpg"},
-    {src: "images/events/powalne2016.jpg"},
-    {src: "images/events/ksitalk.jpg"},
-    {src: "images/events/ksilearn.png"},
+    {src: `${aboutKsi1}`},
+    {src: `${aboutKsi2}`},
+    {src: `${aboutKsi3}`},
+    {src: `${bal}`},
+    {src: `${powalne2016}`},
+    {src: `${ksitalk}`},
+    {src: `${ksilearn}`},
     
 
 
