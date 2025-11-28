@@ -7,6 +7,7 @@ services:
     volumes:
       - ./backend/app:/app/app
       - ./backend/app/db:/app/app/db
+      - ./images:/app/images
 
     environment:
       - PYTHONUNBUFFERED=1

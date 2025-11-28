@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
+from starlette.staticfiles import StaticFiles
+
 from app.database import AsyncSessionLocal, Base, engine
 from contextlib import asynccontextmanager
 from app.routers.public import board as public_board, news as public_news, projects as public_projects, vip as public_vip
@@ -16,6 +18,8 @@ async def lifespan(app: FastAPI):
     await engine.dispose()
 
 app = FastAPI(lifespan=lifespan, default_response_class=JSONResponse)
+
+app.mount("/images", StaticFiles(directory="images"), name="images")
 
 @app.middleware("http")
 async def add_utf8_charset(request, call_next):
