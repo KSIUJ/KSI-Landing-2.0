@@ -119,7 +119,7 @@ export default function EventsPage() {
             <p className="text-gray-700 mt-3 max-w-3xl mx-auto font-ssp font-light">
               Chcesz przeprowadzić wykład lub warsztaty na Wydziale Matematyki i Informatyki Uniwersytetu Jagiellońskiego? Twoja firma próbuje nawiązać kontakt ze studentami? A może jesteś studentem i chciałbyś poprowadzić swój pierwszy w życiu wykład? Pomożemy Ci w tym! Napisz do nas lub odwiedź naszą siedzibę.
             </p>
-            <a href= 'mailto:ksi@uj.edu.pl' className="mt-5 inline-block text-slate-800 underline underline-offset-4 decoration-slate-400 hover:decoration-slate-800">
+            <a href='mailto:ksi@uj.edu.pl' className="mt-5 inline-block text-slate-800 underline underline-offset-4 decoration-slate-400 hover:decoration-slate-800">
               Skontaktuj się z nami
             </a>
           </div>
