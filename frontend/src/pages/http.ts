@@ -1,4 +1,8 @@
-const API_BASE_URL = "http://localhost:8000";
+import {VITE_API_URL} from "../api.ts";
+
+const API_BASE_URL = VITE_API_URL
+//I do that way because I do not want to correct all fetches in admin/http.ts
+
 export async function fetchBoardMembers(
   apiBaseUrl: string = API_BASE_URL,
   roleTitle?: RoleTitle

@@ -3,10 +3,18 @@ services:
     build:
       context: ./backend
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     volumes:
       - ./backend/app:/app/app
       - ./backend/app/db:/app/app/db
+      - ./images:/app/images
 
     environment:
       - PYTHONUNBUFFERED=1
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "127.0.0.1:9000:80"
+    # volumes:
+      # - ./images:/usr/share/nginx/html/images

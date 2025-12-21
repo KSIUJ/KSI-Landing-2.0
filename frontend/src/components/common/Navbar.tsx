@@ -5,6 +5,7 @@ import {
   Bars3Icon, XMarkIcon, ChevronDownIcon, CodeBracketIcon, BookOpenIcon, EnvelopeIcon, PrinterIcon 
 } from '@heroicons/react/24/outline';
 import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa';
+import logoKsi from "../../assets/images/base/logo-ksi.svg"
 
 const DashboardLinkComponent: React.FC<{ link: DashboardLink; onClick?: () => void }> = ({ link, onClick }) => (
   <a
@@ -88,7 +89,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between px-6">
           <div className="flex-shrink-0">
             <Link to="/">
-              <img className="h-10 w-auto" src="/src/assets/images/base/logo-ksi.svg" alt="KSI Logo" />
+              <img className="h-10 w-auto" src={logoKsi} alt="KSI Logo" />
             </Link>
           </div>
           <div className="hidden md:flex items-center gap-x-6 font-inter">
@@ -127,7 +128,7 @@ const Navbar: React.FC = () => {
         <div className="fixed inset-0 z-50 bg-white md:hidden overflow-y-auto">
           <div className="sticky top-0 bg-white flex items-center justify-between p-6 border-b border-gray-100 z-10">
             <Link to="/" onClick={closeMobileMenu}>
-              <img className="h-10 w-auto" src="/src/assets/images/base/logo-ksi.svg" alt="KSI Logo" />
+              <img className="h-10 w-auto" src={logoKsi} alt="KSI Logo" />
             </Link>
             <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
               <XMarkIcon className="h-6 w-6" />
