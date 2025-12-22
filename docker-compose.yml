@@ -15,6 +15,6 @@ services:
     build:
       context: ./frontend
     ports:
-      - "127.0.0.1:9000:80"
+      - "127.0.0.1:8001:8001"
     # volumes:
       # - ./images:/usr/share/nginx/html/images
