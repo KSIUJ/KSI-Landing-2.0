@@ -13,23 +13,7 @@ This application runs containers with non-root user mappings for enhanced securi
 
 ## Quick Start
 
-### 1. Set File Permissions (REQUIRED)
-
-Before proceeding, you MUST set the correct file permissions:
-
-```bash
-# Set backend directory permissions
-sudo chown -R 10001:10001 ./backend/app
-sudo chmod -R 700 ./backend/app
-
-# Set images directory permissions
-sudo chown -R 10001:10001 ./images
-sudo chmod -R 700 ./images
-```
-
-**Important:** If Docker is configured with `userns-remap`, add the corresponding UID/GID offset. For example, with 100000 offset, use user `110001:110001`.
-
-### 2. Environment Configuration
+### 1. Environment Configuration
 
 Create and configure the environment variables:
 
@@ -47,6 +31,22 @@ Create a `.env` file in the `frontend` directory:
 ```
 VITE_API_URL=http://localhost:8000
 ```
+
+### 2. Set File Permissions (REQUIRED)
+
+Before proceeding, you MUST set the correct file permissions:
+
+```bash
+# Set backend directory permissions
+sudo chown -R 10001:10001 ./backend/app
+sudo chmod -R 755 ./backend/app
+
+# Set images directory permissions
+sudo chown -R 10001:10001 ./images
+sudo chmod -R 755 ./images
+```
+
+**Important:** If Docker is configured with `userns-remap`, add the corresponding UID/GID offset. For example, with 100000 offset, use user `110001:110001`.
 
 ### 3. Start Application with Docker
 
