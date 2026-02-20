@@ -8,7 +8,7 @@ from starlette.staticfiles import StaticFiles
 from app.database import AsyncSessionLocal, Base, engine
 from contextlib import asynccontextmanager
 from app.routers.public import board as public_board, news as public_news, projects as public_projects, vip as public_vip
-from app.routers.admin import board as admin_board, news as admin_news, projects as admin_projects, vip as admin_vip
+from app.routers.admin import board as admin_board, news as admin_news, projects as admin_projects, vip as admin_vip, images as admin_images
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -37,6 +37,7 @@ app.include_router(admin_board.router, prefix="/admin/board", tags=["Admin - Boa
 app.include_router(admin_vip.router, prefix="/admin/vip", tags=["Admin - VIP"])
 app.include_router(admin_projects.router, prefix="/admin/projects", tags=["Admin - Projects"])
 app.include_router(admin_news.router, prefix="/admin/news", tags=["Admin - News"])
+app.include_router(admin_images.router, prefix="/admin/images", tags=["Admin - Images"])
 
 app.add_middleware(
     CORSMiddleware,
