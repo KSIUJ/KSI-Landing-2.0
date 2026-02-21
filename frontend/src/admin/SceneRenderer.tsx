@@ -20,6 +20,7 @@ import {
 } from "./utils/castToSchemes";
 import { SCENES, type UserData, labelEndpoint } from "./data";
 import React from "react";
+import {ChooseImageModal} from "./components/ChooseImageModal.tsx";
 const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
   action,
   page,
@@ -30,6 +31,7 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
   const [stepIndex, setStepIndex] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const SCHEME_MAP: Record<Page, (u: UserData) => any> = {
     "About Board": toBoardScheme,
@@ -73,7 +75,11 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
   }
 
   function handleChooseImageButton() {
-    console.log("choose image button clicked");
+    setIsModalOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
   }
 
   function handleUserInput(
@@ -222,6 +228,8 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
   return (
     <div className="flex flex-col justify-center items-center">
       {renderedFields}
+
+      <ChooseImageModal isOpen={isModalOpen} onClose={handleCloseModal}/>
 
       <button className={btnStyles} onClick={handleSubmit}>
         Submit
