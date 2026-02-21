@@ -19,6 +19,7 @@ import {
   toVIPScheme,
 } from "./utils/castToSchemes";
 import { SCENES, type UserData, labelEndpoint } from "./data";
+import React from "react";
 const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
   action,
   page,
@@ -70,6 +71,11 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
     setError(null);
     setSuccess(null);
   }
+
+  function handleChooseImageButton() {
+    console.log("choose image button clicked");
+  }
+
   function handleUserInput(
     e: React.ChangeEvent<
       HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement
@@ -161,15 +167,25 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
           );
         } else {
           return (
-            <input
-              onChange={handleUserInput}
-              value={userData[field.name] || ""}
-              type={field.type}
-              name={field.name}
-              key={field.name}
-              placeholder={`${field.placeholder}${required}`}
-              className={inputStyles}
-            />
+            <React.Fragment key={field.name}>
+              <input
+                onChange={handleUserInput}
+                value={userData[field.name] || ""}
+                type={field.type}
+                name={field.name}
+                placeholder={`${field.placeholder}${required}`}
+                className={inputStyles}
+              />
+
+              {field.name == "image_url" && (
+                <button
+                  className={btnStyles}
+                  onClick={handleChooseImageButton}
+                >
+                  Choose image from server
+                </button>
+              )}
+            </React.Fragment>
           );
         }
       }
