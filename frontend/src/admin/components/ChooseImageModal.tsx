@@ -3,10 +3,14 @@ import type {ServerContentResponse} from "../data.tsx";
 import {useEffect, useState} from "react";
 import {readAllItems} from "../http.ts";
 import {useAuth} from "../AuthContext.tsx";
+import {VITE_API_URL} from "../../api.ts";
+
+const STATIC_IMAGE_URL_BASE = `${VITE_API_URL}/images`
 
 interface ChooseImageModalProps {
     isOpen: boolean;
     onClose: () => void;
+    onSelectImage: (imgURL: string) => void;
 }
 
 export const ChooseImageModal = (props: ChooseImageModalProps) => {
@@ -36,7 +40,8 @@ export const ChooseImageModal = (props: ChooseImageModalProps) => {
         if (item.is_dir) {
             setCurrentPath(item.path);
         } else {
-            console.log("item clicked", item);
+            props.onSelectImage(`${STATIC_IMAGE_URL_BASE}/${item.path}`);
+            handleClose()
         }
     }
 
@@ -60,7 +65,7 @@ export const ChooseImageModal = (props: ChooseImageModalProps) => {
                         key={content.path}
                         onClick={() => handleItemClick(content)}
                     >
-                        {content.name}
+                        {content.is_dir ? "📁" : "🖼️"} | {content.name}
                     </p>
                 ))}
                 <button onClick={handleClose} className={btnStyles}>

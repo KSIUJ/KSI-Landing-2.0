@@ -225,11 +225,19 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
       </div>
     );
   }
+
+  const handleSelectImage = (imageUrl: string) => {
+    setUserData(prev => ({
+      ...prev,
+      image_url: imageUrl,
+    }));
+  }
+
   return (
     <div className="flex flex-col justify-center items-center">
       {renderedFields}
 
-      <ChooseImageModal isOpen={isModalOpen} onClose={handleCloseModal}/>
+      <ChooseImageModal isOpen={isModalOpen} onClose={handleCloseModal} onSelectImage={handleSelectImage} />
 
       <button className={btnStyles} onClick={handleSubmit}>
         Submit
