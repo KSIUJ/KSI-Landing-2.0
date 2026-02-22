@@ -259,3 +259,9 @@ export const SCENES: Record<Page, Partial<Record<Action, Scene>>> = {
     },
   },
 };
+
+export type ServerContentResponse = {
+  path: string;
+  name: string;
+  is_dir: boolean;
+}
