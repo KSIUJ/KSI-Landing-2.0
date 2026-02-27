@@ -1,8 +1,9 @@
 import os
 from pathlib import Path
+import shutil
 from typing import List
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, UploadFile
 
 from app import schemas, security
 
@@ -33,3 +34,24 @@ async def read_folder_content(folder_path: str = Query(".", alias="path")):
             )
         )
     return content
+
+@router.post("")
+async def upload_file(file: UploadFile):
+    target_path = (IMAGES_PATH) / file.filename
+    if target_path.exists():
+        raise HTTPException(
+            status_code=409,
+            detail=f"File {file.filename} is already exist"
+        )
+    try:
+        with target_path.open("wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"We have error during saving: {e}"
+        )
+    finally:
+        file.file.close()
+    
+    return {"is_succesful": True}
