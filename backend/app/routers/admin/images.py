@@ -68,3 +68,31 @@ async def upload_file(file: UploadFile, folder_path: str = Query(".", alias="pat
         path=str(target_path.relative_to(IMAGES_PATH)),
         is_dir=False
     )
+
+@router.post("/mkdir", response_model=schemas.FolderContent)
+async def make_dir(folder_name: str, folder_path: str = Query(".", alias="path")):
+    target_path = (IMAGES_PATH / folder_path).resolve()
+
+    if not str(target_path).startswith(str(IMAGES_PATH)):
+        raise HTTPException(status_code=403, detail="You do not have authority to upload for that folder")
+
+    if not target_path.exists():
+        raise HTTPException(status_code=404, detail=f"Location {target_path.relative_to(IMAGES_PATH)} does not exist")
+    
+    target_path1 = (target_path) / folder_name
+
+    if not str(target_path1).startswith(str(target_path)):
+        raise HTTPException(status_code=403, detail="You try run out of current path. You can not do that")
+    
+    try:
+        target_path1.mkdir(parents=False, exist_ok=False)
+        return schemas.FolderContent(
+            name=str(target_path1.name),
+            path=str(target_path1.relative_to(IMAGES_PATH)),
+            is_dir=True
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"We have error during making a folder: {e}"
+        )
