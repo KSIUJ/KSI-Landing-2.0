@@ -20,7 +20,7 @@ async def read_folder_content(folder_path: str = Query(".", alias="path")):
         raise HTTPException(status_code=403, detail="You do not have authority to achive that folder")
     
     if not target_path.exists():
-        raise HTTPException(status_code=404, detail=f"Folder {IMAGES_PATH} does not exist")
+        raise HTTPException(status_code=404, detail=f"Location {target_path.relative_to(IMAGES_PATH)} does not exist")
     
     content = []
     for item in target_path.iterdir():
@@ -35,9 +35,18 @@ async def read_folder_content(folder_path: str = Query(".", alias="path")):
         )
     return content
 
-@router.post("")
-async def upload_file(file: UploadFile):
-    target_path = (IMAGES_PATH) / file.filename
+@router.post("", response_model=schemas.FolderContent)
+async def upload_file(file: UploadFile, folder_path: str = Query(".", alias="path")):
+    target_path = (IMAGES_PATH / folder_path).resolve()
+
+    if not str(target_path).startswith(str(IMAGES_PATH)):
+        raise HTTPException(status_code=403, detail="You do not have authority to upload for that folder")
+
+    if not target_path.exists():
+        raise HTTPException(status_code=404, detail=f"Location {target_path.relative_to(IMAGES_PATH)} does not exist")
+
+    target_path = (target_path) / file.filename
+    
     if target_path.exists():
         raise HTTPException(
             status_code=409,
@@ -54,4 +63,8 @@ async def upload_file(file: UploadFile):
     finally:
         file.file.close()
     
-    return {"is_succesful": True}
+    return schemas.FolderContent(
+        name=str(target_path.name),
+        path=str(target_path.relative_to(IMAGES_PATH)),
+        is_dir=False
+    )
