@@ -1,4 +1,4 @@
-import {VITE_API_URL} from "../api.ts";
+import { VITE_API_URL } from "../api.ts";
 
 const API_BASE_URL = `${VITE_API_URL}/admin`;
 //I do that way because I do not want to correct all fetches here
@@ -19,7 +19,7 @@ export async function verifyKey(apiKey: string | null) {
 export async function deleteItem(
   apiKey: string | null,
   endpoint: string,
-  id: string
+  id: string,
 ) {
   try {
     const res = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
@@ -41,7 +41,7 @@ export async function deleteItem(
 export async function createItem<T>(
   apiKey: string | null,
   endpoint: string,
-  data: T
+  data: T,
 ) {
   try {
     const res = await fetch(`${API_BASE_URL}/${endpoint}`, {
@@ -60,11 +60,34 @@ export async function createItem<T>(
     throw new Error("Network error: could not create item");
   }
 }
+
+export async function uploadFile<T>(
+  apiKey: string | null,
+  endpoint: string,
+  data: T,
+) {
+  try {
+    const res = await fetch(`${API_BASE_URL}/${endpoint}`, {
+      method: "POST",
+      headers: {
+        "X-API-Key": apiKey ?? "",
+      },
+      body: data instanceof FormData ? data : JSON.stringify(data),
+    });
+
+    if (!res.ok) throw new Error(`Server error: ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.error("Network or fetch error", err);
+    throw new Error("Network error: could not create item");
+  }
+}
+
 export async function updateItem<T>(
   apiKey: string | null,
   endpoint: string,
   data: T,
-  id: string
+  id: string,
 ) {
   try {
     const res = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
@@ -85,7 +108,7 @@ export async function updateItem<T>(
 export async function readItem(
   apiKey: string | null,
   endpoint: string,
-  id: string
+  id: string,
 ) {
   try {
     const res = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
