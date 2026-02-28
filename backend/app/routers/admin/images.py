@@ -79,7 +79,7 @@ async def make_dir(folder_name: str, folder_path: str = Query(".", alias="path")
     if not target_path.exists():
         raise HTTPException(status_code=404, detail=f"Location {target_path.relative_to(IMAGES_PATH)} does not exist")
     
-    target_path1 = (target_path) / folder_name
+    target_path1 = ((target_path) / folder_name).resolve()
 
     if not str(target_path1).startswith(str(target_path)):
         raise HTTPException(status_code=403, detail="You try run out of current path. You can not do that")
