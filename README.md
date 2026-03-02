@@ -18,16 +18,21 @@ This application runs containers with non-root user mappings for enhanced securi
 Create and configure the environment variables:
 
 #### Backend (.env)
+
 Create a `.env` file in the `backend/app` directory:
+
 ```
 SQLALCHEMY_DATABASE_URL=sqlite+aiosqlite:///./app/db/db.sqlite3
 ADMIN_API_KEY=<admin-api-key>
+IMAGES_DIR=./images
 ```
 
 **Important:** You must generate your own secure `ADMIN_API_KEY`
 
 #### Frontend (.env)
+
 Create a `.env` file in the `frontend` directory:
+
 ```
 VITE_API_URL=http://localhost:8000
 ```
@@ -51,17 +56,20 @@ sudo chmod -R 755 ./images
 ### 3. Start Application with Docker
 
 From the project root directory:
+
 ```
 docker-compose up -d
 ```
 
 This will build and start:
+
 - **Backend API + Database**: http://localhost:8000
 - **Frontend Application**: http://localhost:8001
 
 ### 4. Verify Installation
 
 Check if services are running:
+
 ```
 docker-compose ps
 ```
