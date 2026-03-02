@@ -19,6 +19,7 @@ export const ChooseImageModal = (props: ChooseImageModalProps) => {
   const [data, setData] = useState<ServerContentResponse[]>([]);
   const [currentPath, setCurrentPath] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
+  const [folderName, setFolderName] = useState<string>("");
 
   useEffect(() => {
     if (props.isOpen) {
@@ -85,9 +86,39 @@ export const ChooseImageModal = (props: ChooseImageModalProps) => {
       console.log("Achive response", response);
       setData((prevItems) => [...prevItems, response]);
     } catch (e) {
-      console.log(e);
-
       console.error(e);
+    }
+  }
+
+  async function handleCreateFolder(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+
+    if (folderName === "") {
+      console.log("Folder name is not written");
+      return;
+    }
+
+    try {
+      console.log("Creating...");
+
+      const response: ServerContentResponse = await createItem(
+        apiKey,
+        `images/mkdir?path=${encodeURIComponent(currentPath)}&folder_name=${encodeURIComponent(folderName)}`,
+        {},
+      );
+
+      console.log("Created", response);
+      setData((prevItems) => [...prevItems, response]);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function handleFolderNameChange(event: ChangeEvent<HTMLInputElement>): void {
+    if (event.target.value && event.target.value.length > 0) {
+      setFolderName(event.target.value);
     }
   }
 
@@ -114,11 +145,34 @@ export const ChooseImageModal = (props: ChooseImageModalProps) => {
             </button>
           </form>
         </div>
-        {data.map((content) => (
-          <p key={content.path} onClick={() => handleItemClick(content)}>
-            {content.is_dir ? "📁" : "🖼️"} | {content.name}
-          </p>
-        ))}
+
+        <div>
+          <p>Do you want create folder here?</p>
+          <form onSubmit={handleCreateFolder}>
+            <input
+              className={inputStyles}
+              type="text"
+              onChange={handleFolderNameChange}
+              placeholder="Folder name"
+            />
+            <button
+              className={btnStyles}
+              type="submit"
+              disabled={folderName === ""}
+            >
+              Create Folder
+            </button>
+          </form>
+        </div>
+        <p>Do you want choose image?</p>
+        <div className={"pl-4"}>
+          {data.map((content) => (
+            <p key={content.path} onClick={() => handleItemClick(content)}>
+              {content.is_dir ? "📁" : "🖼️"} | {content.name}
+            </p>
+          ))}
+          <p hidden={data.length > 0}>It is empty here</p>
+        </div>
         <button onClick={handleClose} className={btnStyles}>
           Close
         </button>
