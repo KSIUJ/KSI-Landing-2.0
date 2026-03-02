@@ -128,7 +128,7 @@ export const ChooseImageModal = (props: ChooseImageModalProps) => {
       onClick={handleClose}
     >
       <div
-        className="bg-white p-6 min-w-[300px]"
+        className="bg-white p-6 min-w-[300px] max-h-3/4 overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div>
