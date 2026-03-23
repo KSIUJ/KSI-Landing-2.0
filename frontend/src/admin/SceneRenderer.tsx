@@ -19,6 +19,8 @@ import {
   toVIPScheme,
 } from "./utils/castToSchemes";
 import { SCENES, type UserData, labelEndpoint } from "./data";
+import React from "react";
+import {ChooseImageModal} from "./components/ChooseImageModal.tsx";
 const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
   action,
   page,
@@ -29,6 +31,7 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
   const [stepIndex, setStepIndex] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const SCHEME_MAP: Record<Page, (u: UserData) => any> = {
     "About Board": toBoardScheme,
@@ -70,6 +73,15 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
     setError(null);
     setSuccess(null);
   }
+
+  function handleChooseImageButton() {
+    setIsModalOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
+  }
+
   function handleUserInput(
     e: React.ChangeEvent<
       HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement
@@ -161,15 +173,25 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
           );
         } else {
           return (
-            <input
-              onChange={handleUserInput}
-              value={userData[field.name] || ""}
-              type={field.type}
-              name={field.name}
-              key={field.name}
-              placeholder={`${field.placeholder}${required}`}
-              className={inputStyles}
-            />
+            <React.Fragment key={field.name}>
+              <input
+                onChange={handleUserInput}
+                value={userData[field.name] || ""}
+                type={field.type}
+                name={field.name}
+                placeholder={`${field.placeholder}${required}`}
+                className={inputStyles}
+              />
+
+              {field.name == "image_url" && (
+                <button
+                  className={btnStyles}
+                  onClick={handleChooseImageButton}
+                >
+                  Choose image from server
+                </button>
+              )}
+            </React.Fragment>
           );
         }
       }
@@ -203,9 +225,19 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
       </div>
     );
   }
+
+  const handleSelectImage = (imageUrl: string) => {
+    setUserData(prev => ({
+      ...prev,
+      image_url: imageUrl,
+    }));
+  }
+
   return (
     <div className="flex flex-col justify-center items-center">
       {renderedFields}
+
+      <ChooseImageModal isOpen={isModalOpen} onClose={handleCloseModal} onSelectImage={handleSelectImage} />
 
       <button className={btnStyles} onClick={handleSubmit}>
         Submit

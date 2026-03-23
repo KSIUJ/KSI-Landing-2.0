@@ -82,3 +82,9 @@ class NewsUpdate(BaseModel):
 
 class News(NewsBase, SchemaBase):
     id: int
+
+# --- images ---
+class FolderContent(BaseModel):
+    path: str
+    name: str
+    is_dir: bool
