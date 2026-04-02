@@ -17,7 +17,7 @@ async def lifespan(app: FastAPI):
     yield
     await engine.dispose()
 
-app = FastAPI(lifespan=lifespan, default_response_class=JSONResponse)
+app = FastAPI(lifespan=lifespan, default_response_class=JSONResponse, root_path="/api")
 
 app.mount("/images", StaticFiles(directory="images"), name="images")
 

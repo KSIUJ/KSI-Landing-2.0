@@ -2,8 +2,8 @@ services:
   backend:
     build:
       context: ./backend
-    ports:
-      - "127.0.0.1:8000:8000"
+    # ports:
+    #   - "127.0.0.1:8000:8000"
     volumes:
       - ./backend/app:/app/app
       - ./backend/app/db:/app/app/db
@@ -14,6 +14,12 @@ services:
   frontend:
     build:
       context: ./frontend
+    # ports:
+    #   - "127.0.0.1:8001:8001"
+    restart: unless-stopped
+  proxy:
+    build:
+      context: ./proxy
     ports:
-      - "127.0.0.1:8001:8001"
+      - "127.0.0.1:8000:8000"
     restart: unless-stopped
