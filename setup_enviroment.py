@@ -47,9 +47,9 @@ if __name__ == "__main__":
                 os.chown(os.path.join(root, d), backend_uid, backend_gid)
             for f in files:
                 os.chown(os.path.join(root, f), backend_uid, backend_gid)
-        print(f"Ustawiono odpowiedniego wlasciciela na images i jego zawartosc")
+        print(f"Successfully set ownership for 'images' and its content")
     except PermissionError:
-        print("Błąd: Skrypt musi być uruchomiony z sudo")
+        print("Error: Script must be run with sudo")
 
     try:
         os.chown("database", backend_uid, backend_gid)
@@ -58,6 +58,6 @@ if __name__ == "__main__":
                 os.chown(os.path.join(root, d), backend_uid, backend_gid)
             for f in files:
                 os.chown(os.path.join(root, f), backend_uid, backend_gid)
-        print(f"Ustawiono odpowiedniego wlasciciela na database i jego zawartosc")
+        print(f"Successfully set ownership for 'database' and its content")
     except PermissionError:
-        print("Błąd: Skrypt musi być uruchomiony z sudo")
+        print("Error: Script must be run with sudo")
