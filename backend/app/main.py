@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -19,7 +21,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan, default_response_class=JSONResponse, root_path="/api")
 
-app.mount("/images", StaticFiles(directory="images"), name="images")
+IMAGES_DIR = os.getenv("IMAGES_DIR")
+app.mount("/images", StaticFiles(directory=IMAGES_DIR), name="images")
 
 @app.middleware("http")
 async def add_utf8_charset(request, call_next):
