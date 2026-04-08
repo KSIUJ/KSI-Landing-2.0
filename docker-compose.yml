@@ -2,18 +2,23 @@ services:
   backend:
     build:
       context: ./backend
-    ports:
-      - "127.0.0.1:8000:8000"
+    # ports:
+    #   - "127.0.0.1:8000:8000"
     volumes:
-      - ./backend/app:/app/app
-      - ./backend/app/db:/app/app/db
-      - ./images:/app/images
+      - ./database:/app/app/db
+      - ./images:/app/app/images
     environment:
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
   frontend:
     build:
       context: ./frontend
+    # ports:
+    #   - "127.0.0.1:8001:8001"
+    restart: unless-stopped
+  proxy:
+    build:
+      context: ./proxy
     ports:
-      - "127.0.0.1:8001:8001"
+      - "127.0.0.1:8000:8000"
     restart: unless-stopped
