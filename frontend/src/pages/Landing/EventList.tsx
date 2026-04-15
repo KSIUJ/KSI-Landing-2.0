@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { type News } from "../http.ts";
 import { EventCard2 } from "./EventCard2";
 import EventCardImg from "../News/EventCardImg.tsx";
@@ -11,17 +11,25 @@ import {
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
 export const EventList: React.FC = () => {
+
+  const UPCOMING_GRACE_PERIOD_MS = 2 * 60 * 60 * 1000;
+
+
   const [events, setEvents] = useState<News[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const parseEventDateTime = (date?: string | null, time?: string | null) => {
+    if (!date) return null;
+    const parsedDate = new Date(`${date}T${time ?? "00:00:00"}`);
+    return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
+  };
 
   useEffect(() => {
     (async () => {
       try {
         const res = await fetchNews();
-        let data: News[] = res;
-        data = data.slice(0, Math.min(3, data.length));
-        setEvents(data);
+        setEvents(res);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "Wystąpił nieznany błąd."
@@ -31,6 +39,46 @@ export const EventList: React.FC = () => {
       }
     })();
   }, []);
+
+  const { upcomingEvents, pastEvents } = useMemo(() => {
+    if (!events) return { upcomingEvents: [] as News[], pastEvents: [] as News[] };
+
+    const now = Date.now();
+    const withTimestamp = events
+      .map((event) => ({
+        ...event,
+        _eventTimestamp:
+          parseEventDateTime(event.event_date, event.event_start_time)?.getTime() ??
+          null,
+      }))
+      .sort((a, b) => {
+        const aValue = a._eventTimestamp ?? Number.NEGATIVE_INFINITY;
+        const bValue = b._eventTimestamp ?? Number.NEGATIVE_INFINITY;
+        return bValue - aValue;
+      });
+
+    const upcoming: News[] = [];
+    const past: News[] = [];
+
+    for (const event of withTimestamp) {
+      if (event._eventTimestamp === null) {
+        past.push(event);
+        continue;
+      }
+
+      const isUpcoming = event._eventTimestamp + UPCOMING_GRACE_PERIOD_MS >= now;
+      if (isUpcoming) {
+        upcoming.push(event);
+      } else {
+        past.push(event);
+      }
+    }
+
+    return {
+      upcomingEvents: upcoming,
+      pastEvents: past.slice(0, 3),
+    };
+  }, [events]);
 
   if (loading) {
     return (
@@ -73,9 +121,25 @@ export const EventList: React.FC = () => {
       >
         Aktualności
       </h2>
-      <Timeline events={events} verticalStepPx={30} compact={true} />
+
+      {upcomingEvents.length > 0 && (
+        <>
+          <Timeline events={upcomingEvents} verticalStepPx={30} compact={true} />
+          <div className="grid gap-4">
+            {upcomingEvents.map((e) =>
+              e.image_url ? (
+                <EventCardImg key={e.id} event={e} />
+              ) : (
+                <EventCard2 key={e.id} event={e} />
+              )
+            )}
+          </div>
+        </>
+      )}
+
+
       <div className="grid gap-4">
-        {events.map((e) =>
+        {pastEvents.map((e) =>
           e.image_url ? (
             <EventCardImg key={e.id} event={e} />
           ) : (
