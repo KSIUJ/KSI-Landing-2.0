@@ -97,7 +97,7 @@ const NewsPage = () => {
           <>
             <Timeline events={upcomingNews} verticalStepPx={30} compact={false} />
 
-            <h1 className="text-4xl font-inter font-semibold text-[#2B2D42]">
+            <h1 className="text-4xl font-inter font-semibold text-slate-900">
               Nadchodzące
             </h1>
 
@@ -113,7 +113,7 @@ const NewsPage = () => {
           </>
         )}
 
-        <h1 className="text-4xl mt-20 font-inter font-semibold text-[#2B2D42]">
+        <h1 className="text-4xl mt-20 font-inter font-semibold text-slate-900">
           Przeszłe
         </h1>
 

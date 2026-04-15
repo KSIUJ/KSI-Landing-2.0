@@ -47,7 +47,7 @@ const LandingPage = () => {
         </div>
 
         <div className="flex flex-col w-full mb-4 px-8 md:mt-8 md:w-[480px]">
-          <h1 className="text-4xl font-semibold font-inter">
+          <h1 className="text-4xl text-slate-900 font-semibold font-inter">
             Co nas wyróżnia?
           </h1>
 

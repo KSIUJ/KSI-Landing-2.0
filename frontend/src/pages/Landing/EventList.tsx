@@ -69,7 +69,7 @@ export const EventList: React.FC = () => {
     >
       <h2
         id="aktualnosci-heading"
-        className="font-inter text-4xl justify-center font-semibold mt-10"
+        className="font-inter text-slate-900 text-4xl justify-center font-semibold mt-10"
       >
         Aktualności
       </h2>

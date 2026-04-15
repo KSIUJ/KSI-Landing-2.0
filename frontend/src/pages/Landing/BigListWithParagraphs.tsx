@@ -14,7 +14,7 @@ export const BigListWithParagraphs: React.FC<Props> = ({ items }) => {
     <div>
       {items.map((item, idx) => (
         <div key={idx} className="mb-6">
-          <h3 className="text-2xl font-semibold">{item.title}</h3>
+          <h3 className="text-2xl text-slate-900 font-semibold">{item.title}</h3>
           <p className="text-sm text-gray-500 mt-1">{item.description}</p>
         </div>
       ))}
