@@ -10,11 +10,29 @@ import {
   InformationCircleIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
+
+
+const UPCOMING_GRACE_PERIOD_MS = 2 * 60 * 60 * 1000;
+
+const compareByTimestampDesc = (
+  a: { _eventTimestamp: number | null },
+  b: { _eventTimestamp: number | null }
+) => {
+  const aValue = a._eventTimestamp ?? Number.NEGATIVE_INFINITY;
+  const bValue = b._eventTimestamp ?? Number.NEGATIVE_INFINITY;
+  return bValue - aValue;
+};
+
+const compareByTimestampAsc = (
+  a: { _eventTimestamp: number | null },
+  b: { _eventTimestamp: number | null }
+) => {
+  const aValue = a._eventTimestamp ?? Number.POSITIVE_INFINITY;
+  const bValue = b._eventTimestamp ?? Number.POSITIVE_INFINITY;
+  return aValue - bValue;
+};
+
 export const EventList: React.FC = () => {
-
-  const UPCOMING_GRACE_PERIOD_MS = 2 * 60 * 60 * 1000;
-
-
   const [events, setEvents] = useState<News[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -44,39 +62,29 @@ export const EventList: React.FC = () => {
     if (!events) return { upcomingEvents: [] as News[], pastEvents: [] as News[] };
 
     const now = Date.now();
-    const withTimestamp = events
-      .map((event) => ({
+    const upcoming: Array<News & { _eventTimestamp: number | null }> = [];
+    const past: Array<News & { _eventTimestamp: number | null }> = [];
+
+    events.forEach((event) => {
+      const eventWithTimestamp = {
         ...event,
         _eventTimestamp:
           parseEventDateTime(event.event_date, event.event_start_time)?.getTime() ??
           null,
-      }))
-      .sort((a, b) => {
-        const aValue = a._eventTimestamp ?? Number.NEGATIVE_INFINITY;
-        const bValue = b._eventTimestamp ?? Number.NEGATIVE_INFINITY;
-        return bValue - aValue;
-      });
-
-    const upcoming: News[] = [];
-    const past: News[] = [];
-
-    for (const event of withTimestamp) {
-      if (event._eventTimestamp === null) {
-        past.push(event);
-        continue;
-      }
-
-      const isUpcoming = event._eventTimestamp + UPCOMING_GRACE_PERIOD_MS >= now;
+      };
+      const isUpcoming =
+        eventWithTimestamp._eventTimestamp !== null &&
+        eventWithTimestamp._eventTimestamp + UPCOMING_GRACE_PERIOD_MS >= now;
       if (isUpcoming) {
-        upcoming.push(event);
+        upcoming.push(eventWithTimestamp);
       } else {
-        past.push(event);
+        past.push(eventWithTimestamp);
       }
-    }
+    });
 
     return {
-      upcomingEvents: upcoming,
-      pastEvents: past.slice(0, 3),
+      upcomingEvents: upcoming.sort(compareByTimestampAsc),
+      pastEvents: past.sort(compareByTimestampDesc).slice(0, 3),
     };
   }, [events]);
 

@@ -20,6 +20,24 @@ function parseEventDateTime(date?: string | null, time?: string | null) {
   return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
 }
 
+function compareByTimestampDesc(
+  a: { _eventTimestamp: number | null },
+  b: { _eventTimestamp: number | null }
+) {
+  const aValue = a._eventTimestamp ?? Number.NEGATIVE_INFINITY;
+  const bValue = b._eventTimestamp ?? Number.NEGATIVE_INFINITY;
+  return bValue - aValue;
+}
+
+function compareByTimestampAsc(
+  a: { _eventTimestamp: number | null },
+  b: { _eventTimestamp: number | null }
+) {
+  const aValue = a._eventTimestamp ?? Number.POSITIVE_INFINITY;
+  const bValue = b._eventTimestamp ?? Number.POSITIVE_INFINITY;
+  return aValue - bValue;
+}
+
 const NewsPage = () => {
   const [news, setNews] = useState<News[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -45,39 +63,30 @@ const NewsPage = () => {
 
   const { upcomingNews, pastNews } = useMemo(() => {
     const now = Date.now();
+    const upcoming: Array<News & { _eventTimestamp: number | null }> = [];
+    const past: Array<News & { _eventTimestamp: number | null }> = [];
 
-    const withEventTime = news.map((item) => {
+    news.forEach((item) => {
       const eventStart = parseEventDateTime(item.event_date, item.event_start_time);
-      return {
+      const itemWithTimestamp = {
         ...item,
         _eventTimestamp: eventStart?.getTime() ?? null,
       };
-    });
 
-    const sorted = withEventTime.sort((a, b) => {
-      const aValue = a._eventTimestamp ?? Number.NEGATIVE_INFINITY;
-      const bValue = b._eventTimestamp ?? Number.NEGATIVE_INFINITY;
-      return bValue - aValue;
-    });
-
-    const upcoming: News[] = [];
-    const past: News[] = [];
-
-    for (const item of sorted) {
-      if (item._eventTimestamp === null) {
-        past.push(item);
-        continue;
-      }
-
-      const isUpcoming = item._eventTimestamp + UPCOMING_GRACE_PERIOD_MS >= now;
+      const isUpcoming =
+        itemWithTimestamp._eventTimestamp !== null &&
+        itemWithTimestamp._eventTimestamp + UPCOMING_GRACE_PERIOD_MS >= now;
       if (isUpcoming) {
-        upcoming.push(item);
+        upcoming.push(itemWithTimestamp);
       } else {
-        past.push(item);
+        past.push(itemWithTimestamp);
       }
-    }
+    });
 
-    return { upcomingNews: upcoming, pastNews: past };
+    return {
+      upcomingNews: upcoming.sort(compareByTimestampAsc),
+      pastNews: past.sort(compareByTimestampDesc),
+    };
   }, [news]);
 
   useEffect(() => {
