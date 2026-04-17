@@ -4,6 +4,12 @@ import EventCard from "../Landing/EventCard2";
 import EventCardImg from "./EventCardImg";
 import { useState, useEffect, useMemo } from "react";
 import { fetchNews, type News } from "../http";
+import {
+  InformationCircleIcon,
+  ExclamationTriangleIcon,
+} from "@heroicons/react/24/outline";
+import { StatusIndicator } from "../Landing/StatusIndicator.tsx";
+import { CgSpinner } from "react-icons/cg";
 
 const UPCOMING_GRACE_PERIOD_MS = 2 * 60 * 60 * 1000;
 const PAST_NEWS_PER_PAGE = 5;
@@ -18,6 +24,7 @@ const NewsPage = () => {
   const [news, setNews] = useState<News[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [pastPage, setPastPage] = useState<number>(1);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadNews = async () => {
@@ -25,7 +32,9 @@ const NewsPage = () => {
         const fetchedNews = await fetchNews();
         setNews([...fetchedNews]);
       } catch (err) {
-        console.log(err);
+        setError(
+          err instanceof Error ? err.message : "Wystąpił nieznany błąd."
+        );
       } finally {
         setLoading(false);
       }
@@ -85,15 +94,42 @@ const NewsPage = () => {
   const canGoToPreviousPastPage = currentPastPage > 1;
   const canGoToNextPastPage = currentPastPage < totalPastPages;
 
+  if (loading) {
+    return (
+      <StatusIndicator
+        title="Ładowanie aktualności..."
+        message="Prosimy o chwilę cierpliwości."
+      >
+        <CgSpinner className="h-10 w-10 animate-spin" />
+      </StatusIndicator>
+    );
+  }
+
+  if (error) {
+    return (
+      <StatusIndicator title="Wystąpił błąd" message={error}>
+        <ExclamationTriangleIcon className="h-10 w-10 text-red-400" />
+      </StatusIndicator>
+    );
+  }
+
+  if (!news || news.length === 0) {
+    return (
+      <StatusIndicator
+        title="Brak aktualności"
+        message="Wygląda na to, że nie ma tu jeszcze żadnych wpisów."
+      >
+        <InformationCircleIcon className="h-10 w-10" />
+      </StatusIndicator>
+    );
+  }
+
   return (
     <>
       <Header />
       <section className="mx-[clamp(4px,10%,200px)] mt-5 lg:mt-0">
-        {loading && (
-          <div className="text-sm text-slate-500 mb-4">Ładowanie aktualności...</div>
-        )}
 
-        {!loading && upcomingNews.length > 0 && (
+        {upcomingNews.length > 0 && (
           <>
             <Timeline events={upcomingNews} verticalStepPx={30} compact={false} />
 
@@ -127,13 +163,13 @@ const NewsPage = () => {
           )}
         </div>
 
-        {!loading && pastNews.length === 0 && (
+        {pastNews.length === 0 && (
           <div className="text-sm text-slate-500 mt-4">
             Brak przeszłych aktualności.
           </div>
         )}
 
-        {!loading && totalPastPages > 1 && (
+        {totalPastPages > 1 && (
           <nav className="my-8 flex items-center justify-center gap-4" aria-label="Paginacja przeszłych aktualności">
             <button
               type="button"
