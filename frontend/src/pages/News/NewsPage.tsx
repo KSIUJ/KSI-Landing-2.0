@@ -105,31 +105,40 @@ const NewsPage = () => {
 
   if (loading) {
     return (
-      <StatusIndicator
-        title="Ładowanie aktualności..."
-        message="Prosimy o chwilę cierpliwości."
-      >
-        <CgSpinner className="h-10 w-10 animate-spin" />
-      </StatusIndicator>
+      <>
+        <Header />
+        <StatusIndicator
+          title="Ładowanie aktualności..."
+          message="Prosimy o chwilę cierpliwości."
+        >
+          <CgSpinner className="h-10 w-10 animate-spin" />
+        </StatusIndicator>
+      </>
     );
   }
 
   if (error) {
     return (
-      <StatusIndicator title="Wystąpił błąd" message={error}>
-        <ExclamationTriangleIcon className="h-10 w-10 text-red-400" />
-      </StatusIndicator>
+      <>
+        <Header />
+        <StatusIndicator title="Wystąpił błąd" message={error}>
+            <ExclamationTriangleIcon className="h-10 w-10 text-red-400" />
+        </StatusIndicator>
+      </>
     );
   }
 
   if (!news || news.length === 0) {
     return (
-      <StatusIndicator
-        title="Brak aktualności"
-        message="Wygląda na to, że nie ma tu jeszcze żadnych wpisów."
-      >
-        <InformationCircleIcon className="h-10 w-10" />
-      </StatusIndicator>
+      <>
+        <Header />
+        <StatusIndicator
+          title="Brak aktualności"
+          message="Wygląda na to, że nie ma tu jeszcze żadnych wpisów."
+        >
+          <InformationCircleIcon className="h-10 w-10" />
+        </StatusIndicator>
+      </>
     );
   }
 
