@@ -123,15 +123,16 @@ export const EventList: React.FC = () => {
       aria-labelledby="aktualnosci-heading"
       className="space-y-4 mx-[clamp(4px,10%,200px)]"
     >
-      <h2
-        id="aktualnosci-heading"
-        className="font-inter text-slate-900 text-4xl justify-center font-semibold mt-10"
-      >
-        Aktualności
-      </h2>
+      
 
       {upcomingEvents.length > 0 && (
         <>
+          <h2
+            id="aktualnosci-heading"
+            className="font-inter text-slate-900 text-4xl justify-center font-semibold mt-10"
+          >
+            Nadchodzące
+          </h2>
           <Timeline events={upcomingEvents} verticalStepPx={30} compact={true} />
           <div className="grid gap-4">
             {upcomingEvents.map((e) =>
@@ -145,7 +146,12 @@ export const EventList: React.FC = () => {
         </>
       )}
 
-
+      <h2
+        id="aktualnosci-heading"
+        className="font-inter text-slate-900 text-4xl justify-center font-semibold mt-10"
+      >
+        Przeszłe
+      </h2>
       <div className="grid gap-4">
         {pastEvents.map((e) =>
           e.image_url ? (
