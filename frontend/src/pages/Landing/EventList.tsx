@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { type News } from "../http.ts";
 import { EventCard2 } from "./EventCard2";
 import EventCardImg from "../News/EventCardImg.tsx";
@@ -10,18 +10,44 @@ import {
   InformationCircleIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
+
+
+const UPCOMING_GRACE_PERIOD_MS = 2 * 60 * 60 * 1000;
+
+const compareByTimestampDesc = (
+  a: { _eventTimestamp: number | null },
+  b: { _eventTimestamp: number | null }
+) => {
+  const aValue = a._eventTimestamp ?? Number.NEGATIVE_INFINITY;
+  const bValue = b._eventTimestamp ?? Number.NEGATIVE_INFINITY;
+  return bValue - aValue;
+};
+
+const compareByTimestampAsc = (
+  a: { _eventTimestamp: number | null },
+  b: { _eventTimestamp: number | null }
+) => {
+  const aValue = a._eventTimestamp ?? Number.POSITIVE_INFINITY;
+  const bValue = b._eventTimestamp ?? Number.POSITIVE_INFINITY;
+  return aValue - bValue;
+};
+
 export const EventList: React.FC = () => {
   const [events, setEvents] = useState<News[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const parseEventDateTime = (date?: string | null, time?: string | null) => {
+    if (!date) return null;
+    const parsedDate = new Date(`${date}T${time ?? "00:00:00"}`);
+    return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
+  };
+
   useEffect(() => {
     (async () => {
       try {
         const res = await fetchNews();
-        let data: News[] = res;
-        data = data.slice(0, Math.min(3, data.length));
-        setEvents(data);
+        setEvents(res);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "Wystąpił nieznany błąd."
@@ -31,6 +57,36 @@ export const EventList: React.FC = () => {
       }
     })();
   }, []);
+
+  const { upcomingEvents, pastEvents } = useMemo(() => {
+    if (!events) return { upcomingEvents: [] as News[], pastEvents: [] as News[] };
+
+    const now = Date.now();
+    const upcoming: Array<News & { _eventTimestamp: number | null }> = [];
+    const past: Array<News & { _eventTimestamp: number | null }> = [];
+
+    events.forEach((event) => {
+      const eventWithTimestamp = {
+        ...event,
+        _eventTimestamp:
+          parseEventDateTime(event.event_date, event.event_start_time)?.getTime() ??
+          null,
+      };
+      const isUpcoming =
+        eventWithTimestamp._eventTimestamp !== null &&
+        eventWithTimestamp._eventTimestamp + UPCOMING_GRACE_PERIOD_MS >= now;
+      if (isUpcoming) {
+        upcoming.push(eventWithTimestamp);
+      } else {
+        past.push(eventWithTimestamp);
+      }
+    });
+
+    return {
+      upcomingEvents: upcoming.sort(compareByTimestampAsc),
+      pastEvents: past.sort(compareByTimestampDesc).slice(0, 3),
+    };
+  }, [events]);
 
   if (loading) {
     return (
@@ -67,15 +123,37 @@ export const EventList: React.FC = () => {
       aria-labelledby="aktualnosci-heading"
       className="space-y-4 mx-[clamp(4px,10%,200px)]"
     >
+      
+
+      {upcomingEvents.length > 0 && (
+        <>
+          <h2
+            id="aktualnosci-heading"
+            className="font-inter text-slate-900 text-4xl justify-center font-semibold mt-10"
+          >
+            Nadchodzące
+          </h2>
+          <Timeline events={upcomingEvents} verticalStepPx={30} compact={true} />
+          <div className="grid gap-4">
+            {upcomingEvents.map((e) =>
+              e.image_url ? (
+                <EventCardImg key={e.id} event={e} />
+              ) : (
+                <EventCard2 key={e.id} event={e} />
+              )
+            )}
+          </div>
+        </>
+      )}
+
       <h2
         id="aktualnosci-heading"
-        className="font-inter text-4xl justify-center font-semibold mt-10"
+        className="font-inter text-slate-900 text-4xl justify-center font-semibold mt-10"
       >
-        Aktualności
+        Przeszłe
       </h2>
-      <Timeline events={events} verticalStepPx={30} compact={true} />
       <div className="grid gap-4">
-        {events.map((e) =>
+        {pastEvents.map((e) =>
           e.image_url ? (
             <EventCardImg key={e.id} event={e} />
           ) : (
