@@ -191,3 +191,90 @@ async def delete_news_item(db: AsyncSession, news_id: int):
     await db.delete(db_obj)
     await db.commit()
     return True
+
+# --- ksi editions ---
+
+async def get_ksi_edition(db: AsyncSession, edition_id: int):
+    return await db.get(models.KsiEdition, edition_id)
+
+async def get_ksi_editions(db: AsyncSession, skip: int = 0, limit: int = 100):
+    stmt = select(models.KsiEdition).order_by(models.KsiEdition.edition_number.desc()).offset(skip).limit(limit)
+    result = await db.execute(stmt)
+    return result.scalars().all()
+
+async def create_ksi_edition(db: AsyncSession, edition: schemas.KsiEditionCreate):
+    db_obj = models.KsiEdition(**edition.model_dump())
+    db.add(db_obj)
+    await db.commit()
+    await db.refresh(db_obj)
+    return db_obj
+
+async def update_ksi_edition(db: AsyncSession, edition_id: int, edition_update: schemas.KsiEditionUpdate):
+    db_obj = await get_ksi_edition(db, edition_id)
+    if not db_obj:
+        return None
+    update_data = edition_update.model_dump(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(db_obj, key, value)
+    db.add(db_obj)
+    await db.commit()
+    await db.refresh(db_obj)
+    return db_obj
+
+async def delete_ksi_edition(db: AsyncSession, edition_id: int):
+    db_obj = await get_ksi_edition(db, edition_id)
+    if not db_obj:
+        return False
+    await db.delete(db_obj)
+    await db.commit()
+    return True
+
+# --- ksi talks ---
+
+async def get_ksi_talk(db: AsyncSession, talk_id: int):
+    return await db.get(models.KsiTalk, talk_id)
+
+async def get_ksi_talks(db: AsyncSession, edition_id: Optional[int] = None, skip: int = 0, limit: int = 100):
+    stmt = select(models.KsiTalk).offset(skip).limit(limit)
+    if edition_id is not None:
+        stmt = stmt.where(models.KsiTalk.edition_id == edition_id)
+    result = await db.execute(stmt)
+    return result.scalars().all()
+
+async def create_ksi_talk(db: AsyncSession, talk: schemas.KsiTalkCreate):
+    db_obj = models.KsiTalk(**talk.model_dump())
+    db.add(db_obj)
+    await db.commit()
+    await db.refresh(db_obj)
+    return db_obj
+
+async def update_ksi_talk(db: AsyncSession, talk_id: int, talk_update: schemas.KsiTalkUpdate):
+    db_obj = await get_ksi_talk(db, talk_id)
+    if not db_obj:
+        return None
+    update_data = talk_update.model_dump(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(db_obj, key, value)
+    db.add(db_obj)
+    await db.commit()
+    await db.refresh(db_obj)
+    return db_obj
+
+async def delete_ksi_talk(db: AsyncSession, talk_id: int):
+    db_obj = await get_ksi_talk(db, talk_id)
+    if not db_obj:
+        return False
+    await db.delete(db_obj)
+    await db.commit()
+    return True
+
+async def get_ksi_editions_with_talks(db: AsyncSession):
+    editions = await get_ksi_editions(db)
+    result = []
+    for edition in editions:
+        talks = await get_ksi_talks(db, edition_id=edition.id)
+        result.append(schemas.KsiEditionWithTalks(
+            **{c.name: getattr(edition, c.name) for c in edition.__table__.columns},
+            talks=talks,
+        ))
+    return result

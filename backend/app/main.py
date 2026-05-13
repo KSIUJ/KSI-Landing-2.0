@@ -9,8 +9,8 @@ from starlette.staticfiles import StaticFiles
 
 from app.database import AsyncSessionLocal, Base, engine
 from contextlib import asynccontextmanager
-from app.routers.public import board as public_board, news as public_news, projects as public_projects, vip as public_vip
-from app.routers.admin import board as admin_board, news as admin_news, projects as admin_projects, vip as admin_vip, images as admin_images
+from app.routers.public import board as public_board, news as public_news, projects as public_projects, vip as public_vip, ksi_talks as public_ksi_talks
+from app.routers.admin import board as admin_board, news as admin_news, projects as admin_projects, vip as admin_vip, images as admin_images, ksi_editions as admin_ksi_editions, ksi_talks as admin_ksi_talks
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -35,12 +35,15 @@ app.include_router(public_board.router, prefix="/board", tags=["Public - Board"]
 app.include_router(public_vip.router, prefix="/vip", tags=["Public - VIP"])
 app.include_router(public_projects.router, prefix="/projects", tags=["Public - Projects"])
 app.include_router(public_news.router, prefix="/news", tags=["Public - News"])
+app.include_router(public_ksi_talks.router, prefix="/ksi-editions", tags=["Public - KSI^n"])
 
 app.include_router(admin_board.router, prefix="/admin/board", tags=["Admin - Board"])
 app.include_router(admin_vip.router, prefix="/admin/vip", tags=["Admin - VIP"])
 app.include_router(admin_projects.router, prefix="/admin/projects", tags=["Admin - Projects"])
 app.include_router(admin_news.router, prefix="/admin/news", tags=["Admin - News"])
 app.include_router(admin_images.router, prefix="/admin/images", tags=["Admin - Images"])
+app.include_router(admin_ksi_editions.router, prefix="/admin/ksi-editions", tags=["Admin - KSI^n Editions"])
+app.include_router(admin_ksi_talks.router, prefix="/admin/ksi-talks", tags=["Admin - KSI^n Talks"])
 
 app.add_middleware(
     CORSMiddleware,

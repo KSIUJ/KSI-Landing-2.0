@@ -89,3 +89,29 @@ export interface News {
   event_start_time?: string | null;
   location?: string | null;
 }
+
+export interface KsiTalk {
+  id: number;
+  author: string;
+  university: string | null;
+  title: string;
+  abstract: string | null;
+  paper_url: string | null;
+  edition_id: number;
+}
+
+export interface KsiEditionWithTalks {
+  id: number;
+  edition_number: number;
+  year: number;
+  title: string | null;
+  image_url: string | null;
+  talks: KsiTalk[];
+}
+
+export async function fetchKsiEditions(apiBaseUrl = API_BASE_URL): Promise<KsiEditionWithTalks[]> {
+  const url = new URL(`${apiBaseUrl.replace(/\/$/, "")}/ksi-editions`);
+  const res = await fetch(url.toString());
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}

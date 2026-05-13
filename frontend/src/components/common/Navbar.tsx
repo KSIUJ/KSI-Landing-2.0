@@ -44,6 +44,7 @@ const Navbar: React.FC = () => {
     { name: 'Projekty', href: '/projects' },
     { name: 'O nas', href: '/about' },
     { name: 'Aktualności', href: '/news' },
+    { name: 'KSIⁿ', href: '/ksi-n' },
   ];
 
   const dashboardLinks: DashboardLink[] = [

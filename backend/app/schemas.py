@@ -83,6 +83,51 @@ class NewsUpdate(BaseModel):
 class News(NewsBase, SchemaBase):
     id: int
 
+# --- ksi editions ---
+class KsiEditionBase(BaseModel):
+    edition_number: int
+    year: int
+    title: Optional[str] = None
+    image_url: Optional[str] = None
+
+class KsiEditionCreate(KsiEditionBase):
+    pass
+
+class KsiEditionUpdate(BaseModel):
+    edition_number: Optional[int] = None
+    year: Optional[int] = None
+    title: Optional[str] = None
+    image_url: Optional[str] = None
+
+class KsiEdition(KsiEditionBase, SchemaBase):
+    id: int
+
+# --- ksi talks ---
+class KsiTalkBase(BaseModel):
+    author: str
+    university: Optional[str] = None
+    title: str
+    abstract: Optional[str] = None
+    paper_url: Optional[str] = None
+    edition_id: int
+
+class KsiTalkCreate(KsiTalkBase):
+    pass
+
+class KsiTalkUpdate(BaseModel):
+    author: Optional[str] = None
+    university: Optional[str] = None
+    title: Optional[str] = None
+    abstract: Optional[str] = None
+    paper_url: Optional[str] = None
+    edition_id: Optional[int] = None
+
+class KsiTalk(KsiTalkBase, SchemaBase):
+    id: int
+
+class KsiEditionWithTalks(KsiEdition):
+    talks: list[KsiTalk] = []
+
 # --- images ---
 class FolderContent(BaseModel):
     path: str
