@@ -15,6 +15,7 @@ import EventsPage from "./pages/Events/EventsPage.tsx";
 import NewsPage from "./pages/News/NewsPage.tsx";
 import ProjectsPage from "./pages/Projects/ProjectsPage.tsx";
 import AboutPage from "./pages/About/AboutPage.tsx";
+import KsiNPage from "./pages/KsiN/KsiNPage.tsx";
 import AdminPanel from "./admin/AdminPanel.tsx";
 import AdminDashboard from "./admin/AdminDashboard.tsx";
 import { AuthProvider } from "./admin/AuthContext.tsx";
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="news" element={<NewsPage />} />
       <Route path="projects" element={<ProjectsPage />} />
       <Route path="about" element={<AboutPage />} />
+      <Route path="ksi-n" element={<KsiNPage />} />
 
       <Route
         path="admin/*"

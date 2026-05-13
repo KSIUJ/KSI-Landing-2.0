@@ -32,3 +32,21 @@ export function toNewsScheme(userData: UserData) {
     location: userData.location ?? "",
   };
 }
+export function toKsiEditionScheme(userData: UserData) {
+  return {
+    edition_number: Number(userData.edition_number ?? 0),
+    year: Number(userData.year ?? 0),
+    title: userData.title ?? "",
+    image_url: userData.image_url ?? "",
+  };
+}
+export function toKsiTalkScheme(userData: UserData) {
+  return {
+    edition_id: Number(userData.edition_id ?? 0),
+    author: userData.author ?? "",
+    university: userData.university ?? "",
+    title: userData.title ?? "",
+    abstract: userData.abstract ?? "",
+    paper_url: userData.paper_url ?? "",
+  };
+}

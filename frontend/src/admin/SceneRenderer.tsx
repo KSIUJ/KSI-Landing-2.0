@@ -17,6 +17,8 @@ import {
   toNewsScheme,
   toProjectScheme,
   toVIPScheme,
+  toKsiEditionScheme,
+  toKsiTalkScheme,
 } from "./utils/castToSchemes";
 import { SCENES, type UserData, labelEndpoint } from "./data";
 import React from "react";
@@ -38,6 +40,8 @@ const SceneRenderer: React.FC<{ action: Action; page: Page }> = ({
     "About VIP": toVIPScheme,
     News: toNewsScheme,
     Projects: toProjectScheme,
+    "KSI Editions": toKsiEditionScheme,
+    "KSI Talks": toKsiTalkScheme,
   };
 
   useEffect(() => {

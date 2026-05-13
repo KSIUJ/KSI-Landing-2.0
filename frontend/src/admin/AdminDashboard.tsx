@@ -6,7 +6,7 @@ import SceneRenderer from "./SceneRenderer";
 import { btnStyles, selectStyles, inputStyles } from "./Styles";
 const ACTIONS = ["delete", "create", "update", "readAll", "readByID"];
 export type Action = (typeof ACTIONS)[number];
-const PAGES = ["About Board", "About VIP", "Projects", "News"];
+const PAGES = ["About Board", "About VIP", "Projects", "News", "KSI Editions", "KSI Talks"];
 export type Page = (typeof PAGES)[number];
 const actionLabel: Record<Action, string> = {
   delete: "Delete",

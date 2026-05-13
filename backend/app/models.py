@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Enum, Date, Time
+from sqlalchemy import Column, Integer, String, Text, Enum, Date, Time, ForeignKey
 from app.database import Base
 
 class Board(Base):
@@ -32,3 +32,21 @@ class News(Base):
     event_date = Column(Date)
     event_start_time = Column(Time, nullable=True)
     location = Column(String(255), nullable=True)
+
+class KsiEdition(Base):
+    __tablename__ = 'ksi_editions'
+    id = Column(Integer, primary_key=True)
+    edition_number = Column(Integer, nullable=False, unique=True)
+    year = Column(Integer, nullable=False)
+    title = Column(String(255), nullable=True)
+    image_url = Column(String(255), nullable=True)
+
+class KsiTalk(Base):
+    __tablename__ = 'ksi_talks'
+    id = Column(Integer, primary_key=True)
+    author = Column(String(255), nullable=False)
+    university = Column(String(255), nullable=True)
+    title = Column(String(255), nullable=False)
+    abstract = Column(Text, nullable=True)
+    paper_url = Column(String(255), nullable=True)
+    edition_id = Column(Integer, ForeignKey('ksi_editions.id'), nullable=False)
