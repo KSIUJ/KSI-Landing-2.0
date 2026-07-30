@@ -41,6 +41,21 @@ type Entry = { year: string; text: string; management: management };
 export const historyContent: Record<Decade, Entry[]> = {
   "2020": [
     {
+      year: "2025/2026",
+      text: "",
+      management: {
+        president: "Tomasz Kulis",
+        vicePresidents: "Karolina Kulas",
+        treasurer: "Łukasz Drukała",
+        boardMembers:
+          "Filip Manijak, Anastasiya Pautarak, Kacper Poneta, Kinga Żmuda",
+        admins:
+          "Karol Peszek, Krzysztof Gębka, Tomasz Kulis, Jacek Markiewicz, Mikołaj Zabłocki, Łukasz Drukała",
+        housekeepers: "Krzystof Gębka, Oskar Krygier, Natalia Ignatowicz",
+        auditcomitee: "Tomasz Dądela, Krzysztof Gębka, Michał Hoffmann",
+      },
+    },
+    {
       year: "2024/2025",
       text: "",
       management: {
