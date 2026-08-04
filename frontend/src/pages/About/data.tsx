@@ -240,7 +240,7 @@ export const historyContent: Record<Decade, Entry[]> = {
   "2000": [
     {
       year: "2009/2010",
-      text: "ubimy pokazywać informatykę i nasz Wydział z jak najlepszej strony - i robimy to dobrze! Rok akademicki 2009/2010 potwierdza to wieloma udanymi wydarzeniami Studenckim Festiwalem Informatycznym, Festiwalem Nauki, Małopolską Nocą Naukowców, Dniem otwartym Wydziału. W czasie wakacji łączymy miłe z pożytecznym w czasie wyjazdu naukowo-integracyjnego 'Informatyka pod Żaglami'. Doceniamy również tych, którzy najmocniej angażują się w działalność KSI - Dorota Sadza długoletnia Zastępczyni Prezesa KSI oraz opiekun Koła - dr hab. inż. Marek Skomorowski otrzymują Honorowe Członkostwo.",
+      text: "Lubimy pokazywać informatykę i nasz Wydział z jak najlepszej strony - i robimy to dobrze! Rok akademicki 2009/2010 potwierdza to wieloma udanymi wydarzeniami: Studenckim Festiwalem Informatycznym, Festiwalem Nauki, Małopolską Nocą Naukowców, Dniem otwartym Wydziału. W czasie wakacji łączymy miłe z pożytecznym w czasie wyjazdu naukowo-integracyjnego 'Informatyka pod Żaglami'. Doceniamy również tych, którzy najmocniej angażują się w działalność KSI - Dorota Sadza długoletnia Zastępczyni Prezesa KSI oraz opiekun Koła - dr hab. inż. Marek Skomorowski otrzymują Honorowe Członkostwo.",
       management: {
         president: "Maria Chmaj",
         vicePresidents: "Paulina Gajda, Kamil Kraszewski",
