@@ -27,25 +27,25 @@ Create and configure environment variables before building the images.
 
 #### Backend (.env)
 
-Create a `.env` file in the `backend/app` directory:
+Generate your own secure key used for authentication.
+
+Copy the `.env.example` file to `.env` in the `backend/app` directory:
 
 ```
-SQLALCHEMY_DATABASE_URL=sqlite+aiosqlite:///./app/db/db.sqlite3
-ADMIN_API_KEY=<admin-api-key>
-IMAGES_DIR=./app/images
+cp backend/app/.env.example backend/app/.env
 ```
 
-**Important:** Generate your own secure `ADMIN_API_KEY`.
+then fill in the values in `.env`, putting your secure key under `ADMIN_API_KEY`.
 
 #### Frontend (.env)
 
-Create a `.env` file in the `frontend` directory:
+Copy the `.env.example` file to `.env` in the `frontend` directory:
 
 ```
-VITE_API_URL=http://localhost:8000/api
+cp frontend/.env.example frontend/.env
 ```
 
-**Note:** The backend & frontend image is built using the `.env` file at build time, so create it before running `docker compose build`.
+**Note:** The backend & frontend image are built using `.env` declarations, after updating them you may need to rebuild the images using `docker compose build`.
 
 ### 2. Set File Permissions (REQUIRED)
 
