@@ -80,17 +80,20 @@ cp app/.env.example app/.env
 File: `app/models.py`
 
 ### Board
+
 - **id**: Integer (PK)
 - **name**: String(100) NOT NULL
 - **role_title**: Enum('president','vicepresident','treasurer','member') NOT NULL
 - **photo_url**: String(255) NOT NULL
 
 ### VIP
+
 - **id**: Integer (PK)
 - **name**: String(100) NOT NULL
 - **role_type**: Enum('supervisor','audit','admin','housekeeper','honorary') NOT NULL
 
 ### Project
+
 - **id**: Integer (PK)
 - **name**: String(255) NOT NULL
 - **description**: Text
@@ -99,6 +102,7 @@ File: `app/models.py`
 - **status**: Enum('ongoing','completed','archived') NOT NULL
 
 ### News
+
 - **id**: Integer (PK)
 - **title**: String(255) NOT NULL
 - **description**: Text
@@ -205,11 +209,13 @@ Key files:
 ### Running Tests
 
 1. Navigate to the backend directory:
+
    ```bash
    cd backend
    ```
 
 2. Install dev dependencies:
+
    ```bash
    pip install -r requirements.txt
    pip install -r requirements-dev.txt
@@ -288,20 +294,24 @@ curl -X 'DELETE' \
 ### Common Issues
 
 **Database not found:**
+
 - Ensure `app/db/` directory exists
 - Check `SQLALCHEMY_DATABASE_URL` configuration
 
 **Tests failing:**
+
 - Verify `requirements-dev.txt` is installed
 - Check that `ADMIN_API_KEY` is set in test environment
 - Ensure no conflicting database connections
 
 **401/403 errors on admin endpoints:**
+
 - Verify `X-API-Key` header is present
 - Check that `ADMIN_API_KEY` matches between request and environment
 - Ensure the key doesn't contain extra whitespace
 
 **Docker issues:**
+
 - Rebuild with `--no-cache` if dependencies change
 - Verify environment variables are passed to container
 
@@ -320,6 +330,7 @@ curl -X 'DELETE' \
 ```
 backend/
 ├── app/
+│   ├── .env
 │   ├── __init__.py
 │   ├── crud.py
 │   ├── database.py
