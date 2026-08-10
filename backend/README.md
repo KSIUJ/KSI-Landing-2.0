@@ -63,12 +63,15 @@ If you modify dependencies, use the `--no-cache` flag or manually remove images:
 
 ## Configuration / Environment Variables
 
-Main variables (place in `app/.env` or system environment):
+Copy the `.env.example` file to `.env` in the `app` directory:
+
+```bash
+cp app/.env.example app/.env
+```
 
 - `SQLALCHEMY_DATABASE_URL` - Database URL (default: `sqlite+aiosqlite:///./app/db/db.sqlite3`)
 - `ADMIN_API_KEY` - API key for admin endpoints (critical: do not commit this to the repository)
-
-The `.env` file is read by the application (if using python-dotenv).
+- `IMAGES_DIR` - Directory for storing images (default: `./app/images`)
 
 ---
 
